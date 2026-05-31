@@ -261,83 +261,59 @@ Needs improvement:
 
 ## 3.2 Document Lifecycle
 
-Status: Missing
+Status: Implemented
 
-Existing related documents:
-
-```text
-/ai-system/document-templates.md
-/ai-system/rules.md
-/ai-system/workflow.md
-/ai-system/review-process.md
-```
-
-Current coverage:
-
-- document templates exist;
-- documentation update rules exist;
-- documentation is treated as source of truth.
-
-Missing:
-
-- Create Document;
-- Read Document;
-- Update Document;
-- Review Document;
-- Approve Document;
-- Deprecate Document;
-- Archive Document;
-- Delete Document;
-- document statuses;
-- document ownership;
-- document review rules;
-- document versioning rules.
-
-Need to create:
+Existing document:
 
 ```text
 /ai-system/document-lifecycle.md
 ```
 
+Covers:
+
+- managed document definition;
+- source-of-truth locations;
+- document lifecycle states;
+- Read, Create, Update, Review, Approve, Reject, Deprecate, Archive, Remove and Roll Back operations;
+- document ownership model;
+- Human Owner approval rules;
+- AICP relationship;
+- version impact rules;
+- audit and history rules;
+- index and reference update rules.
+
+Needs improvement:
+
+- add examples for product documents in `/docs` when a product project exists;
+- add document state transition diagram if review friction appears.
+
 ## 3.3 Process Lifecycle
 
-Status: Missing
+Status: Implemented
 
-Existing related documents:
-
-```text
-/ai-system/workflow.md
-/ai-system/change-process.md
-/ai-system/review-process.md
-/ai-system/interaction-modes.md
-```
-
-Current coverage:
-
-- several processes are described;
-- workflow exists;
-- review process exists;
-- change process exists.
-
-Missing:
-
-- Read Process;
-- Create Process;
-- Update Process;
-- Split Process;
-- Merge Processes;
-- Deprecate Process;
-- Delete Process;
-- Audit Process;
-- process ownership;
-- process versioning;
-- process effectiveness review.
-
-Need to create:
+Existing document:
 
 ```text
 /ai-system/process-lifecycle.md
 ```
+
+Covers:
+
+- managed process definition;
+- process source-of-truth locations;
+- process lifecycle states;
+- Read, Create, Update, Review, Approve, Reject, Split, Merge, Deprecate, Archive, Remove, Roll Back and Audit operations;
+- process ownership model;
+- Human Owner approval rules;
+- AICP relationship;
+- version impact rules;
+- audit and history rules;
+- relationship to lifecycle governance and document lifecycle.
+
+Needs improvement:
+
+- add examples for splitting and merging processes if process overlap appears;
+- add process state transition diagram if process review becomes difficult.
 
 ## 3.4 Task Lifecycle
 
@@ -584,6 +560,8 @@ Interaction Modes
 System Structure
 Glossary
 Role Lifecycle
+Document Lifecycle
+Process Lifecycle
 Lifecycle Governance
 Language and Localization
 ```
@@ -601,8 +579,6 @@ Improvement Lifecycle
 
 ```text
 Decision Lifecycle
-Document Lifecycle
-Process Lifecycle
 Codex Execution Lifecycle
 QA Lifecycle
 Knowledge Lifecycle
@@ -611,11 +587,11 @@ Experiment Lifecycle
 
 ## Highest Priority Next Steps
 
-1. Create `document-lifecycle.md` because documentation is the source of truth.
-2. Create `process-lifecycle.md` because processes must be changeable like roles.
-3. Create `task-lifecycle.md` because execution depends on tasks.
-4. Create `codex-lifecycle.md` because Codex is the execution boundary.
-5. Improve `change-process.md` or create `change-lifecycle.md` to define verification, rollback and closure.
+1. Create `task-lifecycle.md` because execution depends on tasks.
+2. Create `codex-lifecycle.md` because Codex is the execution boundary.
+3. Improve `change-process.md` or create `change-lifecycle.md` to define verification, rollback and closure.
+4. Create `decision-lifecycle.md` to define decision states, ownership and archival rules.
+5. Create `qa-lifecycle.md` because QA approval and regression flow need explicit ownership.
 
 ## Main Principle
 

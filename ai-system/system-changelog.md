@@ -2,6 +2,37 @@
 
 Status: Draft
 
+## v0.5.0
+
+### Added
+
+- Added process lifecycle for managed AI Development System processes.
+
+### Updated
+
+- Updated operating model to mark Process Lifecycle as implemented.
+- Updated AI system README to list `process-lifecycle.md`.
+- Updated next-step priorities after Process Lifecycle was added.
+
+### Reason
+
+Defines process states, operations, ownership, approval, AICP relationship, version impact and audit rules before adding task, Codex and QA lifecycles.
+
+## v0.4.0
+
+### Added
+
+- Added document lifecycle for source-of-truth documents.
+
+### Updated
+
+- Updated operating model to mark Document Lifecycle as implemented.
+- Updated AI system README to list `document-lifecycle.md`.
+
+### Reason
+
+Defines document states, operations, ownership, approval, AICP relationship, version impact and audit rules before adding more lifecycle documents.
+
 ## v0.3.0
 
 ### Added
