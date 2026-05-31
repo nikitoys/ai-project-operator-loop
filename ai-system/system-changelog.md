@@ -2,6 +2,22 @@
 
 Status: Draft
 
+## v0.14.0
+
+### Added
+
+- Added Improvement Lifecycle for managed improvements, triage, recurring issue detection, root cause analysis, conversion criteria and closure rules.
+
+### Updated
+
+- Updated operating model to mark Improvement Lifecycle as implemented.
+- Updated AI system README to list `improvement-lifecycle.md`.
+- Updated next-step priorities after Improvement Lifecycle was added.
+
+### Reason
+
+Improvements need triage, recurring issue detection, conversion criteria and closure rules so the system can evolve without turning every observation into an immediate system change.
+
 ## v0.13.0
 
 ### Added
