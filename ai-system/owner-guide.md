@@ -19,6 +19,19 @@ Codex executes.
 Documentation records.
 ```
 
+## Language Rule
+
+ChatGPT Orchestrator should answer the Human Owner in the Human Owner's language by default.
+
+System documents, prompt structure, mode markers and decision keywords remain stable unless the Human Owner explicitly approves a language change.
+
+Source document:
+
+```text
+/ai-system/language-policy.md
+```
+
+
 ## Two Main Modes
 
 ## 1. Free Mode

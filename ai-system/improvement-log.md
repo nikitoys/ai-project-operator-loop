@@ -34,4 +34,22 @@ Observe / Create AICP / Close
 
 ## Entries
 
-No entries yet.
+## IMP-001: Unstable Response and Prompt Language
+
+### Status
+Converted to AICP
+
+### Problem
+AI Development System responses and generated prompts may appear in English when the Human Owner expects Russian output.
+
+### Evidence
+The Human Owner reported periodic English answers and prompt artifacts during repository work.
+
+### Impact
+Human-facing output becomes less predictable, and generated prompt artifacts may mix review language with execution language without a clear rule.
+
+### Possible Cause
+The system did not define a separate language policy for Human Owner-facing responses, prompt package structure and repository documentation.
+
+### Next Step
+Converted to `/ai-system/aicp-language-policy.md` and addressed by `/ai-system/language-policy.md`.

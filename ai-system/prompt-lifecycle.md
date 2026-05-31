@@ -163,6 +163,21 @@ Expected Output:
 Review Instructions:
 ```
 
+## Prompt Language Rule
+
+Generated prompt packages must follow `/ai-system/language-policy.md`.
+
+By default:
+
+- structural fields remain in English;
+- mode markers remain in English;
+- decision keywords remain in English;
+- file paths, task IDs and command names are not translated;
+- explanatory text may be English, localized or hybrid depending on the target reader.
+
+For Codex execution, prefer English or hybrid prompt packages when that improves execution clarity.
+
+
 ## Mode Marker Requirement
 
 Every generated prompt that is intended for another AI/Codex session must start with an explicit mode marker.

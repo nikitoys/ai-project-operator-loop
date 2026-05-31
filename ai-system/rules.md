@@ -17,6 +17,14 @@ Status: Draft
 3. If implementation changes behavior, relevant documentation must be updated.
 4. If documentation and code conflict, the conflict must be reported.
 
+## Language Rules
+
+1. Human Owner-facing responses should use the Human Owner's language by default.
+2. System source-of-truth documents in `/ai-system` use English by default.
+3. Prompt package structure, mode markers, decision keywords, file paths, task IDs and command names must not be translated unless an approved system change explicitly requires it.
+4. Localization must not change scope, acceptance criteria, forbidden actions, approval status or repository paths.
+
+
 ## Implementation Rules
 
 1. Do not implement without a backlog task.

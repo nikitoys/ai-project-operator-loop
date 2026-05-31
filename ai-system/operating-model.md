@@ -104,6 +104,32 @@ Needs improvement:
 
 ---
 
+## 1.4 Language and Localization
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/ai-system/language-policy.md
+/ai-system/aicp-language-policy.md
+```
+
+Covers:
+
+- default Human Owner-facing response language;
+- stable system and repository documentation language;
+- prompt package language rules;
+- fixed mode markers, decision keywords and control fields;
+- localization boundary rules.
+
+Needs improvement:
+
+- add examples if multilingual prompt packages become difficult to review;
+- revisit when project documents in `/docs` define their own localization needs.
+
+---
+
 # 2. Governance Layer
 
 The Governance Layer defines how decisions, changes and lifecycle control are managed.
@@ -174,27 +200,30 @@ Needs improvement:
 
 ## 2.3 Lifecycle Governance
 
-Status: Missing
+Status: Implemented
 
-Current coverage:
-
-- role lifecycle exists;
-- change process exists;
-- some lifecycle rules exist across documents.
-
-Missing:
-
-- one common governance model for all managed entities;
-- rules that define which lifecycle changes require Patch, Minor or Major version impact;
-- common ownership model;
-- common approval rules;
-- common audit rules.
-
-Need to create:
+Existing documents:
 
 ```text
 /ai-system/lifecycle-governance.md
 ```
+
+Covers:
+
+- common governance model for managed entities;
+- common lifecycle states;
+- common lifecycle operations;
+- common ownership model;
+- common approval rules;
+- AICP relationship;
+- version impact rules;
+- audit and history rules;
+- rules for future lifecycle documents.
+
+Needs improvement:
+
+- keep synchronized with future lifecycle documents;
+- add examples if repeated lifecycle design mistakes appear.
 
 ---
 
@@ -555,6 +584,8 @@ Interaction Modes
 System Structure
 Glossary
 Role Lifecycle
+Lifecycle Governance
+Language and Localization
 ```
 
 ## Partially Implemented
@@ -570,7 +601,6 @@ Improvement Lifecycle
 
 ```text
 Decision Lifecycle
-Lifecycle Governance
 Document Lifecycle
 Process Lifecycle
 Codex Execution Lifecycle
@@ -581,11 +611,11 @@ Experiment Lifecycle
 
 ## Highest Priority Next Steps
 
-1. Create `lifecycle-governance.md` to define common lifecycle rules for all managed entities.
-2. Create `document-lifecycle.md` because documentation is the source of truth.
-3. Create `process-lifecycle.md` because processes must be changeable like roles.
-4. Create `task-lifecycle.md` because execution depends on tasks.
-5. Create `codex-lifecycle.md` because Codex is the execution boundary.
+1. Create `document-lifecycle.md` because documentation is the source of truth.
+2. Create `process-lifecycle.md` because processes must be changeable like roles.
+3. Create `task-lifecycle.md` because execution depends on tasks.
+4. Create `codex-lifecycle.md` because Codex is the execution boundary.
+5. Improve `change-process.md` or create `change-lifecycle.md` to define verification, rollback and closure.
 
 ## Main Principle
 

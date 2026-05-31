@@ -1,72 +1,137 @@
-# AI Project Operator Loop
+# AI Development System
 
-This repository is a generic template for running projects with AI assistants
-through a short operator API, durable project memory, and a One-Task Loop.
+Languages: [English](README.md) | [Русский](README.ru.md)
 
-It is meant for projects where the human operator chooses direction and the AI
-assistant executes one scoped task at a time, records state, runs checks, makes
-one commit, and stops.
+Status: Draft
+Version: v0.3.0
 
-## Quick Start
+This repository contains an AI Development System: an operating model for developing projects through AI roles, documentation, lifecycle governance, prompt generation, Codex execution, review and controlled evolution.
 
-1. Copy this template into a new repository.
-2. Fill in `PROJECT_GOAL.md` with the mission, constraints, success criteria,
-   and non-goals.
-3. Review `CODEX_WORKFLOW.md` and adapt checks, commit rules, and safety
-   constraints to the project.
-4. Fill `CODEX_PLAN.md` with the first 3-5 tasks.
-5. Start a fresh AI session with the prompt in `PROMPTS.md`.
-6. Use short operator commands instead of long prompts.
+It is not a normal application repository. The primary source of truth is `/ai-system`.
 
-## Operator Commands
+## Purpose
 
-- `Старт`: read the core project memory and report readiness.
-- `Статус`: show current task state, changed files, checks, blockers, and next
-  action.
-- `Советник`: assess project direction and recommend one next operator step.
-- `Аудит`: check consistency across workflow state files.
-- `План`: propose 3-5 next tasks sorted by value.
-- `План подробнее N`: expand task `N` into scope, checks, and done criteria.
-- `Утверждаю задачу N`: record the selected task as approved.
-- `Выполняй`: run the approved task through the One-Task Loop and commit.
-- `Выполняй без коммита`: run the approved task and checks, then stop before
-  commit.
-- `Коммить`: commit already-checked approved changes.
-- `Стоп`: stop current work and mark it stopped.
-- `Продолжай текущую`: resume only the current approved or stopped task.
-- `Отмени текущую`: cancel the current task without deleting changes.
+The system helps the Human Owner work with ChatGPT and Codex through clear roles, modes, prompts, review rules and change governance.
 
-## Basic Workflow
+Core idea:
 
 ```text
-Старт -> Статус -> Советник -> План -> План подробнее N -> Утверждаю задачу N -> Выполняй
+Human Owner controls.
+ChatGPT Orchestrator routes.
+AI roles specialize.
+Codex executes scoped repository changes.
+Documentation records decisions.
 ```
 
-Core principle:
+## Current Capabilities
+
+- Interaction modes: Free, System, Prompt, Codex, Review, Evolution and Dry Run.
+- Role model for product, design, management, implementation, quality, documentation and system evolution.
+- Codex prompt package format with scope, allowed files, forbidden actions and acceptance criteria.
+- Review process with severity levels and Human Owner decision keywords.
+- Lifecycle governance for managed system entities.
+- Language and localization policy for user-facing answers and generated prompts.
+- Controlled system evolution through improvement log, AICP and changelog.
+
+## Main Documents
+
+- `/ai-system/README.md` - AI Development System index.
+- `/ai-system/owner-guide.md` - how the Human Owner should interact with the system.
+- `/ai-system/interaction-modes.md` - supported modes and routing rules.
+- `/ai-system/operating-model.md` - implemented, partial and missing system areas.
+- `/ai-system/system-structure.md` - high-level role and layer structure.
+- `/ai-system/roles.md` - AI role registry.
+- `/ai-system/rules.md` - global system rules.
+- `/ai-system/prompt-lifecycle.md` - prompt creation, review and execution lifecycle.
+- `/ai-system/task-format.md` - standard task format.
+- `/ai-system/review-process.md` - review and QA process.
+- `/ai-system/change-process.md` - controlled evolution process.
+- `/ai-system/lifecycle-governance.md` - shared lifecycle rules.
+- `/ai-system/language-policy.md` - language and localization rules.
+- `/ai-system/system-changelog.md` - system version history.
+- `/ai-system/improvement-log.md` - observed process problems and improvement ideas.
+
+## Interaction Modes
+
+Use explicit markers when precision matters:
 
 ```text
-one task -> scoped implementation -> checks -> one commit -> stop
+[FREE]       ordinary explanation or discussion
+[SYSTEM]     process through AI Development System
+[PROMPT]     generate a prompt artifact for review
+[CODEX]      prepare a Codex-ready prompt package
+[REVIEW]     review Codex output
+[EVOLUTION]  analyze or change the AI Development System
+[DRY-RUN]    simulate without applying
 ```
 
-The assistant must not automatically move from planning to execution, and must
-not automatically take the next task after finishing one.
+If no marker is provided, ChatGPT Orchestrator infers the mode from the request.
 
-## State Files
+Repository-affecting work must use the AI Development System process and should identify:
 
-- `AGENTS.md`: instructions for future AI sessions.
-- `PROJECT_GOAL.md`: mission, constraints, success criteria, and non-goals.
-- `CODEX_COMMANDS.md`: short command cheat sheet.
-- `CODEX_WORKFLOW.md`: full operator workflow.
-- `CODEX_PLAN.md`: current planning snapshot.
-- `CODEX_CURRENT.md`: current task state.
-- `CODEX_SESSION_LOG.md`: journal of cycles.
-- `CODEX_TASKS.md`: compact project board.
-- `PROMPTS.md`: reusable prompts for fresh sessions and modes.
+```text
+Active Role:
+Active Stage:
+Active Document:
+Expected Result:
+```
 
-## Adapt For A New Project
+## Language Policy
 
-- Replace `TBD` placeholders with project-specific information.
-- Define the normal check commands in `CODEX_WORKFLOW.md` and `AGENTS.md`.
-- Add project-specific safety constraints and non-goals to `PROJECT_GOAL.md`.
-- Keep state files short enough to be read at the start of every session.
-- Update templates in `templates/` if your project needs extra approval fields.
+Human-facing answers should use the Human Owner language by default.
+
+System documents and control structures remain English by default:
+
+- mode markers such as `[SYSTEM]` and `[CODEX]`;
+- prompt fields such as `Scope`, `Out of Scope` and `Acceptance Criteria`;
+- decision keywords such as `APPROVED`, `REWORK`, `REJECTED`, `DEFERRED` and `EXPERIMENT`;
+- file paths, task IDs, branch names and command names.
+
+Generated Codex prompts should usually be English or hybrid: stable English structure with localized explanations when useful.
+
+## Standard Workflow
+
+```text
+Human intent
+-> ChatGPT Orchestrator classifies mode
+-> active role and source documents are selected
+-> prompt, task, review or system change is prepared
+-> Human Owner approves or requests rework
+-> Codex applies approved repository changes when needed
+-> result is reviewed
+-> changelog or documentation is updated when required
+```
+
+## Human Owner Decisions
+
+Use these decision words:
+
+```text
+APPROVED   accept result
+REWORK     request changes
+REJECTED   reject result
+DEFERRED   postpone decision
+EXPERIMENT test temporarily
+```
+
+AI may recommend a decision, but the Human Owner decides.
+
+## Repository Model
+
+```text
+/ai-system   # AI Development System rules, roles, workflow and governance
+/docs        # product documentation when a product project exists
+README.md    # repository entrypoint in English
+README.ru.md # Russian repository entrypoint
+AGENTS.md    # instructions for future AI sessions
+```
+
+Legacy operator-loop files may exist, but `/ai-system` is the current primary source of truth.
+
+## Minimal Safety Rules
+
+- Do not change repository files unless the Human Owner explicitly asks for a repository change or Codex execution task.
+- Do not treat AI Development System evolution as ordinary conversation.
+- Do not generate Codex prompts without mode markers and execution boundaries.
+- Do not accept Codex output automatically without review.
+- Do not mix unrelated system, product, implementation and documentation changes unless explicitly approved.
