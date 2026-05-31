@@ -354,37 +354,32 @@ The Execution Layer defines how work is executed, reviewed and validated.
 
 ## 4.1 Codex Execution Lifecycle
 
-Status: Missing
+Status: Implemented
 
-Existing related documents:
-
-```text
-/ai-system/human-interaction.md
-/ai-system/rules.md
-/ai-system/task-format.md
-```
-
-Current coverage:
-
-- Codex Executor concept exists;
-- prompt package requirements exist;
-- expected Codex output format exists.
-
-Missing:
-
-- full Codex execution lifecycle;
-- prompt preparation states;
-- execution constraints;
-- result intake process;
-- failure handling;
-- rework prompt flow;
-- rollback handling.
-
-Need to create:
+Existing document:
 
 ```text
 /ai-system/codex-lifecycle.md
 ```
+
+Covers:
+
+- Codex execution definition;
+- source-of-truth documents for Codex execution;
+- Codex execution lifecycle states;
+- Prepare Prompt, Review Prompt, Approve Prompt, Execute, Report Result, Intake Result, Review Result, Request Rework, Accept Result, Reject Result, Roll Back and Archive operations;
+- ownership model across Human Owner, ChatGPT Orchestrator, Codex Executor, domain roles, Code Reviewer AI, QA Engineer AI and AI System Maintainer;
+- prompt package requirements;
+- result intake and required report format;
+- failure handling;
+- rework prompt flow;
+- rollback handling;
+- relationships to task format, prompt lifecycle, review process, lifecycle governance, document lifecycle and process lifecycle.
+
+Needs improvement:
+
+- add examples for common failure cases if Codex execution reviews repeat the same issues;
+- add execution state transition diagram if execution tracking becomes difficult.
 
 ## 4.2 Review Lifecycle
 
@@ -562,6 +557,7 @@ Role Lifecycle
 Document Lifecycle
 Process Lifecycle
 Task Lifecycle
+Codex Execution Lifecycle
 Lifecycle Governance
 Language and Localization
 ```
@@ -578,7 +574,6 @@ Improvement Lifecycle
 
 ```text
 Decision Lifecycle
-Codex Execution Lifecycle
 QA Lifecycle
 Knowledge Lifecycle
 Experiment Lifecycle
@@ -586,11 +581,11 @@ Experiment Lifecycle
 
 ## Highest Priority Next Steps
 
-1. Create `codex-lifecycle.md` because Codex is the execution boundary.
-2. Improve `change-process.md` or create `change-lifecycle.md` to define verification, rollback and closure.
-3. Create `decision-lifecycle.md` to define decision states, ownership and archival rules.
-4. Create `qa-lifecycle.md` because QA approval and regression flow need explicit ownership.
-5. Create `knowledge-lifecycle.md` to define how lessons become glossary terms, rules or templates.
+1. Improve `change-process.md` or create `change-lifecycle.md` to define verification, rollback and closure.
+2. Create `decision-lifecycle.md` to define decision states, ownership and archival rules.
+3. Create `qa-lifecycle.md` because QA approval and regression flow need explicit ownership.
+4. Create `knowledge-lifecycle.md` to define how lessons become glossary terms, rules or templates.
+5. Create `experiment-lifecycle.md` because experiments need hypothesis, success criteria and rollback rules.
 
 ## Main Principle
 

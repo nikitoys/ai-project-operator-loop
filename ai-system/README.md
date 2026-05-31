@@ -58,6 +58,7 @@ AI Development System
 - `document-lifecycle.md` — lifecycle rules for source-of-truth documents.
 - `process-lifecycle.md` — lifecycle rules for managed processes.
 - `task-lifecycle.md` — lifecycle rules for managed tasks.
+- `codex-lifecycle.md` — lifecycle rules for Codex execution.
 - `aicp-language-policy.md` — approved change proposal for language and localization policy.
 - `document-templates.md` — templates for project documents.
 - `system-changelog.md` — history of changes to the AI Development System.

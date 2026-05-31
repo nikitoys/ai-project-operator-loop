@@ -2,6 +2,22 @@
 
 Status: Draft
 
+## v0.7.0
+
+### Added
+
+- Added Codex execution lifecycle for controlled repository execution.
+
+### Updated
+
+- Updated operating model to mark Codex Execution Lifecycle as implemented.
+- Updated AI system README to list `codex-lifecycle.md`.
+- Updated next-step priorities after Codex Execution Lifecycle was added.
+
+### Reason
+
+Defines Codex execution states, prompt approval, result intake, failure handling, rework flow, rollback handling and review boundaries while preserving Human Owner control.
+
 ## v0.6.0
 
 ### Added
