@@ -2,6 +2,22 @@
 
 Status: Draft
 
+## v0.6.0
+
+### Added
+
+- Added task lifecycle for managed AI Development System tasks.
+
+### Updated
+
+- Updated operating model to mark Task Lifecycle as implemented.
+- Updated AI system README to list `task-lifecycle.md`.
+- Updated next-step priorities after Task Lifecycle was added.
+
+### Reason
+
+Defines task states, operations, ownership, Definition of Ready and Definition of Done relationship, approval, AICP relationship, version impact and audit rules before adding Codex and QA lifecycles.
+
 ## v0.5.0
 
 ### Added

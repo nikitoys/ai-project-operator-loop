@@ -317,35 +317,34 @@ Needs improvement:
 
 ## 3.4 Task Lifecycle
 
-Status: Partially Implemented
+Status: Implemented
 
-Existing document:
+Existing documents:
 
 ```text
 /ai-system/task-format.md
-```
-
-Current coverage:
-
-- task format exists;
-- Definition of Ready exists;
-- Definition of Done exists.
-
-Missing:
-
-- full task states;
-- transition rules;
-- owner changes;
-- rework flow;
-- blocked state;
-- task archive rules;
-- relationship between task, Codex execution and review.
-
-Need to create:
-
-```text
 /ai-system/task-lifecycle.md
 ```
+
+Covers:
+
+- managed task definition;
+- task source-of-truth locations;
+- task lifecycle states;
+- Read, Create, Refine, Approve, Start, Block, Resume, Submit for Review, Request Rework, Accept, Reject, Defer, Archive and Reopen operations;
+- task ownership model;
+- Definition of Ready and Definition of Done relationship to `/ai-system/task-format.md`;
+- relationship between task lifecycle, Codex execution and review;
+- Human Owner approval rules;
+- AICP relationship;
+- version impact rules;
+- audit and history rules;
+- relationship to lifecycle governance, document lifecycle and process lifecycle.
+
+Needs improvement:
+
+- add task state transition diagram if task tracking becomes difficult;
+- add examples for product backlog tasks when a product project exists.
 
 ---
 
@@ -562,6 +561,7 @@ Glossary
 Role Lifecycle
 Document Lifecycle
 Process Lifecycle
+Task Lifecycle
 Lifecycle Governance
 Language and Localization
 ```
@@ -570,7 +570,6 @@ Language and Localization
 
 ```text
 Change Lifecycle
-Task Lifecycle
 Review Lifecycle
 Improvement Lifecycle
 ```
@@ -587,11 +586,11 @@ Experiment Lifecycle
 
 ## Highest Priority Next Steps
 
-1. Create `task-lifecycle.md` because execution depends on tasks.
-2. Create `codex-lifecycle.md` because Codex is the execution boundary.
-3. Improve `change-process.md` or create `change-lifecycle.md` to define verification, rollback and closure.
-4. Create `decision-lifecycle.md` to define decision states, ownership and archival rules.
-5. Create `qa-lifecycle.md` because QA approval and regression flow need explicit ownership.
+1. Create `codex-lifecycle.md` because Codex is the execution boundary.
+2. Improve `change-process.md` or create `change-lifecycle.md` to define verification, rollback and closure.
+3. Create `decision-lifecycle.md` to define decision states, ownership and archival rules.
+4. Create `qa-lifecycle.md` because QA approval and regression flow need explicit ownership.
+5. Create `knowledge-lifecycle.md` to define how lessons become glossary terms, rules or templates.
 
 ## Main Principle
 
