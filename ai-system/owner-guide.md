@@ -100,9 +100,25 @@ System Mode is required when the request may affect:
 
 ## Additional Markers
 
+## Prompt Mode
+
+Use when you want ChatGPT to generate a prompt artifact for review before execution.
+
+```text
+[PROMPT]
+Create a prompt for Codex to add /ai-system/document-lifecycle.md.
+```
+
+This means:
+
+- generate a structured prompt package;
+- do not assume immediate execution;
+- include source documents, scope, out of scope, allowed files, forbidden actions and expected output;
+- wait for Human Owner approval.
+
 ## Codex Mode
 
-Use when you need a prompt package for Codex.
+Use when you need a Codex-ready prompt package.
 
 ```text
 [CODEX]
@@ -164,7 +180,8 @@ This means:
 ```text
 [FREE]       ordinary explanation or discussion
 [SYSTEM]     process through AI Development System
-[CODEX]      prepare prompt package for Codex
+[PROMPT]     generate a prompt artifact for review
+[CODEX]      prepare prompt package for Codex execution
 [REVIEW]     review Codex output
 [EVOLUTION]  analyze or change the AI Development System
 [DRY-RUN]    simulate without applying
@@ -178,6 +195,7 @@ Default behavior:
 
 ```text
 Explanation or discussion → Free Mode
+Prompt generation request → Prompt Mode
 Repository or documentation change → System Mode
 Codex result check → Review Mode
 AI Development System change → Evolution Mode
@@ -216,6 +234,19 @@ Expected behavior:
 - inspect relevant documents;
 - provide structured result;
 - suggest updates if needed.
+
+## Prompt Example
+
+```text
+[PROMPT]
+Create a prompt for Codex to add command-reference.md.
+```
+
+Expected behavior:
+
+- produce a prompt draft;
+- keep it reviewable;
+- do not assume it has already been approved or executed.
 
 ## Codex Example
 
@@ -269,6 +300,23 @@ REWORK     request changes
 REJECTED   reject result
 DEFERRED   postpone decision
 EXPERIMENT test temporarily
+```
+
+## Automation Rule
+
+Prompt generation may be automated.
+
+Prompt execution should not bypass Human Owner control by default.
+
+Safe sequence:
+
+```text
+Human Intent
+→ ChatGPT generates prompt
+→ Human Owner approves prompt
+→ Codex executes
+→ ChatGPT reviews result
+→ Human Owner accepts or rejects result
 ```
 
 ## Main Safety Rule
