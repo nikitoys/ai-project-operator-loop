@@ -102,8 +102,6 @@ Needs improvement:
 - add new terms whenever new lifecycle documents are created;
 - add cross-links between terms and lifecycle documents.
 
----
-
 ## 1.4 Language and Localization
 
 Status: Implemented
@@ -149,17 +147,12 @@ Existing documents:
 Covers:
 
 - managed decision definition;
-- decision source-of-truth locations;
-- decision lifecycle states;
-- Read, Propose, Clarify, Review, Approve, Request Rework, Reject, Defer, Start Experiment, Apply, Supersede, Roll Back and Archive operations;
-- ownership model across Human Owner, ChatGPT Orchestrator, AI System Maintainer, domain roles and Codex Executor;
-- relationship to decision process;
+- decision lifecycle states and operations;
+- ownership model;
 - relationship between decisions, affected documents, AICP, changelog and git history;
 - Human Owner approval rules;
 - AICP relationship;
-- revision, supersession and archival rules;
-- version impact rules;
-- audit and history rules.
+- revision, supersession, archival, version impact and audit rules.
 
 Needs improvement:
 
@@ -182,16 +175,12 @@ Existing documents:
 Covers:
 
 - managed system change definition;
-- change lifecycle states;
-- Observe, Analyze, Draft AICP, Review, Approve, Defer, Reject, Apply, Verify, Request Rework, Roll Back, Close and Archive operations;
+- change lifecycle states and operations;
 - relationship between improvement log, AICP, system changelog and git history;
-- verification criteria after applying a system change;
-- rollback rules;
-- closure criteria;
+- verification, rollback and closure rules;
 - Human Owner approval rules;
 - AICP relationship;
-- version impact rules;
-- audit and history rules.
+- version impact and audit rules.
 
 Needs improvement:
 
@@ -211,13 +200,9 @@ Existing documents:
 Covers:
 
 - common governance model for managed entities;
-- common lifecycle states;
-- common lifecycle operations;
-- common ownership model;
-- common approval rules;
+- common lifecycle states, operations, ownership and approval rules;
 - AICP relationship;
-- version impact rules;
-- audit and history rules;
+- version impact, audit and history rules;
 - rules for future lifecycle documents.
 
 Needs improvement:
@@ -243,13 +228,7 @@ Existing document:
 
 Covers:
 
-- Read Role;
-- Add Role;
-- Edit Role;
-- Split Role;
-- Merge Roles;
-- Deprecate Role;
-- Delete Role;
+- role lifecycle operations;
 - role change proposal template;
 - role version impact rules.
 
@@ -273,14 +252,11 @@ Covers:
 
 - managed document definition;
 - source-of-truth locations;
-- document lifecycle states;
-- Read, Create, Update, Review, Approve, Reject, Deprecate, Archive, Remove and Roll Back operations;
+- document lifecycle states and operations;
 - document ownership model;
 - Human Owner approval rules;
 - AICP relationship;
-- version impact rules;
-- audit and history rules;
-- index and reference update rules.
+- version impact, audit, history, index and reference update rules.
 
 Needs improvement:
 
@@ -301,13 +277,11 @@ Covers:
 
 - managed process definition;
 - process source-of-truth locations;
-- process lifecycle states;
-- Read, Create, Update, Review, Approve, Reject, Split, Merge, Deprecate, Archive, Remove, Roll Back and Audit operations;
+- process lifecycle states and operations;
 - process ownership model;
 - Human Owner approval rules;
 - AICP relationship;
-- version impact rules;
-- audit and history rules;
+- version impact, audit and history rules;
 - relationship to lifecycle governance and document lifecycle.
 
 Needs improvement:
@@ -329,17 +303,13 @@ Existing documents:
 Covers:
 
 - managed task definition;
-- task source-of-truth locations;
-- task lifecycle states;
-- Read, Create, Refine, Approve, Start, Block, Resume, Submit for Review, Request Rework, Accept, Reject, Defer, Archive and Reopen operations;
+- task lifecycle states and operations;
 - task ownership model;
-- Definition of Ready and Definition of Done relationship to `/ai-system/task-format.md`;
-- relationship between task lifecycle, Codex execution and review;
+- Definition of Ready and Definition of Done relationship;
+- relationship between task lifecycle, execution and review;
 - Human Owner approval rules;
 - AICP relationship;
-- version impact rules;
-- audit and history rules;
-- relationship to lifecycle governance, document lifecycle and process lifecycle.
+- version impact, audit and history rules.
 
 Needs improvement:
 
@@ -365,20 +335,17 @@ Existing document:
 Covers:
 
 - Codex execution definition;
-- source-of-truth documents for Codex execution;
-- Codex execution lifecycle states;
-- Prepare Prompt, Review Prompt, Approve Prompt, Execute, Report Result, Intake Result, Review Result, Request Rework, Accept Result, Reject Result, Roll Back and Archive operations;
-- ownership model across Human Owner, ChatGPT Orchestrator, Codex Executor, domain roles, Code Reviewer AI, QA Engineer AI and AI System Maintainer;
+- source-of-truth documents for execution;
+- execution lifecycle states and operations;
+- ownership model;
 - prompt package requirements;
 - result intake and required report format;
-- failure handling;
-- rework prompt flow;
-- rollback handling;
+- failure handling, rework prompt flow and rollback handling;
 - relationships to task format, prompt lifecycle, review process, lifecycle governance, document lifecycle and process lifecycle.
 
 Needs improvement:
 
-- add examples for common failure cases if Codex execution reviews repeat the same issues;
+- add examples for common failure cases if execution reviews repeat the same issues;
 - add execution state transition diagram if execution tracking becomes difficult.
 
 ## 4.2 Review Lifecycle
@@ -395,19 +362,15 @@ Existing documents:
 Covers:
 
 - managed review definition;
-- review source-of-truth documents;
-- review lifecycle states;
-- Assess Review Need, Plan Review, Open Review, Assign Reviewer, Execute Review, Report Findings, Request Rework, Submit Rework for Re-review, Re-review, Approve, Reject, Block, Unblock, Close Review and Archive operations;
-- reviewer ownership model across Human Owner, ChatGPT Orchestrator, Code Reviewer AI, QA Engineer AI, Technical Writer AI, AI System Maintainer, domain roles and Codex Executor;
-- relationship to review types and severity levels from `/ai-system/review-process.md`;
+- review lifecycle states and operations;
+- reviewer ownership model;
+- relationship to review types and severity levels;
 - re-review process;
 - review closure rules;
-- relationship to task lifecycle, Codex execution lifecycle and QA lifecycle;
+- relationship to task lifecycle, execution lifecycle and QA lifecycle;
 - Human Owner approval rules;
 - AICP relationship;
-- version impact rules;
-- audit and history rules;
-- boundary rules.
+- version impact, audit, history and boundary rules.
 
 Needs improvement:
 
@@ -427,18 +390,15 @@ Existing document:
 Covers:
 
 - managed QA flow definition;
-- QA source-of-truth documents;
-- QA lifecycle states;
-- Assess QA Need, Plan QA, Draft Test Cases, Review Test Cases, Start QA, Execute Checks, Report Defects, Request Rework, Run Regression, Approve, Reject, Block, Unblock and Archive operations;
-- QA ownership model across Human Owner, ChatGPT Orchestrator, QA Engineer AI, Code Reviewer AI, domain roles and Codex Executor;
+- QA lifecycle states and operations;
+- QA ownership model;
 - positive, negative, edge case and regression checks;
 - QA approval requirements;
 - defect reporting and rework flow;
 - relationship to task lifecycle, Codex lifecycle and review process;
 - Human Owner approval rules;
 - AICP relationship;
-- version impact rules;
-- audit and history rules.
+- version impact, audit and history rules.
 
 Needs improvement:
 
@@ -453,32 +413,40 @@ The Learning Layer defines how the system learns, improves and experiments.
 
 ## 5.1 Improvement Lifecycle
 
-Status: Partially Implemented
+Status: Implemented
 
-Existing document:
+Existing documents:
 
 ```text
 /ai-system/improvement-log.md
+/ai-system/improvement-lifecycle.md
 ```
 
-Current coverage:
+Covers:
 
-- improvement log template exists;
-- observations can be recorded;
-- entries may be converted to AICP.
-
-Missing:
-
-- improvement states;
-- triage rules;
-- conversion criteria;
-- closure criteria;
-- recurring issue detection;
-- relationship with knowledge lifecycle and change lifecycle.
+- managed improvement definition;
+- what counts as an improvement and what does not;
+- improvement source-of-truth documents;
+- improvement lifecycle states;
+- Observe Improvement, Log Improvement, Triage Improvement, Analyze Root Cause, Classify Improvement, Accept Improvement, Defer Improvement, Reject Improvement, Convert to AICP, Convert to Knowledge, Convert to Experiment, Apply Improvement, Verify Improvement, Close Improvement and Archive Improvement operations;
+- ownership model across Human Owner, ChatGPT Orchestrator, AI System Maintainer, Technical Writer AI, Code Reviewer AI, QA Engineer AI, domain roles and Codex Executor;
+- observation capture and triage rules;
+- severity or priority classification;
+- recurring issue detection rules;
+- root cause analysis rules;
+- conversion criteria for AICP, knowledge and experiment paths;
+- rejection, deferral and closure criteria;
+- relationship to improvement log, change lifecycle, knowledge lifecycle, experiment lifecycle, review lifecycle and lifecycle governance;
+- Human Owner approval rules;
+- AICP relationship;
+- version impact rules;
+- audit and history rules;
+- boundary rules.
 
 Needs improvement:
 
-- expand `improvement-log.md` or create `improvement-lifecycle.md`.
+- add examples for common improvement conversion paths during pilot validation;
+- add improvement state transition diagram if improvement tracking becomes difficult.
 
 ## 5.2 Knowledge Lifecycle
 
@@ -493,21 +461,14 @@ Existing document:
 Covers:
 
 - managed knowledge item definition;
-- what counts as knowledge and what does not;
 - knowledge source-of-truth documents;
-- knowledge lifecycle states;
-- Observe Knowledge, Capture Knowledge, Classify Knowledge, Validate Knowledge, Promote to Glossary, Promote to Rule, Promote to Template, Promote to Prompt, Link to Source, Deprecate Knowledge, Remove Knowledge, Archive Knowledge and Audit Knowledge operations;
-- ownership model across Human Owner, ChatGPT Orchestrator, AI System Maintainer, Technical Writer AI, Code Reviewer AI, QA Engineer AI, domain roles and Codex Executor;
-- knowledge capture, validation and promotion rules;
+- knowledge lifecycle states and operations;
+- ownership, capture, validation and promotion rules;
 - relationship to glossary, rules, prompts, improvement lifecycle, change lifecycle and review lifecycle;
-- stale knowledge detection;
-- deprecation and removal rules;
-- lesson learned storage rules;
+- stale knowledge, deprecation, removal and lesson storage rules;
 - Human Owner approval rules;
 - AICP relationship;
-- version impact rules;
-- audit and history rules;
-- boundary rules.
+- version impact, audit, history and boundary rules.
 
 Needs improvement:
 
@@ -527,20 +488,16 @@ Existing document:
 Covers:
 
 - managed experiment definition;
-- what counts as an experiment and what does not;
 - experiment source-of-truth documents;
-- experiment lifecycle states;
-- Propose Experiment, Draft Experiment Proposal, Review Experiment, Approve Experiment, Start Experiment, Monitor Experiment, Evaluate Experiment, Adopt Experiment, Reject Experiment, Roll Back Experiment and Archive Experiment operations;
-- ownership model across Human Owner, ChatGPT Orchestrator, AI System Maintainer, Technical Writer AI, Code Reviewer AI, QA Engineer AI, domain roles and Codex Executor;
+- experiment lifecycle states and operations;
+- ownership model;
 - experiment proposal format;
 - hypothesis, scope, duration, success criteria and failure criteria rules;
 - evaluation, adoption, rejection and rollback processes;
 - relationship to decision lifecycle, change lifecycle, knowledge lifecycle, improvement lifecycle and review lifecycle;
 - Human Owner approval rules;
 - AICP relationship;
-- version impact rules;
-- audit and history rules;
-- boundary rules.
+- version impact, audit, history and boundary rules.
 
 Needs improvement:
 
@@ -568,6 +525,7 @@ Review Lifecycle
 QA Lifecycle
 Knowledge Lifecycle
 Experiment Lifecycle
+Improvement Lifecycle
 Lifecycle Governance
 Language and Localization
 ```
@@ -575,7 +533,6 @@ Language and Localization
 ## Partially Implemented
 
 ```text
-Improvement Lifecycle
 ```
 
 ## Missing
@@ -585,8 +542,10 @@ Improvement Lifecycle
 
 ## Highest Priority Next Steps
 
-1. Expand `improvement-log.md` or create `improvement-lifecycle.md` to define triage, conversion and closure.
-2. Create `glossary` cross-links for lifecycle terms if terminology drift appears.
+1. Create glossary cross-links for lifecycle terms if terminology drift appears.
+2. Add lifecycle examples for common task, review, improvement, experiment and knowledge flows during pilot validation.
+3. Add state transition diagrams for lifecycles that become difficult to track.
+4. Run pilot validation against real repository tasks and record follow-up improvements.
 
 ## Main Principle
 
