@@ -9,6 +9,41 @@
 
 Это не обычный application repository. Основной источник истины находится в `/ai-system`.
 
+## Кратко
+
+Этот репозиторий описывает документированную систему разработки с помощью AI:
+
+```text
+Human Owner задаёт направление и утверждает решения.
+ChatGPT Orchestrator маршрутизирует работу, готовит промпты и проверяет результаты.
+AI Roles специализируются по зонам ответственности.
+Codex Executor меняет файлы репозитория только в утверждённом scope.
+Documentation хранит правила, решения, lifecycles и историю.
+```
+
+## Как движется работа
+
+```text
+Идея
+-> Уточнение
+-> Задача или change proposal
+-> Prompt package
+-> Human approval
+-> Codex execution
+-> Review
+-> QA
+-> Human acceptance
+-> Documentation update
+-> Done
+```
+
+## С чего начать
+
+- `/ai-system/README.md` - главный индекс AI Development System.
+- `/ai-system/owner-guide.md` - как Human Owner работает с системой.
+- `/ai-system/operating-model.md` - что реализовано и как устроена система.
+- `/ai-system/system-schemes.md` - компактные текстовые схемы ролей, документов и процесса.
+
 ## Назначение
 
 Система помогает Human Owner работать с ChatGPT и Codex через явные роли, режимы, промпты, правила review и change governance.
