@@ -55,13 +55,16 @@ AI Development System
 - `decision-process.md` — decision statuses and ownership.
 - `decision-lifecycle.md` — lifecycle rules for Human Owner decisions.
 - `review-process.md` — review and QA rules.
+- `review-lifecycle.md` — lifecycle rules for managed reviews and re-review flow.
 - `qa-lifecycle.md` — lifecycle rules for QA work and regression checks.
 - `change-process.md` — controlled evolution of the AI Development System.
 - `change-lifecycle.md` — lifecycle rules for managed system changes.
+- `lifecycle-governance.md` — shared governance model for managed lifecycle documents.
 - `document-lifecycle.md` — lifecycle rules for source-of-truth documents.
 - `process-lifecycle.md` — lifecycle rules for managed processes.
 - `task-lifecycle.md` — lifecycle rules for managed tasks.
 - `codex-lifecycle.md` — lifecycle rules for Codex execution.
+- `prompt-lifecycle.md` — lifecycle rules for prompts and prompt packages.
 - `aicp-language-policy.md` — approved change proposal for language and localization policy.
 - `document-templates.md` — templates for project documents.
 - `system-changelog.md` — history of changes to the AI Development System.
