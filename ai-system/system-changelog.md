@@ -2,6 +2,20 @@
 
 Status: Draft
 
+## v0.14.1
+
+### Added
+
+- Added lifecycle glossary cross-links and simple lifecycle term definitions across the main glossary, execution glossary and evolution glossary.
+
+### Updated
+
+- Updated operating model next-step priorities after lifecycle glossary cross-links were added.
+
+### Reason
+
+Reduces terminology drift after implementing all lifecycle documents by linking major lifecycle terms to their glossary sections and source documents.
+
 ## v0.14.0
 
 ### Added
