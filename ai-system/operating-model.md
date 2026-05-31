@@ -95,12 +95,13 @@ Covers:
 - core terms;
 - project terms;
 - execution terms;
-- evolution terms.
+- evolution terms;
+- lifecycle term navigation and source document references.
 
 Needs improvement:
 
 - add new terms whenever new lifecycle documents are created;
-- add cross-links between terms and lifecycle documents.
+- keep lifecycle term definitions synchronized with lifecycle documents.
 
 ## 1.4 Language and Localization
 
@@ -542,10 +543,9 @@ Language and Localization
 
 ## Highest Priority Next Steps
 
-1. Create glossary cross-links for lifecycle terms if terminology drift appears.
-2. Add lifecycle examples for common task, review, improvement, experiment and knowledge flows during pilot validation.
-3. Add state transition diagrams for lifecycles that become difficult to track.
-4. Run pilot validation against real repository tasks and record follow-up improvements.
+1. Add lifecycle examples for common task, review, improvement, experiment and knowledge flows during pilot validation.
+2. Add state transition diagrams for lifecycles that become difficult to track.
+3. Run pilot validation against real repository tasks and record follow-up improvements.
 
 ## Main Principle
 
