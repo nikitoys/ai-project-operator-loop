@@ -104,6 +104,32 @@ Needs improvement:
 
 ---
 
+## 1.4 Language and Localization
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/ai-system/language-policy.md
+/ai-system/aicp-language-policy.md
+```
+
+Covers:
+
+- default Human Owner-facing response language;
+- stable system and repository documentation language;
+- prompt package language rules;
+- fixed mode markers, decision keywords and control fields;
+- localization boundary rules.
+
+Needs improvement:
+
+- add examples if multilingual prompt packages become difficult to review;
+- revisit when project documents in `/docs` define their own localization needs.
+
+---
+
 # 2. Governance Layer
 
 The Governance Layer defines how decisions, changes and lifecycle control are managed.
@@ -559,6 +585,7 @@ System Structure
 Glossary
 Role Lifecycle
 Lifecycle Governance
+Language and Localization
 ```
 
 ## Partially Implemented

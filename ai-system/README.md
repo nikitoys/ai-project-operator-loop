@@ -48,12 +48,14 @@ AI Development System
 - `system-prompt.md` — main controlling prompt for the AI Development System.
 - `roles.md` — AI roles and their responsibilities.
 - `human-interaction.md` — how the human works with ChatGPT and Codex.
+- `language-policy.md` — language and localization rules for responses, prompts and documentation.
 - `workflow.md` — development stages and gates.
 - `rules.md` — global rules and restrictions.
 - `task-format.md` — standard task format for Codex and AI roles.
 - `decision-process.md` — decision statuses and ownership.
 - `review-process.md` — review and QA rules.
 - `change-process.md` — controlled evolution of the AI Development System.
+- `aicp-language-policy.md` — approved change proposal for language and localization policy.
 - `document-templates.md` — templates for project documents.
 - `system-changelog.md` — history of changes to the AI Development System.
 - `improvement-log.md` — observations and problems in the system.
