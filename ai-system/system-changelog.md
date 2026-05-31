@@ -2,6 +2,22 @@
 
 Status: Draft
 
+## v0.11.0
+
+### Added
+
+- Added Review Lifecycle for managed reviews, review states, reviewer ownership, re-review flow and review closure rules.
+
+### Updated
+
+- Updated operating model to mark Review Lifecycle as implemented.
+- Updated AI system README to list `review-lifecycle.md`, `lifecycle-governance.md` and `prompt-lifecycle.md`.
+- Updated next-step priorities after Review Lifecycle was added.
+
+### Reason
+
+Closes the review governance gap before stronger pilot or production use by making review states, transition rules, ownership, re-review, closure and lifecycle relationships explicit.
+
 ## v0.10.0
 
 ### Added
