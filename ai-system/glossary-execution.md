@@ -2,6 +2,30 @@
 
 Status: Draft
 
+## Task Lifecycle
+
+The lifecycle for managed tasks, from creation and approval through execution, review, acceptance, rejection, deferral or archival.
+
+Defined in `/ai-system/task-lifecycle.md`.
+
+## Codex Execution Lifecycle
+
+The lifecycle for controlled Codex repository work, including prompt preparation, approval, execution, result intake, review, rework, acceptance, rollback and archival.
+
+Defined in `/ai-system/codex-lifecycle.md`.
+
+## Review Lifecycle
+
+The lifecycle for managed reviews, including review planning, reviewer assignment, findings, rework, re-review, approval, rejection, closure and archival.
+
+Defined in `/ai-system/review-lifecycle.md`.
+
+## QA Lifecycle
+
+The lifecycle for managed QA work, including QA planning, checks, defect reporting, rework, regression, approval, rejection and archival.
+
+Defined in `/ai-system/qa-lifecycle.md`.
+
 ## Definition of Ready
 
 Conditions required before a task can be started:
@@ -28,6 +52,34 @@ Conditions required before a task is considered complete:
 A structured check of the result.
 
 Can include code review, architecture review, QA review and documentation review.
+
+## Re-review
+
+A repeated review after rework has been submitted.
+
+Re-review checks whether previous findings were resolved and whether the rework created new issues.
+
+## Review Closure
+
+The point where a review is formally finished because findings are approved, rejected, deferred, converted to follow-up work or closed by the Human Owner.
+
+## Rework
+
+Changes requested after review, QA, result intake or Human Owner decision.
+
+Rework should address specific findings and then return for review or re-review when required.
+
+## Result Intake
+
+The step where ChatGPT Orchestrator reads and assesses Codex Executor output before review, acceptance, rework or rejection.
+
+Result intake checks changed files, summary, tests, errors, unresolved issues and scope compliance.
+
+## Acceptance Gate
+
+A control point that must pass before work is accepted.
+
+An acceptance gate may require acceptance criteria, review, QA, documentation consistency and Human Owner approval.
 
 ## Code Review
 

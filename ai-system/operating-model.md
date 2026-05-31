@@ -95,14 +95,13 @@ Covers:
 - core terms;
 - project terms;
 - execution terms;
-- evolution terms.
+- evolution terms;
+- lifecycle term navigation and source document references.
 
 Needs improvement:
 
 - add new terms whenever new lifecycle documents are created;
-- add cross-links between terms and lifecycle documents.
-
----
+- keep lifecycle term definitions synchronized with lifecycle documents.
 
 ## 1.4 Language and Localization
 
@@ -136,67 +135,58 @@ The Governance Layer defines how decisions, changes and lifecycle control are ma
 
 ## 2.1 Decision Lifecycle
 
-Status: Missing
+Status: Implemented
 
-Existing related documents:
+Existing documents:
 
 ```text
 /ai-system/decision-process.md
+/ai-system/decision-lifecycle.md
 /ai-system/owner-guide.md
 ```
 
-Current coverage:
+Covers:
 
-- decision statuses exist;
-- Human Owner approval rule exists;
-- decision process is partially described.
+- managed decision definition;
+- decision lifecycle states and operations;
+- ownership model;
+- relationship between decisions, affected documents, AICP, changelog and git history;
+- Human Owner approval rules;
+- AICP relationship;
+- revision, supersession, archival, version impact and audit rules.
 
-Missing:
+Needs improvement:
 
-- full lifecycle of a decision;
-- decision states;
-- decision ownership;
-- decision revision process;
-- decision archival rules;
-- links between decisions and affected documents.
-
-Need to create:
-
-```text
-/ai-system/decision-lifecycle.md
-```
+- add examples for product, architecture and system evolution decisions when decision records become frequent;
+- add decision state transition diagram if decision tracking becomes difficult.
 
 ## 2.2 Change Lifecycle
 
-Status: Partially Implemented
+Status: Implemented
 
 Existing documents:
 
 ```text
 /ai-system/change-process.md
+/ai-system/change-lifecycle.md
 /ai-system/improvement-log.md
 /ai-system/system-changelog.md
 ```
 
-Current coverage:
+Covers:
 
-- change process exists;
-- AICP template exists;
-- versioning rules exist;
-- improvement log exists;
-- system changelog exists.
-
-Missing or incomplete:
-
-- explicit lifecycle states for a change;
-- verification after applying a change;
-- rollback lifecycle;
-- closure criteria;
-- relationship between AICP, experiment and changelog.
+- managed system change definition;
+- change lifecycle states and operations;
+- relationship between improvement log, AICP, system changelog and git history;
+- verification, rollback and closure rules;
+- Human Owner approval rules;
+- AICP relationship;
+- version impact and audit rules.
 
 Needs improvement:
 
-- expand `change-process.md` or create `change-lifecycle.md`.
+- add examples for common change types if review friction appears;
+- add change state transition diagram if change tracking becomes difficult.
 
 ## 2.3 Lifecycle Governance
 
@@ -211,13 +201,9 @@ Existing documents:
 Covers:
 
 - common governance model for managed entities;
-- common lifecycle states;
-- common lifecycle operations;
-- common ownership model;
-- common approval rules;
+- common lifecycle states, operations, ownership and approval rules;
 - AICP relationship;
-- version impact rules;
-- audit and history rules;
+- version impact, audit and history rules;
 - rules for future lifecycle documents.
 
 Needs improvement:
@@ -243,13 +229,7 @@ Existing document:
 
 Covers:
 
-- Read Role;
-- Add Role;
-- Edit Role;
-- Split Role;
-- Merge Roles;
-- Deprecate Role;
-- Delete Role;
+- role lifecycle operations;
 - role change proposal template;
 - role version impact rules.
 
@@ -261,115 +241,81 @@ Needs improvement:
 
 ## 3.2 Document Lifecycle
 
-Status: Missing
+Status: Implemented
 
-Existing related documents:
-
-```text
-/ai-system/document-templates.md
-/ai-system/rules.md
-/ai-system/workflow.md
-/ai-system/review-process.md
-```
-
-Current coverage:
-
-- document templates exist;
-- documentation update rules exist;
-- documentation is treated as source of truth.
-
-Missing:
-
-- Create Document;
-- Read Document;
-- Update Document;
-- Review Document;
-- Approve Document;
-- Deprecate Document;
-- Archive Document;
-- Delete Document;
-- document statuses;
-- document ownership;
-- document review rules;
-- document versioning rules.
-
-Need to create:
+Existing document:
 
 ```text
 /ai-system/document-lifecycle.md
 ```
 
+Covers:
+
+- managed document definition;
+- source-of-truth locations;
+- document lifecycle states and operations;
+- document ownership model;
+- Human Owner approval rules;
+- AICP relationship;
+- version impact, audit, history, index and reference update rules.
+
+Needs improvement:
+
+- add examples for product documents in `/docs` when a product project exists;
+- add document state transition diagram if review friction appears.
+
 ## 3.3 Process Lifecycle
 
-Status: Missing
+Status: Implemented
 
-Existing related documents:
-
-```text
-/ai-system/workflow.md
-/ai-system/change-process.md
-/ai-system/review-process.md
-/ai-system/interaction-modes.md
-```
-
-Current coverage:
-
-- several processes are described;
-- workflow exists;
-- review process exists;
-- change process exists.
-
-Missing:
-
-- Read Process;
-- Create Process;
-- Update Process;
-- Split Process;
-- Merge Processes;
-- Deprecate Process;
-- Delete Process;
-- Audit Process;
-- process ownership;
-- process versioning;
-- process effectiveness review.
-
-Need to create:
+Existing document:
 
 ```text
 /ai-system/process-lifecycle.md
 ```
 
+Covers:
+
+- managed process definition;
+- process source-of-truth locations;
+- process lifecycle states and operations;
+- process ownership model;
+- Human Owner approval rules;
+- AICP relationship;
+- version impact, audit and history rules;
+- relationship to lifecycle governance and document lifecycle.
+
+Needs improvement:
+
+- add examples for splitting and merging processes if process overlap appears;
+- add process state transition diagram if process review becomes difficult.
+
 ## 3.4 Task Lifecycle
 
-Status: Partially Implemented
+Status: Implemented
 
-Existing document:
+Existing documents:
 
 ```text
 /ai-system/task-format.md
-```
-
-Current coverage:
-
-- task format exists;
-- Definition of Ready exists;
-- Definition of Done exists.
-
-Missing:
-
-- full task states;
-- transition rules;
-- owner changes;
-- rework flow;
-- blocked state;
-- task archive rules;
-- relationship between task, Codex execution and review.
-
-Need to create:
-
-```text
 /ai-system/task-lifecycle.md
 ```
+
+Covers:
+
+- managed task definition;
+- task lifecycle states and operations;
+- task ownership model;
+- Definition of Ready and Definition of Done relationship;
+- relationship between task lifecycle, execution and review;
+- Human Owner approval rules;
+- AICP relationship;
+- version impact, audit and history rules.
+
+Needs improvement:
+
+- add task state transition diagram if task tracking becomes difficult;
+- add examples for product backlog tasks when a product project exists.
 
 ---
 
@@ -379,98 +325,86 @@ The Execution Layer defines how work is executed, reviewed and validated.
 
 ## 4.1 Codex Execution Lifecycle
 
-Status: Missing
+Status: Implemented
 
-Existing related documents:
-
-```text
-/ai-system/human-interaction.md
-/ai-system/rules.md
-/ai-system/task-format.md
-```
-
-Current coverage:
-
-- Codex Executor concept exists;
-- prompt package requirements exist;
-- expected Codex output format exists.
-
-Missing:
-
-- full Codex execution lifecycle;
-- prompt preparation states;
-- execution constraints;
-- result intake process;
-- failure handling;
-- rework prompt flow;
-- rollback handling.
-
-Need to create:
+Existing document:
 
 ```text
 /ai-system/codex-lifecycle.md
 ```
 
+Covers:
+
+- Codex execution definition;
+- source-of-truth documents for execution;
+- execution lifecycle states and operations;
+- ownership model;
+- prompt package requirements;
+- result intake and required report format;
+- failure handling, rework prompt flow and rollback handling;
+- relationships to task format, prompt lifecycle, review process, lifecycle governance, document lifecycle and process lifecycle.
+
+Needs improvement:
+
+- add examples for common failure cases if execution reviews repeat the same issues;
+- add execution state transition diagram if execution tracking becomes difficult.
+
 ## 4.2 Review Lifecycle
 
-Status: Partially Implemented
+Status: Implemented
+
+Existing documents:
+
+```text
+/ai-system/review-process.md
+/ai-system/review-lifecycle.md
+```
+
+Covers:
+
+- managed review definition;
+- review lifecycle states and operations;
+- reviewer ownership model;
+- relationship to review types and severity levels;
+- re-review process;
+- review closure rules;
+- relationship to task lifecycle, execution lifecycle and QA lifecycle;
+- Human Owner approval rules;
+- AICP relationship;
+- version impact, audit, history and boundary rules.
+
+Needs improvement:
+
+- add review state transition diagram if review tracking becomes difficult;
+- add examples for multi-review tasks when pilot or production usage increases.
+
+## 4.3 QA Lifecycle
+
+Status: Implemented
 
 Existing document:
 
 ```text
-/ai-system/review-process.md
+/ai-system/qa-lifecycle.md
 ```
 
-Current coverage:
+Covers:
 
-- review types exist;
-- severity levels exist;
-- review output format exists.
-
-Missing:
-
-- review states;
-- transition rules;
-- re-review process;
-- reviewer ownership;
-- review closure rules;
-- relationship between review and task lifecycle.
+- managed QA flow definition;
+- QA lifecycle states and operations;
+- QA ownership model;
+- positive, negative, edge case and regression checks;
+- QA approval requirements;
+- defect reporting and rework flow;
+- relationship to task lifecycle, Codex lifecycle and review process;
+- Human Owner approval rules;
+- AICP relationship;
+- version impact, audit and history rules.
 
 Needs improvement:
 
-- expand `review-process.md` or create `review-lifecycle.md`.
-
-## 4.3 QA Lifecycle
-
-Status: Missing
-
-Existing related documents:
-
-```text
-/ai-system/review-process.md
-/ai-system/task-format.md
-```
-
-Current coverage:
-
-- QA role exists;
-- QA checks are mentioned;
-- test cases are part of task format.
-
-Missing:
-
-- QA states;
-- test planning flow;
-- test execution flow;
-- bug reporting flow;
-- regression flow;
-- QA approval rules.
-
-Need to create:
-
-```text
-/ai-system/qa-lifecycle.md
-```
+- add examples for product-specific QA flows when product projects exist;
+- add QA state transition diagram if QA tracking becomes difficult.
 
 ---
 
@@ -480,98 +414,96 @@ The Learning Layer defines how the system learns, improves and experiments.
 
 ## 5.1 Improvement Lifecycle
 
-Status: Partially Implemented
+Status: Implemented
 
-Existing document:
+Existing documents:
 
 ```text
 /ai-system/improvement-log.md
+/ai-system/improvement-lifecycle.md
 ```
 
-Current coverage:
+Covers:
 
-- improvement log template exists;
-- observations can be recorded;
-- entries may be converted to AICP.
-
-Missing:
-
-- improvement states;
-- triage rules;
-- conversion criteria;
-- closure criteria;
-- recurring issue detection;
-- relationship with knowledge lifecycle and change lifecycle.
+- managed improvement definition;
+- what counts as an improvement and what does not;
+- improvement source-of-truth documents;
+- improvement lifecycle states;
+- Observe Improvement, Log Improvement, Triage Improvement, Analyze Root Cause, Classify Improvement, Accept Improvement, Defer Improvement, Reject Improvement, Convert to AICP, Convert to Knowledge, Convert to Experiment, Apply Improvement, Verify Improvement, Close Improvement and Archive Improvement operations;
+- ownership model across Human Owner, ChatGPT Orchestrator, AI System Maintainer, Technical Writer AI, Code Reviewer AI, QA Engineer AI, domain roles and Codex Executor;
+- observation capture and triage rules;
+- severity or priority classification;
+- recurring issue detection rules;
+- root cause analysis rules;
+- conversion criteria for AICP, knowledge and experiment paths;
+- rejection, deferral and closure criteria;
+- relationship to improvement log, change lifecycle, knowledge lifecycle, experiment lifecycle, review lifecycle and lifecycle governance;
+- Human Owner approval rules;
+- AICP relationship;
+- version impact rules;
+- audit and history rules;
+- boundary rules.
 
 Needs improvement:
 
-- expand `improvement-log.md` or create `improvement-lifecycle.md`.
+- add examples for common improvement conversion paths during pilot validation;
+- add improvement state transition diagram if improvement tracking becomes difficult.
 
 ## 5.2 Knowledge Lifecycle
 
-Status: Missing
+Status: Implemented
 
-Existing related documents:
-
-```text
-/ai-system/glossary.md
-/ai-system/system-changelog.md
-/ai-system/improvement-log.md
-```
-
-Current coverage:
-
-- glossary exists;
-- changelog exists;
-- improvement log exists.
-
-Missing:
-
-- what counts as knowledge;
-- how knowledge is captured;
-- how knowledge is validated;
-- how knowledge becomes a rule, glossary term or template;
-- how outdated knowledge is removed;
-- how lessons learned are stored.
-
-Need to create:
+Existing document:
 
 ```text
 /ai-system/knowledge-lifecycle.md
 ```
 
+Covers:
+
+- managed knowledge item definition;
+- knowledge source-of-truth documents;
+- knowledge lifecycle states and operations;
+- ownership, capture, validation and promotion rules;
+- relationship to glossary, rules, prompts, improvement lifecycle, change lifecycle and review lifecycle;
+- stale knowledge, deprecation, removal and lesson storage rules;
+- Human Owner approval rules;
+- AICP relationship;
+- version impact, audit, history and boundary rules.
+
+Needs improvement:
+
+- add examples for knowledge promotion paths when repeated observations become frequent;
+- add knowledge state transition diagram if knowledge tracking becomes difficult.
+
 ## 5.3 Experiment Lifecycle
 
-Status: Missing
+Status: Implemented
 
-Existing related documents:
-
-```text
-/ai-system/change-process.md
-/ai-system/decision-process.md
-```
-
-Current coverage:
-
-- `EXPERIMENT` decision status exists;
-- experimental changes are mentioned in the change process.
-
-Missing:
-
-- experiment proposal format;
-- hypothesis;
-- duration;
-- success criteria;
-- failure criteria;
-- evaluation process;
-- adoption/rejection process;
-- rollback rules.
-
-Need to create:
+Existing document:
 
 ```text
 /ai-system/experiment-lifecycle.md
 ```
+
+Covers:
+
+- managed experiment definition;
+- experiment source-of-truth documents;
+- experiment lifecycle states and operations;
+- ownership model;
+- experiment proposal format;
+- hypothesis, scope, duration, success criteria and failure criteria rules;
+- evaluation, adoption, rejection and rollback processes;
+- relationship to decision lifecycle, change lifecycle, knowledge lifecycle, improvement lifecycle and review lifecycle;
+- Human Owner approval rules;
+- AICP relationship;
+- version impact, audit, history and boundary rules.
+
+Needs improvement:
+
+- add examples for experiment proposal and evaluation records when experiments become frequent;
+- add experiment state transition diagram if experiment tracking becomes difficult.
 
 ---
 
@@ -583,7 +515,18 @@ Need to create:
 Interaction Modes
 System Structure
 Glossary
+Change Lifecycle
+Decision Lifecycle
 Role Lifecycle
+Document Lifecycle
+Process Lifecycle
+Task Lifecycle
+Codex Execution Lifecycle
+Review Lifecycle
+QA Lifecycle
+Knowledge Lifecycle
+Experiment Lifecycle
+Improvement Lifecycle
 Lifecycle Governance
 Language and Localization
 ```
@@ -591,31 +534,18 @@ Language and Localization
 ## Partially Implemented
 
 ```text
-Change Lifecycle
-Task Lifecycle
-Review Lifecycle
-Improvement Lifecycle
 ```
 
 ## Missing
 
 ```text
-Decision Lifecycle
-Document Lifecycle
-Process Lifecycle
-Codex Execution Lifecycle
-QA Lifecycle
-Knowledge Lifecycle
-Experiment Lifecycle
 ```
 
 ## Highest Priority Next Steps
 
-1. Create `document-lifecycle.md` because documentation is the source of truth.
-2. Create `process-lifecycle.md` because processes must be changeable like roles.
-3. Create `task-lifecycle.md` because execution depends on tasks.
-4. Create `codex-lifecycle.md` because Codex is the execution boundary.
-5. Improve `change-process.md` or create `change-lifecycle.md` to define verification, rollback and closure.
+1. Add lifecycle examples for common task, review, improvement, experiment and knowledge flows during pilot validation.
+2. Add state transition diagrams for lifecycles that become difficult to track.
+3. Run pilot validation against real repository tasks and record follow-up improvements.
 
 ## Main Principle
 
