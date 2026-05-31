@@ -51,6 +51,7 @@ AI Development System
 - `language-policy.md` — language and localization rules for responses, prompts and documentation.
 - `workflow.md` — development stages and gates.
 - `rules.md` — global rules and restrictions.
+- `system-schemes.md` — compact text schemes for roles, documents and process flow.
 - `task-format.md` — standard task format for Codex and AI roles.
 - `decision-process.md` — decision statuses and ownership.
 - `decision-lifecycle.md` — lifecycle rules for Human Owner decisions.
