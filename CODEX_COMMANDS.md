@@ -24,6 +24,10 @@ Checks consistency across state and workflow docs and reports stale or
 contradictory state. Does not change files. Use before relying on project
 memory.
 
+## `Разобрать план`
+
+Reads `OWNER_PLAN.md`, compares it with current project state, identifies what is already done, partially done, missing, unclear or out of scope, proposes updates to `CODEX_PLAN.md` and `CODEX_TASKS.md`, and stops. Does not implement anything.
+
 ## `План`
 
 Reads project state and proposes 3-5 next tasks ranked by value. Does not
@@ -68,3 +72,21 @@ Changes allowed task files. Use to resume a paused loop.
 
 Marks `CODEX_CURRENT.md` as `cancelled` without deleting changes unless told.
 Changes state files only. Use to abandon the current task.
+
+## Verification Mode Commands
+
+## `Код быстро`
+
+Selects `CODE_ONLY_FAST` for ordinary code-only changes, documentation changes and fast bugfixes. Allows only fast checks such as `git diff --check` and `git status --short`; optional typecheck only when source files changed and practical.
+
+## `Проверка быстро`
+
+Selects `FAST_VALIDATION`. Allows standard validation such as typecheck, tests and build when available. Does not allow browser, Playwright, screenshots, console inspection or manual visual QA unless explicitly requested.
+
+## `Браузер проверить`
+
+Selects `BROWSER_SMOKE`. Allows a limited browser/runtime check. Use only when the Human Owner explicitly requests browser verification.
+
+## `Визуально проверить`
+
+Selects `VISUAL_QA`. Allows screenshots, visual inspection, Playwright visual checks or browser snapshots only when explicitly requested or required by task acceptance criteria.
