@@ -21,84 +21,120 @@ Codex Executor changes repository files only inside approved scope.
 Documentation stores rules, decisions, lifecycles and history.
 ```
 
-## How Work Moves
+## Recommended Project Integration
+
+For concrete projects, use Foldered Control Mode:
 
 ```text
-Idea
--> Clarification
--> Task or change proposal
--> Prompt package
--> Human approval
--> Codex execution
--> Review
--> QA
--> Human acceptance
--> Documentation update
--> Done
+/project-root
+├── AGENTS.md
+├── AI_Development_System/
+├── AI_PROJECT/
+└── <target-app-directory>/
 ```
 
-## Where to Start
+- `AGENTS.md` is a small root bootstrap/router file.
+- `AI_Development_System/` is the reusable upstream system copy.
+- `AI_PROJECT/` stores local project control files and project state.
+- `<target-app-directory>/` stores application or product code.
 
-- `/ai-system/README.md` - main AI Development System index.
-- `/ai-system/owner-guide.md` - how the Human Owner works with the system.
-- `/ai-system/operating-model.md` - what is implemented and how the system is organized.
-- `/ai-system/system-schemes.md` - compact text schemes for roles, documents and process flow.
+This model keeps updates easier and prevents system files, project control files and application code from being mixed.
 
 ## Quick Start
 
 ### Install into a Project
 
-Use the project templates as the starting control layer for a concrete project:
+Recommended vendor-copy install:
 
-```text
-/ai-system/templates/project/
+```bash
+git clone --depth 1 --branch ai-development-system https://github.com/nikitoys/AI_Development_System.git AI_Development_System
+rm -rf AI_Development_System/.git
+mkdir -p AI_PROJECT
+cp -R AI_Development_System/ai-system/templates/foldered/AI_PROJECT/. AI_PROJECT/
+cp AI_Development_System/ai-system/templates/foldered/AGENTS.root.md AGENTS.md
 ```
 
-A project should have these local control files:
-
-```text
-AGENTS.md
-PROJECT_GOAL.md
-CODEX_COMMANDS.md
-CODEX_WORKFLOW.md
-OWNER_PLAN.md
-CODEX_PLAN.md
-CODEX_CURRENT.md
-CODEX_TASKS.md
-CODEX_SESSION_LOG.md
-PROMPTS.md
-docs/verification-policy.md
-```
-
-During project bootstrap, fill project-specific placeholders such as:
+Then edit generated files and replace placeholders such as:
 
 ```text
 {{PROJECT_NAME}}
 {{TARGET_APP_DIRECTORY}}
 {{DEFAULT_VERIFICATION_MODE}}
 {{HUMAN_OWNER_LANGUAGE}}
+{{AI_DEV_SYSTEM_SOURCE_BRANCH}}
+{{AI_DEV_SYSTEM_SOURCE_COMMIT}}
+```
+
+Alternative Git-managed install with subtree:
+
+```bash
+git subtree add \
+  --prefix=AI_Development_System \
+  https://github.com/nikitoys/AI_Development_System.git \
+  ai-development-system \
+  --squash
+mkdir -p AI_PROJECT
+cp -R AI_Development_System/ai-system/templates/foldered/AI_PROJECT/. AI_PROJECT/
+cp AI_Development_System/ai-system/templates/foldered/AGENTS.root.md AGENTS.md
+```
+
+A foldered project should have:
+
+```text
+AGENTS.md
+AI_Development_System/
+AI_PROJECT/AGENTS.md
+AI_PROJECT/PROJECT_GOAL.md
+AI_PROJECT/OWNER_PLAN.md
+AI_PROJECT/CODEX_COMMANDS.md
+AI_PROJECT/CODEX_WORKFLOW.md
+AI_PROJECT/CODEX_PLAN.md
+AI_PROJECT/CODEX_CURRENT.md
+AI_PROJECT/CODEX_TASKS.md
+AI_PROJECT/CODEX_SESSION_LOG.md
+AI_PROJECT/PROMPTS.md
+AI_PROJECT/AI_DEV_SYSTEM_VERSION.md
+AI_PROJECT/docs/verification-policy.md
 ```
 
 For an existing repository, bootstrap must create or adapt control files only. It must not rewrite, refactor or move application code unless the Human Owner explicitly approves a separate implementation task.
 
 ### Update an Existing Project
 
-Do not re-run bootstrap blindly for a project that already has local control files.
+If the project uses vendor copy:
 
-Use a controlled project system update:
+```bash
+rm -rf AI_Development_System
+git clone --depth 1 --branch ai-development-system https://github.com/nikitoys/AI_Development_System.git AI_Development_System
+rm -rf AI_Development_System/.git
+```
+
+If the project uses subtree:
+
+```bash
+git subtree pull \
+  --prefix=AI_Development_System \
+  https://github.com/nikitoys/AI_Development_System.git \
+  ai-development-system \
+  --squash
+```
+
+Then run a controlled project system update:
 
 ```text
-read local control files
+read local AI_PROJECT control files
 -> compare with the current AI_Development_System standard and templates
 -> add missing files
 -> merge new rules into existing files
 -> preserve local project rules
 -> report conflicts
--> update the local system version record when present
+-> update AI_PROJECT/AI_DEV_SYSTEM_VERSION.md
 -> stop for Human Owner approval
 ```
 
-Templates are not authority after bootstrap. Local project control files are the project source of truth, unless they conflict with global safety, approval or lifecycle rules.
+Do not re-run bootstrap blindly for a project that already has local control files.
+
+Templates are not authority after bootstrap. Local `AI_PROJECT/` files are the project source of truth, unless they conflict with global safety, approval or lifecycle rules.
 
 Project system updates must not modify application code.
 
@@ -107,16 +143,16 @@ Project system updates must not modify application code.
 Recommended operator loop:
 
 ```text
-1. Write goals, roadmap or desired work in OWNER_PLAN.md.
+1. Write goals, roadmap or desired work in AI_PROJECT/OWNER_PLAN.md.
 2. Run: Разобрать план
-3. Review proposed work in CODEX_PLAN.md and CODEX_TASKS.md.
+3. Review proposed work in AI_PROJECT/CODEX_PLAN.md and AI_PROJECT/CODEX_TASKS.md.
 4. Approve one task: Утверждаю задачу N
 5. Execute one task: Выполняй
 6. Review the result.
 7. Continue with the next task only after approval.
 ```
 
-`OWNER_PLAN.md` is planning input, not executable scope. Codex must not implement items from it until they are converted into approved tasks with scope, allowed files, verification mode and acceptance criteria.
+`AI_PROJECT/OWNER_PLAN.md` is planning input, not executable scope. Codex must not implement items from it until they are converted into approved tasks with scope, allowed files, verification mode and acceptance criteria.
 
 ### Verification Modes
 
@@ -137,6 +173,33 @@ Operator shortcuts:
 
 Browser automation, Playwright/MCP browser sessions, screenshots, browser console checks and manual visual QA are on-demand only. Do not run them unless the Human Owner explicitly requests them or the current task acceptance criteria require them.
 
+## How Work Moves
+
+```text
+Idea
+-> Clarification
+-> Task or change proposal
+-> Prompt package
+-> Human approval
+-> Codex execution
+-> Review
+-> QA
+-> Human acceptance
+-> Documentation update
+-> Done
+```
+
+## Where to Start
+
+- `/ai-system/README.md` - main AI Development System index.
+- `/ai-system/project-integration-model.md` - project embedding and foldered architecture.
+- `/ai-system/project-bootstrap.md` - first-time project install workflow.
+- `/ai-system/project-system-update.md` - update workflow for already integrated projects.
+- `/ai-system/project-control-files.md` - local control file standard.
+- `/ai-system/verification-modes.md` - check modes and browser/visual QA rules.
+- `/ai-system/owner-guide.md` - how the Human Owner works with the system.
+- `/ai-system/operating-model.md` - what is implemented and how the system is organized.
+
 ## Purpose
 
 The system helps the Human Owner work with ChatGPT and Codex through clear roles, modes, prompts, review rules and change governance.
@@ -155,8 +218,10 @@ Documentation records decisions.
 
 - Interaction modes: Free, System, Prompt, Codex, Review, Evolution and Dry Run.
 - Role model for product, design, management, implementation, quality, documentation and system evolution.
+- Foldered project integration model with `AI_Development_System/` and `AI_PROJECT/`.
 - Project control file standard and bootstrap workflow for concrete repositories.
-- Owner plan intake through `OWNER_PLAN.md` and `Разобрать план`.
+- Project system update workflow for already integrated repositories.
+- Owner plan intake through `AI_PROJECT/OWNER_PLAN.md` and `Разобрать план`.
 - Explicit verification modes for fast code work, standard validation, browser smoke checks and visual QA.
 - Codex prompt package format with scope, allowed files, forbidden actions, verification mode and acceptance criteria.
 - Review process with severity levels and Human Owner decision keywords.
@@ -178,8 +243,10 @@ Documentation records decisions.
 - `/ai-system/review-process.md` - review and QA process.
 - `/ai-system/change-process.md` - controlled evolution process.
 - `/ai-system/lifecycle-governance.md` - shared lifecycle rules.
+- `/ai-system/project-integration-model.md` - foldered and root project integration modes.
 - `/ai-system/project-control-files.md` - standard local control files for concrete projects.
 - `/ai-system/project-bootstrap.md` - how to initialize empty and existing project repositories.
+- `/ai-system/project-system-update.md` - how to update already integrated projects.
 - `/ai-system/verification-modes.md` - explicit verification modes and browser/visual QA boundaries.
 - `/ai-system/language-policy.md` - language and localization rules.
 - `/ai-system/system-changelog.md` - system version history.
@@ -210,32 +277,6 @@ Active Document:
 Expected Result:
 ```
 
-## Language Policy
-
-Human-facing answers should use the Human Owner language by default.
-
-System documents and control structures remain English by default:
-
-- mode markers such as `[SYSTEM]` and `[CODEX]`;
-- prompt fields such as `Scope`, `Out of Scope` and `Acceptance Criteria`;
-- decision keywords such as `APPROVED`, `REWORK`, `REJECTED`, `DEFERRED` and `EXPERIMENT`;
-- file paths, task IDs, branch names and command names.
-
-Generated Codex prompts should usually be English or hybrid: stable English structure with localized explanations when useful.
-
-## Standard Workflow
-
-```text
-Human intent
--> ChatGPT Orchestrator classifies mode
--> active role and source documents are selected
--> prompt, task, review or system change is prepared
--> Human Owner approves or requests rework
--> Codex applies approved repository changes when needed
--> result is reviewed
--> changelog or documentation is updated when required
-```
-
 ## Human Owner Decisions
 
 Use these decision words:
@@ -249,18 +290,6 @@ EXPERIMENT test temporarily
 ```
 
 AI may recommend a decision, but the Human Owner decides.
-
-## Repository Model
-
-```text
-/ai-system   # AI Development System rules, roles, workflow and governance
-/docs        # product documentation when a product project exists
-README.md    # repository entrypoint in English
-README.ru.md # Russian repository entrypoint
-AGENTS.md    # instructions for future AI sessions
-```
-
-Legacy operator-loop files may exist, but `/ai-system` is the current primary source of truth.
 
 ## Minimal Safety Rules
 

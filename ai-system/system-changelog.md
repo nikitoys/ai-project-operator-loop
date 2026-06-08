@@ -8,21 +8,28 @@ Status: Draft
 
 - Added project control file standard for concrete repositories using AI_Development_System.
 - Added project bootstrap workflow for empty and existing repositories.
+- Added project integration model with Foldered Control Mode and Root Control Mode.
+- Added project system update workflow for already integrated repositories.
 - Added `OWNER_PLAN.md` as a Human Owner-authored plan intake file for concrete projects.
 - Added explicit verification modes: `CODE_ONLY_FAST`, `FAST_VALIDATION`, `BROWSER_SMOKE` and `VISUAL_QA`.
-- Added reusable project control file templates under `/ai-system/templates/project/`.
+- Added reusable root-mode project control file templates under `/ai-system/templates/project/`.
+- Added reusable foldered templates under `/ai-system/templates/foldered/` for root `AGENTS.md`, `AI_Development_System/` and `AI_PROJECT/` integration.
+- Added `AI_DEV_SYSTEM_VERSION.md` template for tracking local system adoption and update method.
 - Added root README Quick Start guidance for installing, updating and using AI_Development_System in concrete projects.
 
 ### Updated
 
+- Updated project control file standard to recommend Foldered Control Mode by default.
+- Updated project bootstrap workflow with vendor-copy and git subtree installation commands.
 - Updated prompt lifecycle guidance to include `Verification Mode:` in Codex prompt packages.
 - Updated global rules and Codex workflow with on-demand browser and visual QA boundaries.
 - Updated operator command documentation with verification mode shortcuts and `Разобрать план`.
-- Updated root `README.md` with install, update, day-to-day usage and verification mode summaries.
+- Updated root `README.md` with foldered install, update, day-to-day usage and verification mode summaries.
+- Updated AI system README index to reference foldered integration docs and templates.
 
 ### Reason
 
-Concrete project repositories need durable local control files, owner-authored planning input and explicit verification modes so Codex sessions can stay fast, scoped and predictable without running browser, Playwright, screenshot or manual visual QA checks unless explicitly requested.
+Concrete project repositories need durable local control files, owner-authored planning input, explicit verification modes and a clean foldered integration model so AI_Development_System can be updated independently from local project state and application code.
 
 ## v0.14.2
 
