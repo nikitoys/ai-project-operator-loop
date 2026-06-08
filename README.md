@@ -54,17 +54,6 @@ cp -R AI_Development_System/ai-system/templates/foldered/AI_PROJECT/. AI_PROJECT
 cp AI_Development_System/ai-system/templates/foldered/AGENTS.root.md AGENTS.md
 ```
 
-Then edit generated files and replace placeholders such as:
-
-```text
-{{PROJECT_NAME}}
-{{TARGET_APP_DIRECTORY}}
-{{DEFAULT_VERIFICATION_MODE}}
-{{HUMAN_OWNER_LANGUAGE}}
-{{AI_DEV_SYSTEM_SOURCE_BRANCH}}
-{{AI_DEV_SYSTEM_SOURCE_COMMIT}}
-```
-
 Alternative Git-managed install with subtree:
 
 ```bash
@@ -76,6 +65,17 @@ git subtree add \
 mkdir -p AI_PROJECT
 cp -R AI_Development_System/ai-system/templates/foldered/AI_PROJECT/. AI_PROJECT/
 cp AI_Development_System/ai-system/templates/foldered/AGENTS.root.md AGENTS.md
+```
+
+Then edit generated files and replace placeholders such as:
+
+```text
+{{PROJECT_NAME}}
+{{TARGET_APP_DIRECTORY}}
+{{DEFAULT_VERIFICATION_MODE}}
+{{HUMAN_OWNER_LANGUAGE}}
+{{AI_DEV_SYSTEM_SOURCE_BRANCH}}
+{{AI_DEV_SYSTEM_SOURCE_COMMIT}}
 ```
 
 A foldered project should have:
@@ -152,7 +152,7 @@ Recommended operator loop:
 7. Continue with the next task only after approval.
 ```
 
-`AI_PROJECT/OWNER_PLAN.md` is planning input, not executable scope. Codex must not implement items from it until they are converted into approved tasks with scope, allowed files, verification mode and acceptance criteria.
+`OWNER_PLAN.md` is planning input, not executable scope. Codex must not implement items from it until they are converted into approved tasks with scope, allowed files, verification mode and acceptance criteria.
 
 ### Verification Modes
 
@@ -192,13 +192,12 @@ Idea
 ## Where to Start
 
 - `/ai-system/README.md` - main AI Development System index.
-- `/ai-system/project-integration-model.md` - project embedding and foldered architecture.
-- `/ai-system/project-bootstrap.md` - first-time project install workflow.
-- `/ai-system/project-system-update.md` - update workflow for already integrated projects.
-- `/ai-system/project-control-files.md` - local control file standard.
-- `/ai-system/verification-modes.md` - check modes and browser/visual QA rules.
 - `/ai-system/owner-guide.md` - how the Human Owner works with the system.
 - `/ai-system/operating-model.md` - what is implemented and how the system is organized.
+- `/ai-system/system-schemes.md` - compact text schemes for roles, documents and process flow.
+- `/ai-system/project-integration-model.md` - foldered and root integration modes for concrete projects.
+- `/ai-system/foldered-integration.md` - recommended foldered architecture.
+- `/ai-system/project-system-update.md` - how to update already integrated projects.
 
 ## Purpose
 
@@ -218,9 +217,9 @@ Documentation records decisions.
 
 - Interaction modes: Free, System, Prompt, Codex, Review, Evolution and Dry Run.
 - Role model for product, design, management, implementation, quality, documentation and system evolution.
-- Foldered project integration model with `AI_Development_System/` and `AI_PROJECT/`.
+- Foldered project integration model with separate `AI_Development_System/`, `AI_PROJECT/` and target app directories.
 - Project control file standard and bootstrap workflow for concrete repositories.
-- Project system update workflow for already integrated repositories.
+- Project system update process for refreshing already integrated projects.
 - Owner plan intake through `AI_PROJECT/OWNER_PLAN.md` and `Разобрать план`.
 - Explicit verification modes for fast code work, standard validation, browser smoke checks and visual QA.
 - Codex prompt package format with scope, allowed files, forbidden actions, verification mode and acceptance criteria.
@@ -244,9 +243,10 @@ Documentation records decisions.
 - `/ai-system/change-process.md` - controlled evolution process.
 - `/ai-system/lifecycle-governance.md` - shared lifecycle rules.
 - `/ai-system/project-integration-model.md` - foldered and root project integration modes.
+- `/ai-system/foldered-integration.md` - recommended foldered architecture for project repositories.
 - `/ai-system/project-control-files.md` - standard local control files for concrete projects.
 - `/ai-system/project-bootstrap.md` - how to initialize empty and existing project repositories.
-- `/ai-system/project-system-update.md` - how to update already integrated projects.
+- `/ai-system/project-system-update.md` - how to update already integrated project repositories.
 - `/ai-system/verification-modes.md` - explicit verification modes and browser/visual QA boundaries.
 - `/ai-system/language-policy.md` - language and localization rules.
 - `/ai-system/system-changelog.md` - system version history.
@@ -277,6 +277,32 @@ Active Document:
 Expected Result:
 ```
 
+## Language Policy
+
+Human-facing answers should use the Human Owner language by default.
+
+System documents and control structures remain English by default:
+
+- mode markers such as `[SYSTEM]` and `[CODEX]`;
+- prompt fields such as `Scope`, `Out of Scope` and `Acceptance Criteria`;
+- decision keywords such as `APPROVED`, `REWORK`, `REJECTED`, `DEFERRED` and `EXPERIMENT`;
+- file paths, task IDs, branch names and command names.
+
+Generated Codex prompts should usually be English or hybrid: stable English structure with localized explanations when useful.
+
+## Standard Workflow
+
+```text
+Human intent
+-> ChatGPT Orchestrator classifies mode
+-> active role and source documents are selected
+-> prompt, task, review or system change is prepared
+-> Human Owner approves or requests rework
+-> Codex applies approved repository changes when needed
+-> result is reviewed
+-> changelog or documentation is updated when required
+```
+
 ## Human Owner Decisions
 
 Use these decision words:
@@ -290,6 +316,18 @@ EXPERIMENT test temporarily
 ```
 
 AI may recommend a decision, but the Human Owner decides.
+
+## Repository Model
+
+```text
+/ai-system   # AI Development System rules, roles, workflow and governance
+/docs        # product documentation when a product project exists
+README.md    # repository entrypoint in English
+README.ru.md # Russian repository entrypoint
+AGENTS.md    # instructions for future AI sessions
+```
+
+Legacy operator-loop files may exist, but `/ai-system` is the current primary source of truth.
 
 ## Minimal Safety Rules
 
