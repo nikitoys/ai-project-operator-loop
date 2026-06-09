@@ -2,6 +2,23 @@
 
 Status: Draft
 
+## v0.26.0
+
+### Added
+
+- Added `ai-system/parallel-execution-policy.md` to define opt-in parallel execution governance.
+- Added eligibility, rejection, dependency, file-lock, approval, integration review, QA, rollback/rework, result intake and security/privacy rules for managed parallel execution groups.
+
+### Updated
+
+- Updated README version mirrors to `v0.26.0`.
+- Updated `ai-system/README.md` and `ai-system/operating-model.md` to index the Parallel Execution Policy.
+- Updated `evolution-backlog.md` to mark `EVOL-012` as completed.
+
+### Reason
+
+`EVOL-012` defines parallel execution as an opt-in, Human Owner-approved policy layer while preserving sequential execution as the default. This change does not implement runtime behavior, branches, worktrees, merge logic, scripts, specs, templates, automatic execution, automatic merge or automatic acceptance.
+
 ## v0.25.0
 
 ### Added

@@ -479,7 +479,7 @@ Candidate parallel groups are informational planning output only. Multi-Agent Pl
 
 ## EVOL-012 — Add Parallel Execution Policy
 
-Status: Proposed  
+Status: Done  
 Priority: P1  
 Source: `sop-multi-agent-implementation-plan.md`  
 Roadmap item: P6 — SOP and Optional Multi-Agent Execution Layer  
@@ -504,6 +504,12 @@ Acceptance criteria:
 Conversion path:
 
 System change.
+
+Notes:
+
+Completed with `ai-system/parallel-execution-policy.md`. The policy defines managed parallel execution groups, default sequential execution, explicit Human Owner approval, eligibility and rejection criteria, dependency checks, `allowed_files` and `locked_files` conflict rules, file-lock ownership, approval gates, mandatory integration review, QA relationship, rollback/rework expectations, result intake expectations and security/privacy boundaries.
+
+Parallel execution does not authorize automatic execution, automatic merge or automatic acceptance. EVOL-013 remains the next bounded phase and was not started.
 
 ---
 

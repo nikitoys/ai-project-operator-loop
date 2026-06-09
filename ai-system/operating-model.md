@@ -334,6 +334,40 @@ Needs improvement:
 - add Agent Result Intake and Integration Review after planning and execution boundaries are approved;
 - add machine-checkable planning specs after Markdown source documents exist.
 
+## 2.8 Parallel Execution Policy
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/ai-system/parallel-execution-policy.md
+/ai-system/multi-agent-planning.md
+/ai-system/agent-work-package.md
+/ai-system/sop-model.md
+/ai-system/evolution/sop-multi-agent-implementation-plan.md
+```
+
+Covers:
+
+- managed parallel execution group definition;
+- sequential execution as the default rule;
+- opt-in Human Owner approval requirement for every parallel group;
+- parallel eligibility and rejection criteria;
+- dependency, `allowed_files` and `locked_files` conflict rules;
+- file-lock ownership rules;
+- approval gates;
+- mandatory integration review before parent task acceptance;
+- QA requirement or documented QA decision before final acceptance;
+- rollback, rework, result intake, security/privacy and learning-output expectations;
+- boundary rule that parallel execution does not authorize automatic execution, automatic merge or automatic acceptance.
+
+Needs improvement:
+
+- add Agent Result Intake and Integration Review in a separate bounded evolution task;
+- add machine-checkable parallel policy specs after Markdown source documents exist;
+- validate the policy through controlled pilot work before any runtime decision.
+
 ---
 
 # 3. Entity Lifecycle Layer

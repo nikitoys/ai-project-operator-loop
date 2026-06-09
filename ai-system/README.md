@@ -1,7 +1,7 @@
 # AI Development System
 
 Status: Draft  
-Version: v0.25.0
+Version: v0.26.0
 
 ## Purpose
 
@@ -74,6 +74,12 @@ Agent Work Packages do not imply parallel execution and do not authorize automat
 
 Candidate parallel groups are informational only until a future Parallel Execution Policy exists and Human Owner approves them.
 
+## Parallel Execution Policy
+
+`parallel-execution-policy.md` defines when parallel execution is allowed, rejected and approved.
+
+Sequential execution remains the default. Parallel execution is opt-in, Human Owner-approved and requires dependency, file-lock, integration review and QA gates.
+
 ## Security and Privacy Baseline
 
 AI-assisted work must follow:
@@ -120,6 +126,7 @@ AI Development System
 - `sop-model.md` — SOP model for governance-first repeatable procedures.
 - `agent-work-package.md` — standard for bounded Agent Work Packages used in future SOP-guided planning.
 - `multi-agent-planning.md` — planning-only workflow for decomposing parent tasks into Agent Work Packages.
+- `parallel-execution-policy.md` — opt-in policy for Human Owner-approved parallel execution groups.
 - `rules.md` — global rules and restrictions.
 - `system-schemes.md` — compact text schemes for roles, documents and process flow.
 - `task-format.md` — standard task format for Codex and AI roles.

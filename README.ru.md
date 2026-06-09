@@ -3,7 +3,7 @@
 Языки: [English](README.md) | [Русский](README.ru.md)
 
 Статус: Draft
-Версия: v0.25.0
+Версия: v0.26.0
 
 Этот репозиторий содержит AI Development System: операционную модель для разработки проектов через AI-роли, документацию, lifecycle governance, генерацию промптов, выполнение задач через Codex, review и контролируемую эволюцию системы.
 
@@ -30,6 +30,8 @@ SOP Model описан в `/ai-system/sop-model.md`. SOP - это governance pro
 Agent Work Package standard описан в `/ai-system/agent-work-package.md`. Agent Work Packages - это bounded planning artifacts, а не разрешение на parallel execution.
 
 Multi-Agent Planning workflow описан в `/ai-system/multi-agent-planning.md`. Это planning-only workflow, который не разрешает execution или parallel execution.
+
+Parallel Execution Policy описан в `/ai-system/parallel-execution-policy.md`. Parallel execution является opt-in, требует Human Owner approval и не разрешает automatic execution, merge или acceptance.
 
 ## Кратко
 
