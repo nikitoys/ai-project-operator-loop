@@ -2,6 +2,367 @@
 
 Status: Draft
 
+## v0.42.0
+
+### Updated
+
+- Added an L3 readiness assessment to `ai-system/runtime-maturity-levels.md`.
+- Updated the current maturity level to `L3 — Manual multi-agent orchestration`.
+- Updated `ai-system/manual-orchestration.md`, `ai-system/operating-model.md`, `ai-system/evolution/roadmap.md`, `ai-system/evolution/evolution-backlog.md` and README version mirrors to reflect the L3 maturity decision.
+
+### Reason
+
+After `EVOL-019` through `EVOL-026`, the system has the documented process, dependency-aware dry-run planning, fixtures, read-only CI/local validation, hardened Agent Result Intake, Integration Review handoff and expanded pilot evidence required for `L3 — Manual multi-agent orchestration`. Runtime execution remains `DEFERRED`; L3 is manual-only and does not add automatic Codex execution, automatic multi-agent execution, branch/worktree automation, automatic file modification by orchestration tooling, automatic merge, automatic acceptance or automatic QA/review closure. `L4+` remains future/not approved.
+
+## v0.41.0
+
+### Updated
+
+- Expanded `ai-system/evolution/sop-multi-agent-pilot-validation.md` with EVOL-026 pilot evidence.
+- Recorded pilot scenarios for a documentation-only change, a small tooling/code change and a multi-agent parallel planning case.
+- Marked `EVOL-026 — Pilot Validation Expansion` as `Done`.
+- Updated roadmap P6 immediate priorities so `EVOL-026` is completed and `EVOL-027` remains future/deferred.
+- Updated README version mirrors to `v0.41.0`.
+
+### Reason
+
+`EVOL-026` expands pilot evidence beyond the original golden example while keeping the system at `L2 — Dry-run planning`. The pilot record distinguishes validated dry-run behavior, manually simulated orchestration behavior and future/not-yet-validated runtime behavior. Runtime execution remains `DEFERRED`; this change does not add automatic Codex execution, automatic multi-agent execution, branch/worktree automation, automatic file modification by orchestration tooling, automatic merge, automatic acceptance or automatic QA/review closure.
+
+## v0.40.0
+
+### Added
+
+- Added `.github/workflows/validate-ai-system.yml` to run read-only validation for docs/specs, dependency-aware planning fixtures and the golden project.
+- Added `scripts/validate-system.py` as the local validation entrypoint for documentation integrity, JSON specs, agent planning templates, fixtures and golden project dry-run checks.
+
+### Updated
+
+- Updated `spec/README.md`, `README.md`, `README.ru.md` and `ai-system/README.md` with the local full validation command.
+- Marked `EVOL-025 — CI for Specs, Templates and Golden Project` as `Done`.
+- Updated roadmap P6 immediate priorities so `EVOL-025` is completed and `EVOL-026` is the next proposed follow-up.
+- Updated README version mirrors to `v0.40.0`.
+
+### Reason
+
+`EVOL-025` makes repository validation repeatable in CI and locally for specs, templates, planning fixtures and the golden project. The checks are read-only and do not add runtime execution, automatic Codex execution, automatic multi-agent execution, branch/worktree automation, automatic merge, automatic acceptance or automatic QA/review closure.
+
+## v0.39.0
+
+### Updated
+
+- Hardened the Agent Result schema in `ai-system/agent-result-intake.md`.
+- Updated `spec/agent-result.schema.json` to match the hardened Agent Result contract.
+- Updated `ai-system/templates/foldered/AI_PROJECT/AGENT_RESULTS.md` and `examples/golden-project/AI_PROJECT/AGENT_RESULTS.md` with hardened result fields.
+- Updated `ai-system/manual-orchestration.md` so L3 manual result intake uses the hardened Agent Result schema.
+- Updated `ai-system/integration-review.md` with hardened Agent Result handoff checks.
+- Marked `EVOL-024 — Agent Result Schema Hardening` as `Done`.
+- Updated roadmap P6 immediate priorities so `EVOL-024` is completed and `EVOL-025` is the next proposed follow-up.
+- Updated README version mirrors to `v0.39.0`.
+
+### Reason
+
+`EVOL-024` makes agent results more machine-checkable and reviewable for future L3 manual orchestration. Runtime execution remains `DEFERRED`; this change does not add automatic Codex execution, automatic multi-agent execution, branch/worktree automation, automatic file modification by orchestration tooling, automatic merge, automatic acceptance or automatic QA/review closure.
+
+## v0.38.0
+
+### Added
+
+- Added `ai-system/manual-orchestration.md` to define Manual Multi-Agent Orchestration Mode for L3 readiness.
+
+### Updated
+
+- Updated `ai-system/runtime-maturity-levels.md` to reference the L3 manual orchestration source document.
+- Updated `ai-system/README.md` and `ai-system/operating-model.md` to index Manual Multi-Agent Orchestration Mode.
+- Marked `EVOL-023 — Manual Multi-Agent Orchestration Mode` as `Done`.
+- Updated roadmap P6 immediate priorities so `EVOL-023` is completed and `EVOL-024` is the next proposed follow-up.
+- Updated README version mirrors to `v0.38.0`.
+
+### Reason
+
+`EVOL-023` defines L3 as manual-only orchestration after dry-run planning. It allows manual plan validation, manual AWP selection and assignment, manual result intake, manual integration review and Human Owner decisions while forbidding automatic Codex execution, automatic multi-agent execution, branch/worktree automation, automatic merge, automatic acceptance and automatic QA/review closure. Runtime remains `DEFERRED`; L4+ remains future/not approved.
+
+## v0.37.0
+
+### Added
+
+- Added `ai-system/runtime-maturity-levels.md` to define runtime maturity levels `L0` through `L6`.
+
+### Updated
+
+- Marked `EVOL-022 — Runtime Maturity Levels` as `Done`.
+- Updated `ai-system/README.md` and `ai-system/operating-model.md` to index the Runtime Maturity Levels document.
+- Updated roadmap P6 immediate priorities so `EVOL-022` is completed and `EVOL-023` is the next proposed follow-up.
+- Updated README version mirrors to `v0.37.0`.
+
+### Reason
+
+`EVOL-022` separates documentation, specs, dry-run planning, manual orchestration and future runtime modes. The current level is `L2 — Dry-run planning`; the next safe target is `L3 — Manual multi-agent orchestration`. Runtime execution remains `DEFERRED`, and `L4+` remains future/not approved without explicit Human Owner approval.
+
+## v0.36.0
+
+### Added
+
+- Added `scripts/validate-agent-plan-fixtures.py` as a lightweight validation runner for dependency-aware dry-run planning fixtures.
+- Added `simple-linear`, `simple-parallel` and `diamond` planning fixtures under `examples/agent-plan-fixtures/`.
+
+### Updated
+
+- Expanded `examples/agent-plan-fixtures/README.md` with the new fixtures and validation command.
+- Marked `EVOL-021 — Planning Fixtures and Validation Tests` as `Done`.
+- Updated roadmap P6 immediate priorities so `EVOL-021` is completed and `EVOL-022` is the next proposed follow-up.
+- Updated README version mirrors to `v0.36.0`.
+
+### Reason
+
+`EVOL-021` adds repeatable fixture coverage for dependency-aware dry-run planning, including simple linear dependency, simple parallel dependency, diamond dependency, missing dependency, cycle detection, blocked package exclusion and completed prerequisite unlocking a parallel group. The validation runner only executes local dry-run checks and does not authorize runtime behavior, automatic Codex execution, branch/worktree automation, merge automation or automatic acceptance.
+
+## v0.35.0
+
+### Added
+
+- Added `examples/agent-plan-fixtures/` with dry-run planning fixtures for accepted prerequisites, missing dependencies, cycle detection and blocked package exclusion.
+
+### Updated
+
+- Improved `scripts/agent-plan-mvp.py list-parallel-groups` so candidate groups are dependency-aware.
+- Added parsing for explicit AWP dependencies from `AI_PROJECT/AGENT_TASKS.md` package detail fields and `AI_PROJECT/AGENT_PLAN.md` dependency tables.
+- Added missing dependency and dependency cycle validation.
+- Added ready dependency layer output and exclusion explanations for blocked packages or incomplete prerequisites.
+- Marked `EVOL-020 — Improve dry-run agent planner dependency parsing` as `Done`.
+- Updated roadmap P6 immediate priorities so `EVOL-020` is completed and `EVOL-021` is the next proposed follow-up.
+- Updated README version mirrors to `v0.35.0`.
+
+### Reason
+
+`EVOL-020` fixes over-broad candidate parallel group reporting while preserving dry-run safety boundaries. The helper still does not execute Codex, create branches or worktrees, merge changes, modify application code, accept results or change the deferred runtime decision.
+
+## v0.34.0
+
+### Updated
+
+- Marked `EVOL-019 — Runtime Decision Record` as `Done`.
+- Recorded the runtime decision as `DEFERRED` in `ai-system/evolution/evolution-backlog.md`.
+- Updated roadmap P6 immediate priorities so `EVOL-019` is completed and `EVOL-020` remains the next proposed technical improvement.
+- Updated README version mirrors to `v0.34.0`.
+
+### Reason
+
+`EVOL-019` formally closes the runtime decision step. Runtime execution remains deferred. Dry-run planning, Agent Work Package generation, agent plan validation, candidate parallel group listing, manual orchestration and Human Owner-controlled review remain allowed. Automatic Codex execution, automatic multi-agent execution, branch/worktree lifecycle automation, automatic merge, automatic acceptance, automatic QA/review closure and bypassing Human Owner approval remain forbidden. No runtime or automation behavior was implemented.
+
+## v0.33.0
+
+### Added
+
+- Added the post-`EVOL-018` development plan to `ai-system/evolution/evolution-backlog.md`.
+- Added proposed backlog items `EVOL-021` through `EVOL-028`.
+- Added explicit runtime maturity direction to the P6 roadmap: current level `L2 — Dry-run planning`, next target `L3 — Manual multi-agent orchestration`.
+
+### Updated
+
+- Expanded `EVOL-019` as the required Runtime Decision Record with decision `DEFERRED`, allowed dry-run/manual capabilities, forbidden runtime automation and revisit criteria.
+- Expanded `EVOL-020` with dependency graph parsing requirements, topological layering, cycle/missing dependency detection and the `AWP-REQ-001` / `AWP-BE-001` / `AWP-FE-001` / `AWP-QA-001` example.
+- Updated roadmap P6 from optional multi-agent execution language to a SOP and optional multi-agent control-plane plan.
+- Updated README version mirrors to `v0.33.0`.
+
+### Reason
+
+The next development plan after `EVOL-008` through `EVOL-018` must be explicit before runtime discussions continue. Runtime execution remains deferred. Immediate priorities are `EVOL-019` and `EVOL-020`; future work targets dependency-aware dry-run planning, manual orchestration, stronger schemas, validation CI and broader pilot evidence before any assisted or controlled runtime is reconsidered.
+
+## v0.32.0
+
+### Added
+
+- Added `ai-system/evolution/sop-multi-agent-pilot-validation.md` to record EVOL-018 pilot validation findings for the SOP / optional multi-agent layer.
+- Added `IMP-002` to track shallow dependency graph parsing in `scripts/agent-plan-mvp.py`.
+- Added proposed follow-up `EVOL-020 — Improve dry-run agent planner dependency parsing`.
+
+### Updated
+
+- Updated README version mirrors to `v0.32.0`.
+- Updated `ai-system/README.md` to index the pilot validation record.
+- Updated `evolution-backlog.md` to mark `EVOL-018` as completed.
+
+### Reason
+
+`EVOL-018` records pilot evidence before the EVOL-019 runtime decision. The pilot confirms that the current SOP / optional multi-agent layer works as governance-first documentation, templates, specs and dry-run reporting, while recording that runtime integration is not justified yet and dependency-aware parallel group reporting needs a future bounded improvement.
+
+## v0.31.0
+
+### Added
+
+- Extended `examples/golden-project/` with a filled non-runtime multi-agent planning example for a Task Tracker due-date filter enhancement.
+- Added golden-project `AI_PROJECT/AGENT_PLAN.md`, `AGENT_TASKS.md`, `AGENT_LOCKS.md`, `AGENT_RESULTS.md`, `AGENT_METRICS.md` and a local example README.
+
+### Updated
+
+- Updated README version mirrors to `v0.31.0`.
+- Updated `ai-system/README.md` to note the filled golden-project multi-agent planning example.
+- Updated `evolution-backlog.md` to mark `EVOL-017` as completed.
+
+### Reason
+
+`EVOL-017` validates the SOP and agent planning documentation with a filled golden project example. The example remains non-runtime and does not authorize execution, parallel execution, automatic execution, automatic merge or automatic acceptance.
+
+## v0.30.0
+
+### Added
+
+- Added `scripts/agent-plan-mvp.py` as a minimal dry-run helper for `AI_PROJECT/AGENT_*` planning files.
+- Added support for `validate`, `check-locks`, `list-parallel-groups` and `generate-prompts` reporting commands.
+
+### Updated
+
+- Updated README version mirrors to `v0.30.0`.
+- Updated `ai-system/README.md`, `project-control-files.md`, `foldered-integration.md` and `project-integration-model.md` with agent planner MVP usage and safety boundaries.
+- Updated `evolution-backlog.md` to mark `EVOL-016` as completed.
+
+### Reason
+
+`EVOL-016` adds dry-run agent planning validation and reporting. The helper does not execute Codex, create branches or worktrees, merge changes, modify application code, accept results or turn candidate parallel groups into executable groups.
+
+## v0.29.0
+
+### Added
+
+- Added foldered `AI_PROJECT` agent planning templates: `AGENT_PLAN.md`, `AGENT_TASKS.md`, `AGENT_LOCKS.md`, `AGENT_RESULTS.md` and `AGENT_METRICS.md`.
+
+### Updated
+
+- Updated README version mirrors to `v0.29.0`.
+- Updated project control, foldered integration, project integration and bootstrap documentation to reference the new agent planning files.
+- Updated `scripts/foldered-control-mvp.py` so bootstrap/update planning includes the new templates.
+- Updated `ai-system/README.md` and `ai-system/operating-model.md` to index the new templates.
+- Updated `evolution-backlog.md` to mark `EVOL-015` as completed.
+
+### Reason
+
+`EVOL-015` adds project-local planning templates for SOP-guided and optional multi-agent workflows. The templates are planning and review records only; they preserve sequential execution as the default and do not authorize runtime behavior, automatic execution, automatic merge or automatic acceptance.
+
+## v0.28.0
+
+### Added
+
+- Added `spec/sops.json` with the initial SOP inventory for `SOP-FEATURE-001`, `SOP-BUGFIX-001` and `SOP-SYSTEM-001`.
+- Added `spec/agent-work-package.schema.json` as a minimal JSON Schema contract for Agent Work Packages.
+- Added `spec/agent-result.schema.json` as a minimal JSON Schema contract for Agent Results.
+- Added `spec/parallel-policy.json` as a policy inventory for core parallel execution constraints.
+
+### Updated
+
+- Updated README version mirrors to `v0.28.0`.
+- Updated `spec/README.md` with new spec files, Markdown source documents, validation guidance and EVOL-014 boundaries.
+- Updated `ai-system/README.md` and `ai-system/operating-model.md` to index the new specs.
+- Updated `evolution-backlog.md` to mark `EVOL-014` as completed.
+
+### Reason
+
+`EVOL-014` adds minimal machine-checkable SOP and agent planning specs derived from Markdown source documents. Markdown remains the operational source of truth. This change does not generate Markdown, add schema validation CI, create scripts, modify templates, implement runtime behavior or authorize automatic execution, automatic merge or automatic acceptance.
+
+## v0.27.0
+
+### Added
+
+- Added `ai-system/agent-result-intake.md` to define controlled intake of Agent Work Package and Codex execution results.
+- Added `ai-system/integration-review.md` to define review of integrated agent result sets before QA handoff and Human Owner acceptance.
+- Added intake checks for scope, `allowed_files`, `locked_files`, `forbidden_actions`, dependencies, verification mode, errors, questions and blockers.
+- Added integration review checks for cross-agent consistency, behavior/contracts, architecture, API/UX/data, conflicts, regression, documentation and security/privacy.
+
+### Updated
+
+- Updated README version mirrors to `v0.27.0`.
+- Updated `ai-system/README.md` and `ai-system/operating-model.md` to index Agent Result Intake and Integration Review.
+- Updated `evolution-backlog.md` to mark `EVOL-013` as completed.
+
+### Reason
+
+`EVOL-013` defines result intake and integration review gates for SOP-guided and optional multi-agent workflows. This change does not implement runtime behavior, branch/worktree/merge automation, scripts, specs, templates, automatic execution, automatic merge or automatic acceptance.
+
+## v0.26.0
+
+### Added
+
+- Added `ai-system/parallel-execution-policy.md` to define opt-in parallel execution governance.
+- Added eligibility, rejection, dependency, file-lock, approval, integration review, QA, rollback/rework, result intake and security/privacy rules for managed parallel execution groups.
+
+### Updated
+
+- Updated README version mirrors to `v0.26.0`.
+- Updated `ai-system/README.md` and `ai-system/operating-model.md` to index the Parallel Execution Policy.
+- Updated `evolution-backlog.md` to mark `EVOL-012` as completed.
+
+### Reason
+
+`EVOL-012` defines parallel execution as an opt-in, Human Owner-approved policy layer while preserving sequential execution as the default. This change does not implement runtime behavior, branches, worktrees, merge logic, scripts, specs, templates, automatic execution, automatic merge or automatic acceptance.
+
+## v0.25.0
+
+### Added
+
+- Added `ai-system/multi-agent-planning.md` to define planning-only decomposition of parent tasks into Agent Work Packages.
+- Added Multi-Agent Planning states, inputs, outputs, decomposition rules, dependency rules, file-scope rules and locked-file planning guidance.
+
+### Updated
+
+- Updated README version mirrors to `v0.25.0`.
+- Updated `ai-system/README.md` and `ai-system/operating-model.md` to index the Multi-Agent Planning workflow.
+- Updated `evolution-backlog.md` to mark `EVOL-011` as completed.
+
+### Reason
+
+`EVOL-011` defines Multi-Agent Planning as planning-only workflow. Candidate parallel groups are informational only until a future Parallel Execution Policy exists and Human Owner approves them. This change avoids runtime automation, parallel execution enablement, specs, scripts, templates, automatic execution and automatic acceptance.
+
+## v0.24.0
+
+### Added
+
+- Added `ai-system/agent-work-package.md` to define bounded Agent Work Packages for future SOP-guided planning.
+- Added Agent Work Package required fields, lifecycle/status values, ownership model and examples for backend, frontend, QA/review and documentation work.
+
+### Updated
+
+- Updated README version mirrors to `v0.24.0`.
+- Updated `ai-system/README.md` and `ai-system/operating-model.md` to index the Agent Work Package standard.
+- Updated `evolution-backlog.md` to mark `EVOL-010` as completed.
+
+### Reason
+
+`EVOL-010` defines the Agent Work Package standard while preserving sequential execution as the default and avoiding Multi-Agent Planning workflow, Parallel Execution Policy, specs, scripts, templates, runtime automation, automatic execution or automatic acceptance.
+
+## v0.23.0
+
+### Added
+
+- Added `ai-system/sop-model.md` to define managed SOPs as governance-first planning procedures.
+- Added three initial SOPs: `SOP-FEATURE-001`, `SOP-BUGFIX-001` and `SOP-SYSTEM-001`.
+
+### Updated
+
+- Updated README version mirrors to `v0.23.0`.
+- Updated `ai-system/README.md` and `ai-system/operating-model.md` to index the SOP Model.
+- Updated `evolution-backlog.md` to mark `EVOL-009` as completed.
+
+### Reason
+
+`EVOL-009` defines the SOP Model from the SOP / optional multi-agent master plan while preserving sequential execution as the default and avoiding Agent Work Package standards, scripts, specs, templates, runtime automation, automatic execution or automatic acceptance.
+
+## v0.22.0
+
+### Added
+
+- Added `ai-system/evolution/sop-multi-agent-implementation-plan.md` to record the Human Owner's SOP and optional multi-agent implementation plan.
+- Added `EVOL-008` through `EVOL-019` to `evolution-backlog.md` to decompose the initiative into bounded future tasks.
+- Added roadmap priority `P6 — SOP and Optional Multi-Agent Execution Layer`.
+
+### Updated
+
+- Updated README version mirrors to `v0.22.0`.
+- Updated `ai-system/README.md` and `ai-system/evolution/README.md` to index the new plan.
+- Renumbered Research and Benchmarking roadmap priority from P6 to P7 to make room for the SOP / Multi-Agent Layer.
+
+### Reason
+
+The Human Owner wants a governance-first SOP and optional multi-agent execution direction recorded before implementation. This change records the plan and future task decomposition without creating runtime automation, scripts, specs, templates or changes to the existing one-task Codex workflow.
+
 ## v0.21.0
 
 ### Added

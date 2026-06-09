@@ -3,7 +3,7 @@
 Languages: [English](README.md) | [Русский](README.ru.md)
 
 Status: Draft
-Version: v0.21.0
+Version: v0.42.0
 
 This repository contains an AI Development System: an operating model for developing projects through AI roles, documentation, lifecycle governance, prompt generation, Codex execution, review and controlled evolution.
 
@@ -17,11 +17,45 @@ Documentation integrity checks can be run with:
 python3 scripts/check-docs-integrity.py
 ```
 
+Full read-only system validation can be run locally with:
+
+```bash
+python3 scripts/validate-system.py
+```
+
 Security and privacy baselines are defined in `/ai-system/security-policy.md` and `/ai-system/privacy-data-handling-policy.md`.
 
 Machine-checkable specs for stable system entities are stored in `/spec`.
 
+SOP and agent planning specs are derived machine-checkable inventory/contract files. Markdown remains the operational source of truth, and specs do not authorize runtime behavior, automatic execution, merge or acceptance.
+
 Minimal foldered bootstrap/update dry-runs can be run with `scripts/foldered-control-mvp.py`.
+
+Dry-run agent planning checks can be run with `scripts/agent-plan-mvp.py`.
+
+The SOP and optional multi-agent implementation plan is recorded in `/ai-system/evolution/sop-multi-agent-implementation-plan.md`.
+
+The SOP Model is defined in `/ai-system/sop-model.md`. SOPs are governance procedures only; they do not authorize automatic execution or automatic acceptance.
+
+The Agent Work Package standard is defined in `/ai-system/agent-work-package.md`. Agent Work Packages are bounded planning artifacts and do not imply parallel execution.
+
+The Multi-Agent Planning workflow is defined in `/ai-system/multi-agent-planning.md`. It is planning-only and does not authorize execution or parallel execution.
+
+The Parallel Execution Policy is defined in `/ai-system/parallel-execution-policy.md`. Parallel execution is opt-in, Human Owner-approved and does not authorize automatic execution, merge or acceptance.
+
+Agent Result Intake and Integration Review are defined in `/ai-system/agent-result-intake.md` and `/ai-system/integration-review.md`. They check results before review, QA and Human Owner acceptance without authorizing automatic execution, merge or acceptance.
+
+Foldered `AI_PROJECT` templates now include agent planning files for plans, packages, locks, results and metrics. These are planning records only and do not authorize execution, parallel execution, merge or acceptance.
+
+The golden project includes a filled non-runtime multi-agent planning example for Task Tracker under `examples/golden-project/`.
+
+The SOP / optional multi-agent pilot validation record is stored in `/ai-system/evolution/sop-multi-agent-pilot-validation.md`.
+
+Expanded pilot validation evidence covers documentation-only, small tooling/code and multi-agent parallel planning scenarios while preserving dry-run boundaries.
+
+Runtime maturity levels are defined in `/ai-system/runtime-maturity-levels.md`. Current level is `L3 — Manual multi-agent orchestration`; runtime remains `DEFERRED`; `L4+` remains future/not approved.
+
+Manual Multi-Agent Orchestration Mode is defined in `/ai-system/manual-orchestration.md`. L3 is manual-only and does not authorize automatic execution, merge or acceptance.
 
 ## At a Glance
 

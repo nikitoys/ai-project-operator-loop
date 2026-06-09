@@ -101,9 +101,16 @@ AI_PROJECT/CODEX_CURRENT.md
 AI_PROJECT/CODEX_TASKS.md
 AI_PROJECT/CODEX_SESSION_LOG.md
 AI_PROJECT/PROMPTS.md
+AI_PROJECT/AGENT_PLAN.md
+AI_PROJECT/AGENT_TASKS.md
+AI_PROJECT/AGENT_LOCKS.md
+AI_PROJECT/AGENT_RESULTS.md
+AI_PROJECT/AGENT_METRICS.md
 AI_PROJECT/AI_DEV_SYSTEM_VERSION.md
 AI_PROJECT/docs/verification-policy.md
 ```
+
+Agent planning files are project-local planning and review records only. They preserve sequential execution as the default, keep candidate parallel groups informational until approved and do not authorize automatic execution, merge or acceptance.
 
 ## Installation Flow
 
@@ -152,6 +159,17 @@ python3 scripts/foldered-control-mvp.py update --project-root /path/to/project
 
 See `/ai-system/project-system-update.md`.
 
+The minimal agent planning helper can validate project-local agent planning files in dry-run mode:
+
+```bash
+python3 scripts/agent-plan-mvp.py validate --project-root /path/to/project
+python3 scripts/agent-plan-mvp.py check-locks --project-root /path/to/project
+python3 scripts/agent-plan-mvp.py list-parallel-groups --project-root /path/to/project
+python3 scripts/agent-plan-mvp.py generate-prompts --project-root /path/to/project
+```
+
+This helper only reports planning state and prompt drafts. It does not execute Codex, create branches or worktrees, merge changes, accept results or modify application code.
+
 ## Authority Order
 
 For a foldered project, authority is resolved in this order:
@@ -177,3 +195,5 @@ Updating `AI_PROJECT/` must not modify application code.
 Application code must not be modified during bootstrap or system update unless the Human Owner explicitly approves a separate implementation task.
 
 Codex must not treat `OWNER_PLAN.md` as executable scope. Owner plan items must first be converted into approved tasks with scope, allowed files, verification mode and acceptance criteria.
+
+Codex must not treat `AGENT_PLAN.md`, `AGENT_TASKS.md`, `AGENT_LOCKS.md`, `AGENT_RESULTS.md` or `AGENT_METRICS.md` as execution authority. Agent planning records must first be converted into approved bounded task or prompt packages.

@@ -52,11 +52,18 @@ AI_PROJECT/CODEX_CURRENT.md
 AI_PROJECT/CODEX_TASKS.md
 AI_PROJECT/CODEX_SESSION_LOG.md
 AI_PROJECT/PROMPTS.md
+AI_PROJECT/AGENT_PLAN.md
+AI_PROJECT/AGENT_TASKS.md
+AI_PROJECT/AGENT_LOCKS.md
+AI_PROJECT/AGENT_RESULTS.md
+AI_PROJECT/AGENT_METRICS.md
 AI_PROJECT/AI_DEV_SYSTEM_VERSION.md
 AI_PROJECT/docs/verification-policy.md
 ```
 
 `AI_PROJECT` files are project-specific source of truth after bootstrap. They must not be blindly overwritten by upstream templates.
+
+Agent planning files are optional planning records for SOP-guided and multi-agent workflows. They do not authorize execution, parallel execution, automatic execution, merge or acceptance.
 
 ## Root `AGENTS.md`
 
@@ -179,6 +186,8 @@ Updating `/AI_Development_System` is not the same as updating `/AI_PROJECT`.
 - Application code must not be modified during system updates.
 
 Use `/ai-system/project-system-update.md` for the controlled update process.
+
+Use `scripts/agent-plan-mvp.py` only as a dry-run reporting helper for `AI_PROJECT/AGENT_*` files. It must not execute Codex, create branches or worktrees, merge changes, accept results or modify application code.
 
 ## Boundary Rules
 

@@ -1,7 +1,7 @@
 # AI Development System
 
 Status: Draft  
-Version: v0.21.0
+Version: v0.42.0
 
 ## Purpose
 
@@ -31,6 +31,14 @@ python3 scripts/check-docs-integrity.py
 
 The check covers internal Markdown links, unresolved placeholders outside reusable templates, index completeness for system documents and visible status/version consistency.
 
+Run the full read-only system validation with:
+
+```bash
+python3 scripts/validate-system.py
+```
+
+The full validation entrypoint compiles planning scripts, checks documentation integrity, parses JSON specs, validates required agent planning templates, runs dependency-aware planning fixtures and validates the golden project dry-run plan.
+
 ## Foldered Bootstrap/Update Helper
 
 Run minimal dry-run planning for Foldered Control Mode with:
@@ -42,6 +50,17 @@ python3 scripts/foldered-control-mvp.py update --project-root /path/to/project
 
 The helper reports planned control-layer changes, unresolved placeholders and `AI_PROJECT/AI_DEV_SYSTEM_VERSION.md` tracking. Writes require explicit `--apply`.
 
+Run dry-run agent planning checks with:
+
+```bash
+python3 scripts/agent-plan-mvp.py validate --project-root /path/to/project
+python3 scripts/agent-plan-mvp.py check-locks --project-root /path/to/project
+python3 scripts/agent-plan-mvp.py list-parallel-groups --project-root /path/to/project
+python3 scripts/agent-plan-mvp.py generate-prompts --project-root /path/to/project
+```
+
+The helper only reads `AI_PROJECT/AGENT_*` files and prints reports or prompt drafts. It does not execute Codex, create branches, merge changes, accept results or modify application code.
+
 ## Machine-Checkable Specs
 
 Minimal machine-checkable specs are stored in `../spec/`.
@@ -52,9 +71,69 @@ Current spec files:
 - `../spec/interaction-modes.json` — explicit interaction modes and markers.
 - `../spec/verification-modes.json` — supported verification modes and execution boundaries.
 - `../spec/lifecycle-states.json` — common managed lifecycle states.
+- `../spec/sops.json` — SOP inventory for initial SOP Model entries.
+- `../spec/agent-work-package.schema.json` — JSON Schema contract for Agent Work Packages.
+- `../spec/agent-result.schema.json` — JSON Schema contract for Agent Results.
+- `../spec/parallel-policy.json` — policy inventory for core parallel execution constraints.
 - `../spec/schemas/system-spec.schema.json` — shared minimal schema for spec files.
 
-Markdown remains the operational source of truth. Specs are derived inventory and contract files unless a later approved evolution task changes the source-of-truth relationship.
+Markdown remains the operational source of truth. Specs are derived inventory and contract files unless a later approved evolution task changes the source-of-truth relationship. Specs do not authorize runtime behavior, automatic execution, automatic merge or automatic acceptance.
+
+## SOP Model
+
+`sop-model.md` defines managed SOPs as governance-first planning procedures for repeated classes of work.
+
+Sequential execution remains the default. SOPs do not authorize automatic execution, automatic acceptance or parallel execution.
+
+## Agent Work Package Standard
+
+`agent-work-package.md` defines bounded Agent Work Packages for future SOP-guided planning.
+
+Agent Work Packages do not imply parallel execution and do not authorize automatic execution or automatic acceptance.
+
+## Multi-Agent Planning
+
+`multi-agent-planning.md` defines planning-only decomposition into Agent Work Packages.
+
+Candidate parallel groups are informational only until a future Parallel Execution Policy exists and Human Owner approves them.
+
+## Parallel Execution Policy
+
+`parallel-execution-policy.md` defines when parallel execution is allowed, rejected and approved.
+
+Sequential execution remains the default. Parallel execution is opt-in, Human Owner-approved and requires dependency, file-lock, integration review and QA gates.
+
+## Agent Result Intake and Integration Review
+
+`agent-result-intake.md` defines how individual Agent Work Package results are received and checked before review, QA or integration review.
+
+`integration-review.md` defines how combined agent result sets are checked before QA handoff and Human Owner acceptance.
+
+Intake and integration review do not authorize automatic execution, automatic merge or automatic acceptance.
+
+Agent Result Intake defines the hardened Agent Result schema for manual orchestration, including structured changed files, claims, verification, risks, blockers, followups, scope compliance, safety boundary compliance and review requirements.
+
+## Runtime Maturity Levels
+
+`runtime-maturity-levels.md` defines runtime maturity levels from `L0 — Documentation only` through `L6 — Autonomous runtime`.
+
+The current level is `L3 — Manual multi-agent orchestration`. Runtime execution remains `DEFERRED`; `L4+` is future/not approved.
+
+## Manual Multi-Agent Orchestration
+
+`manual-orchestration.md` defines the L3 manual orchestration workflow.
+
+Manual orchestration coordinates Agent Work Packages, result intake and integration review by hand. It does not authorize automatic Codex execution, automatic multi-agent execution, branch/worktree automation, merge automation, automatic acceptance or automatic QA/review closure.
+
+## AI_PROJECT Agent Planning Templates
+
+Foldered project templates include `AGENT_PLAN.md`, `AGENT_TASKS.md`, `AGENT_LOCKS.md`, `AGENT_RESULTS.md` and `AGENT_METRICS.md`.
+
+These files are planning and review records only. They preserve sequential execution as the default and do not authorize execution, parallel execution, automatic merge or automatic acceptance.
+
+The golden project includes a filled multi-agent planning example under `../examples/golden-project/AI_PROJECT/AGENT_*`.
+
+The SOP / optional multi-agent pilot validation record is stored in `evolution/sop-multi-agent-pilot-validation.md`.
 
 ## Security and Privacy Baseline
 
@@ -99,6 +178,14 @@ AI Development System
 - `human-interaction.md` — how the human works with ChatGPT and Codex.
 - `language-policy.md` — language and localization rules for responses, prompts and documentation.
 - `workflow.md` — development stages and gates.
+- `sop-model.md` — SOP model for governance-first repeatable procedures.
+- `agent-work-package.md` — standard for bounded Agent Work Packages used in future SOP-guided planning.
+- `multi-agent-planning.md` — planning-only workflow for decomposing parent tasks into Agent Work Packages.
+- `parallel-execution-policy.md` — opt-in policy for Human Owner-approved parallel execution groups.
+- `agent-result-intake.md` — intake process for Agent Work Package and Codex execution results.
+- `integration-review.md` — review process for combined agent result sets before QA handoff and acceptance.
+- `runtime-maturity-levels.md` — runtime maturity levels and progression gates from documentation-only work to future runtime modes.
+- `manual-orchestration.md` — L3 manual-only coordination workflow for Agent Work Packages, result intake and integration review.
 - `rules.md` — global rules and restrictions.
 - `system-schemes.md` — compact text schemes for roles, documents and process flow.
 - `task-format.md` — standard task format for Codex and AI roles.
@@ -132,7 +219,9 @@ AI Development System
 - `system-changelog.md` — history of changes to the AI Development System.
 - `improvement-log.md` — observations and problems in the system.
 - `../scripts/check-docs-integrity.py` — documentation integrity check for links, placeholders, indexes and version/status fields.
+- `../scripts/validate-system.py` — read-only validation entrypoint for docs, specs, templates, planning fixtures and the golden project.
 - `../scripts/foldered-control-mvp.py` — minimal dry-run bootstrap/update helper for Foldered Control Mode.
+- `../scripts/agent-plan-mvp.py` — minimal dry-run helper for AI_PROJECT agent planning validation, lock checks, candidate parallel group reporting and prompt drafts.
 - `../spec/README.md` — machine-checkable spec layer policy and validation guidance.
 
 ## Evolution Module
@@ -141,6 +230,8 @@ The `evolution/` directory defines roadmap-driven self-evolution of AI_Developme
 
 - `evolution/README.md` — index and operating principle for the system evolution module.
 - `evolution/roadmap.md` — strategic and tactical roadmap for AI_Development_System.
+- `evolution/sop-multi-agent-implementation-plan.md` — master plan for SOP-guided planning and optional multi-agent execution.
+- `evolution/sop-multi-agent-pilot-validation.md` — pilot validation findings for the SOP / optional multi-agent layer.
 - `evolution/evolution-loop.md` — observe → diagnose → propose → plan → execute → verify → review → approve → release → learn loop.
 - `evolution/evolution-policy.md` — permissions, boundaries and anti-runaway rules for self-evolution.
 - `evolution/owner-evolution-plan.md` — Human Owner-authored intake place for broad system evolution plans.
@@ -151,7 +242,7 @@ The `evolution/` directory defines roadmap-driven self-evolution of AI_Developme
 - `evolution/templates/system-change-proposal.md` — AI System Change Proposal template.
 - `evolution/templates/evolution-task.md` — bounded system evolution task template.
 - `evolution/templates/owner-evolution-plan.md` — reusable owner plan intake template.
-- `examples/golden-project/` — filled foldered Task Tracker example for onboarding foldered integration.
+- `examples/golden-project/` — filled foldered Task Tracker example for onboarding foldered integration and non-runtime multi-agent planning.
 
 ## Templates
 

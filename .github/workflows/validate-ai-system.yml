@@ -1,0 +1,95 @@
+name: Validate AI Development System
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - ai-development-system
+  workflow_dispatch:
+
+jobs:
+  docs-and-specs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Compile validation scripts
+        run: python3 -m py_compile scripts/agent-plan-mvp.py scripts/validate-agent-plan-fixtures.py scripts/validate-system.py
+
+      - name: Run documentation integrity checks
+        run: python3 scripts/check-docs-integrity.py
+
+      - name: Validate JSON specs
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          for path in sorted(Path("spec").rglob("*.json")):
+              with path.open("r", encoding="utf-8") as handle:
+                  json.load(handle)
+              print(f"PASS: {path}")
+          PY
+
+      - name: Validate AI_PROJECT templates
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          required = [
+              "ai-system/templates/foldered/AI_PROJECT/AGENT_PLAN.md",
+              "ai-system/templates/foldered/AI_PROJECT/AGENT_TASKS.md",
+              "ai-system/templates/foldered/AI_PROJECT/AGENT_LOCKS.md",
+              "ai-system/templates/foldered/AI_PROJECT/AGENT_RESULTS.md",
+              "ai-system/templates/foldered/AI_PROJECT/AGENT_METRICS.md",
+          ]
+
+          for item in required:
+              path = Path(item)
+              if not path.exists():
+                  raise SystemExit(f"missing required template: {item}")
+              if path.is_file() and path.stat().st_size == 0:
+                  raise SystemExit(f"empty required template: {item}")
+              print(f"PASS: {item}")
+          PY
+
+  agent-planning-fixtures:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Validate dependency-aware planning fixtures
+        run: python3 scripts/validate-agent-plan-fixtures.py
+
+  golden-project:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Validate golden project dry-run plan
+        run: python3 scripts/agent-plan-mvp.py validate --project-root examples/golden-project
+
+      - name: List golden project candidate parallel groups
+        run: python3 scripts/agent-plan-mvp.py list-parallel-groups --project-root examples/golden-project

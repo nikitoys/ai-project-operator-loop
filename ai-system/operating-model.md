@@ -247,6 +247,304 @@ Needs improvement:
 - add health-check reports during pilot validation;
 - add examples of completed evolution cycles after first real use.
 
+## 2.5 SOP Model
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/ai-system/sop-model.md
+/ai-system/evolution/sop-multi-agent-implementation-plan.md
+```
+
+Covers:
+
+- managed SOP definition;
+- required SOP fields;
+- SOP selection and relationship to the existing workflow;
+- role, task, prompt, Codex, review and QA lifecycle relationships;
+- sequential execution as the default rule;
+- boundary rule that SOPs do not authorize automatic execution or automatic acceptance;
+- initial Feature Delivery, Bugfix / Rework and AI System Evolution SOPs.
+
+Needs improvement:
+
+- add Agent Work Package standard in a separate bounded evolution task;
+- add multi-agent planning and parallel execution policy only after approval;
+- add machine-checkable SOP specs after the Markdown source documents exist.
+
+## 2.6 Agent Work Package Standard
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/ai-system/agent-work-package.md
+/ai-system/sop-model.md
+/ai-system/evolution/sop-multi-agent-implementation-plan.md
+```
+
+Covers:
+
+- managed Agent Work Package definition;
+- relationship between parent tasks and child Agent Work Packages;
+- required fields including `allowed_files`, `locked_files`, `dependencies`, verification mode and review instructions;
+- package lifecycle/status values;
+- ownership model and role boundary rules;
+- relationship to SOP Model, task lifecycle, prompt lifecycle, Codex lifecycle, review and QA;
+- default rule that Agent Work Packages do not imply parallel execution;
+- boundary rule that Agent Work Packages do not authorize automatic execution or automatic acceptance.
+
+Needs improvement:
+
+- add Multi-Agent Planning workflow in a separate bounded evolution task;
+- add Parallel Execution Policy only after approval;
+- add machine-checkable Agent Work Package specs after the Markdown source documents exist.
+
+## 2.7 Multi-Agent Planning Workflow
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/ai-system/multi-agent-planning.md
+/ai-system/agent-work-package.md
+/ai-system/sop-model.md
+/ai-system/evolution/sop-multi-agent-implementation-plan.md
+```
+
+Covers:
+
+- managed multi-agent plan definition;
+- planning inputs and outputs;
+- planning states/status values;
+- decomposition rules for parent tasks into Agent Work Packages;
+- dependency, file-scope and locked-file planning rules;
+- candidate parallel groups as informational planning output only;
+- Human Owner approval points;
+- path from plan to one next bounded executable work item through existing task, prompt and Codex lifecycles;
+- boundary rule that planning does not authorize execution, parallel execution, automatic execution or automatic acceptance.
+
+Needs improvement:
+
+- add Parallel Execution Policy in a separate bounded evolution task;
+- add Agent Result Intake and Integration Review after planning and execution boundaries are approved;
+- add machine-checkable planning specs after Markdown source documents exist.
+
+## 2.8 Parallel Execution Policy
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/ai-system/parallel-execution-policy.md
+/ai-system/multi-agent-planning.md
+/ai-system/agent-work-package.md
+/ai-system/sop-model.md
+/ai-system/evolution/sop-multi-agent-implementation-plan.md
+```
+
+Covers:
+
+- managed parallel execution group definition;
+- sequential execution as the default rule;
+- opt-in Human Owner approval requirement for every parallel group;
+- parallel eligibility and rejection criteria;
+- dependency, `allowed_files` and `locked_files` conflict rules;
+- file-lock ownership rules;
+- approval gates;
+- mandatory integration review before parent task acceptance;
+- QA requirement or documented QA decision before final acceptance;
+- rollback, rework, result intake, security/privacy and learning-output expectations;
+- boundary rule that parallel execution does not authorize automatic execution, automatic merge or automatic acceptance.
+
+Needs improvement:
+
+- add Agent Result Intake and Integration Review in a separate bounded evolution task;
+- add machine-checkable parallel policy specs after Markdown source documents exist;
+- validate the policy through controlled pilot work before any runtime decision.
+
+## 2.9 Agent Result Intake and Integration Review
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/ai-system/agent-result-intake.md
+/ai-system/integration-review.md
+/ai-system/parallel-execution-policy.md
+/ai-system/multi-agent-planning.md
+/ai-system/agent-work-package.md
+```
+
+Covers:
+
+- agent result governed entity and required result fields;
+- hardened Agent Result schema with structured changed files, claims, verification, risks, blockers, followups, scope compliance, safety boundary compliance and review requirements;
+- result intake states/status values;
+- intake checks for scope, `allowed_files`, `locked_files`, `forbidden_actions`, dependencies and verification mode;
+- error, question, blocker, rework, rejection and archive routing;
+- integrated agent result set governed entity;
+- integration review states/status values;
+- cross-agent consistency, behavior/contract, architecture, API/UX/data, duplicate/conflict, regression, documentation and security/privacy checks;
+- QA handoff relationship;
+- boundary rules that intake and integration review do not authorize automatic execution, automatic merge or automatic acceptance and do not replace Human Owner final acceptance.
+
+Needs improvement:
+
+- validate hardened Agent Result records through manual orchestration pilots;
+- validate intake and integration review through controlled pilot work.
+
+## 2.10 Machine-Checkable SOP and Agent Specs
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/spec/sops.json
+/spec/agent-work-package.schema.json
+/spec/agent-result.schema.json
+/spec/parallel-policy.json
+/spec/README.md
+```
+
+Covers:
+
+- initial SOP inventory derived from `sop-model.md`;
+- JSON Schema contract for Agent Work Packages derived from `agent-work-package.md`;
+- JSON Schema contract for Agent Results derived from `agent-result-intake.md`;
+- policy inventory for core parallel execution constraints derived from `parallel-execution-policy.md`;
+- source-of-truth rule that Markdown remains operational authority;
+- boundary rule that specs do not generate Markdown, implement runtime behavior or authorize automatic execution, merge or acceptance.
+
+Needs improvement:
+
+- add schema validation CI in a separate bounded evolution task if justified;
+- add project-local templates after approved specs and planning documents stabilize;
+- validate specs through controlled pilot work before runtime decisions.
+
+## 2.11 AI_PROJECT Agent Planning Templates
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/ai-system/templates/foldered/AI_PROJECT/AGENT_PLAN.md
+/ai-system/templates/foldered/AI_PROJECT/AGENT_TASKS.md
+/ai-system/templates/foldered/AI_PROJECT/AGENT_LOCKS.md
+/ai-system/templates/foldered/AI_PROJECT/AGENT_RESULTS.md
+/ai-system/templates/foldered/AI_PROJECT/AGENT_METRICS.md
+```
+
+Covers:
+
+- project-local SOP and agent planning snapshot;
+- Agent Work Package registry;
+- file-scope and locked-file planning registry;
+- Agent Result intake and integration review references;
+- planning, execution, review and QA metrics for pilot validation;
+- safety boundaries that preserve sequential execution as the default and forbid automatic execution, merge or acceptance.
+
+Needs improvement:
+
+- extend the golden project with a non-runtime multi-agent example;
+- add dry-run planner validation tooling only in a separate bounded evolution task;
+- validate template usefulness through controlled pilot work.
+
+## 2.12 Dry-Run Agent Planner MVP
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/scripts/agent-plan-mvp.py
+/ai-system/templates/foldered/AI_PROJECT/AGENT_PLAN.md
+/ai-system/templates/foldered/AI_PROJECT/AGENT_TASKS.md
+/ai-system/templates/foldered/AI_PROJECT/AGENT_LOCKS.md
+/ai-system/templates/foldered/AI_PROJECT/AGENT_RESULTS.md
+/ai-system/templates/foldered/AI_PROJECT/AGENT_METRICS.md
+```
+
+Covers:
+
+- dry-run validation of project-local agent planning files;
+- missing `AI_PROJECT/AGENT_*` file reporting;
+- simple Agent Work Package table recognition;
+- locked-file conflict reporting when lock data is available;
+- candidate parallel group reporting as informational only;
+- bounded prompt draft generation for review when enough package data exists;
+- boundary rule that the helper does not execute Codex, create branches or worktrees, merge changes, modify application code or accept results.
+
+Needs improvement:
+
+- extend the golden project with a non-runtime multi-agent example;
+- add richer parsing only after pilot evidence shows it is useful;
+- keep runtime decisions deferred until controlled pilot validation.
+
+## 2.13 Runtime Maturity Levels
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/ai-system/runtime-maturity-levels.md
+/ai-system/evolution/roadmap.md
+/ai-system/evolution/evolution-backlog.md
+```
+
+Covers:
+
+- maturity levels `L0` through `L6`;
+- current level `L3 — Manual multi-agent orchestration`;
+- next possible target `L4 — Assisted execution`, future/not approved;
+- L4+ as future/not approved;
+- allowed and forbidden capabilities at each level;
+- required safety gates, evidence and readiness criteria;
+- boundary rule that maturity levels do not authorize runtime behavior by themselves.
+
+Needs improvement:
+
+- keep runtime execution deferred until explicit future approval;
+- do not propose L4 assisted execution without a separate Human Owner-approved evolution task.
+
+## 2.14 Manual Multi-Agent Orchestration Mode
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/ai-system/manual-orchestration.md
+/ai-system/runtime-maturity-levels.md
+/ai-system/agent-work-package.md
+/ai-system/agent-result-intake.md
+/ai-system/integration-review.md
+```
+
+Covers:
+
+- L3 manual-only orchestration purpose and boundaries;
+- allowed manual operations for plan selection, validation, AWP selection, manual assignment, result intake and integration review;
+- forbidden automatic execution, branch/worktree automation, merge, acceptance and QA/review closure;
+- required L3 artifacts;
+- manual orchestration flow;
+- L3 readiness criteria and L4 readiness criteria;
+- boundary rule that L3 is coordination, not runtime.
+
+Needs improvement:
+
+- continue collecting repeatable L3 manual orchestration evidence;
+- use hardened Agent Result records during future manual orchestration pilots.
+
 ---
 
 # 3. Entity Lifecycle Layer

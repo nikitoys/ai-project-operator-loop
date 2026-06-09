@@ -97,6 +97,11 @@ AI_PROJECT/CODEX_CURRENT.md
 AI_PROJECT/CODEX_TASKS.md
 AI_PROJECT/CODEX_SESSION_LOG.md
 AI_PROJECT/PROMPTS.md
+AI_PROJECT/AGENT_PLAN.md
+AI_PROJECT/AGENT_TASKS.md
+AI_PROJECT/AGENT_LOCKS.md
+AI_PROJECT/AGENT_RESULTS.md
+AI_PROJECT/AGENT_METRICS.md
 AI_PROJECT/AI_DEV_SYSTEM_VERSION.md
 AI_PROJECT/docs/verification-policy.md
 ```
@@ -132,6 +137,11 @@ docs/verification-policy.md
 | `AI_PROJECT/CODEX_TASKS.md` | Compact backlog or project board with task IDs, states and acceptance notes. | Before selecting or creating implementation tasks. | Project Manager AI, ChatGPT Orchestrator or Human Owner. |
 | `AI_PROJECT/CODEX_SESSION_LOG.md` | Journal of Codex task cycles, results, checks, errors and decisions. | During review, audit, handoff and continuation. | Codex Executor for reports; ChatGPT Orchestrator or reviewer for summaries. |
 | `AI_PROJECT/PROMPTS.md` | Reusable project prompts and prompt fragments. | When preparing repeated project work. | ChatGPT Orchestrator, Technical Writer AI or Human Owner. |
+| `AI_PROJECT/AGENT_PLAN.md` | SOP-guided agent planning snapshot, decomposition assumptions, candidate sequential/parallel groups and approval status. | During multi-agent planning and before preparing Agent Work Packages. | Project Manager AI, ChatGPT Orchestrator or Human Owner with approval. |
+| `AI_PROJECT/AGENT_TASKS.md` | Agent Work Package registry. Planning only, not execution authority. | Before preparing package-level prompts or reviewing planned decomposition. | Project Manager AI, ChatGPT Orchestrator or Human Owner with approval. |
+| `AI_PROJECT/AGENT_LOCKS.md` | File-scope and locked-file planning registry for Agent Work Packages. | Before dependency, conflict or parallel eligibility checks. | Project Manager AI, Code Reviewer AI, QA Engineer AI or Human Owner with approval. |
+| `AI_PROJECT/AGENT_RESULTS.md` | Agent Result intake log and integration review status references. | During result intake, integration review and QA handoff. | ChatGPT Orchestrator, Code Reviewer AI, QA Engineer AI or Technical Writer AI with approval. |
+| `AI_PROJECT/AGENT_METRICS.md` | Lightweight planning, execution, review and QA metrics for pilot validation and lessons learned. | During pilot validation, review and process improvement. | Project Manager AI, QA Engineer AI, AI System Maintainer or Human Owner. |
 | `AI_PROJECT/AI_DEV_SYSTEM_VERSION.md` | Local record of installed AI_Development_System source, version, branch, commit and update method. | During system update, audit and migration. | AI System Maintainer or Human Owner with approval. |
 | `AI_PROJECT/docs/verification-policy.md` | Local verification mode policy and allowed checks. | Before running checks, QA, browser sessions or visual validation. | QA Engineer AI, AI System Maintainer or Human Owner with approval. |
 
@@ -217,6 +227,10 @@ Project control files must not be used to bypass Human Owner approval.
 Project control files must not silently expand implementation scope.
 
 Project control files must not authorize Codex to modify application code during bootstrap unless the Human Owner explicitly approves application changes.
+
+Agent planning files must not authorize execution, parallel execution, automatic execution, automatic merge or automatic acceptance.
+
+The minimal `scripts/agent-plan-mvp.py` helper may read `AI_PROJECT/AGENT_*` files to report missing files, recognizable Agent Work Packages, locked-file conflicts, informational candidate parallel groups and prompt drafts. It must not modify project files, execute Codex, create branches, merge changes or accept results.
 
 Updating `AI_Development_System/` must not overwrite `AI_PROJECT/`.
 
