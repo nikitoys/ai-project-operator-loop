@@ -23,7 +23,10 @@ AGENT_FILES = [
 ]
 
 AWP_RE = re.compile(r"^AWP-[A-Za-z0-9_-]+$")
+AWP_ID_RE = re.compile(r"\bAWP-[A-Za-z0-9_-]+\b")
 EMPTY_VALUES = {"", "tbd", "none", "not checked", "not proposed", "n/a", "-"}
+BLOCKED_STATUSES = {"blocked", "rejected", "archived", "deferred"}
+COMPLETED_STATUSES = {"accepted", "complete", "completed", "done"}
 
 
 @dataclass
@@ -37,6 +40,7 @@ class AgentPackage:
     notes: str = ""
     allowed_files: list[str] = field(default_factory=list)
     locked_files: list[str] = field(default_factory=list)
+    dependencies: list[str] = field(default_factory=list)
 
 
 def project_dir(project_root: Path) -> Path:
@@ -78,13 +82,43 @@ def split_files(value: str) -> list[str]:
     return [part.strip() for part in parts if part.strip() and part.strip().lower() not in EMPTY_VALUES]
 
 
+def unique_preserve_order(values: list[str]) -> list[str]:
+    result: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        if value not in seen:
+            result.append(value)
+            seen.add(value)
+    return result
+
+
+def split_dependencies(value: str) -> list[str]:
+    if value.strip().lower() in EMPTY_VALUES:
+        return []
+    return unique_preserve_order(AWP_ID_RE.findall(value))
+
+
+def header_indexes(cells: list[str]) -> dict[str, int]:
+    return {cell.strip().lower().replace("_", " "): index for index, cell in enumerate(cells)}
+
+
 def parse_agent_tasks(text: str) -> dict[str, AgentPackage]:
     packages: dict[str, AgentPackage] = {}
+    indexes: dict[str, int] = {}
 
     for cells in table_rows(text):
+        if cells and not AWP_RE.match(cells[0]):
+            possible_indexes = header_indexes(cells)
+            if "id" in possible_indexes and (
+                "dependencies" in possible_indexes or "depends on" in possible_indexes
+            ):
+                indexes = possible_indexes
+            continue
+
         if len(cells) < 2 or not AWP_RE.match(cells[0]):
             continue
 
+        dependency_index = indexes.get("dependencies", indexes.get("depends on"))
         package = AgentPackage(
             id=cells[0],
             status=cells[1] if len(cells) > 1 else "",
@@ -93,10 +127,74 @@ def parse_agent_tasks(text: str) -> dict[str, AgentPackage]:
             parent_task=cells[4] if len(cells) > 4 else "",
             verification_mode=cells[5] if len(cells) > 5 else "",
             notes=cells[6] if len(cells) > 6 else "",
+            dependencies=split_dependencies(cells[dependency_index])
+            if dependency_index is not None and dependency_index < len(cells)
+            else [],
         )
         packages[package.id] = package
 
+    detail_dependencies = parse_agent_task_detail_dependencies(text)
+    for package_id, dependencies in detail_dependencies.items():
+        if package_id in packages:
+            packages[package_id].dependencies = unique_preserve_order(
+                packages[package_id].dependencies + dependencies
+            )
+
     return packages
+
+
+def parse_agent_task_detail_dependencies(text: str) -> dict[str, list[str]]:
+    dependencies: dict[str, list[str]] = {}
+    current_package_id: str | None = None
+
+    for line in text.splitlines():
+        stripped = line.strip()
+        header_match = re.match(r"^#+\s+(AWP-[A-Za-z0-9_-]+)\b", stripped)
+        if header_match:
+            current_package_id = header_match.group(1)
+            continue
+
+        if current_package_id is None:
+            continue
+
+        field_match = re.match(r"^(dependencies|depends_on|depends on)\s*:\s*(.+)$", stripped, re.IGNORECASE)
+        if not field_match:
+            continue
+
+        dependencies[current_package_id] = unique_preserve_order(
+            dependencies.get(current_package_id, []) + split_dependencies(field_match.group(2))
+        )
+
+    return dependencies
+
+
+def parse_agent_plan_dependencies(text: str) -> dict[str, list[str]]:
+    dependencies: dict[str, list[str]] = {}
+    indexes: dict[str, int] = {}
+
+    for cells in table_rows(text):
+        lower_cells = [cell.strip().lower().replace("_", " ") for cell in cells]
+        if "depends on" in lower_cells and ("package" in lower_cells or "agent work package" in lower_cells):
+            indexes = header_indexes(cells)
+            continue
+
+        package_index = indexes.get("package", indexes.get("agent work package"))
+        dependency_index = indexes.get("depends on")
+        if package_index is None or dependency_index is None:
+            continue
+        if package_index >= len(cells) or dependency_index >= len(cells):
+            continue
+
+        package_ids = split_dependencies(cells[package_index])
+        if len(package_ids) != 1:
+            continue
+
+        package_id = package_ids[0]
+        dependencies[package_id] = unique_preserve_order(
+            dependencies.get(package_id, []) + split_dependencies(cells[dependency_index])
+        )
+
+    return dependencies
 
 
 def parse_agent_locks(text: str) -> dict[str, tuple[list[str], list[str]]]:
@@ -113,7 +211,14 @@ def parse_agent_locks(text: str) -> dict[str, tuple[list[str], list[str]]]:
 def load_packages(project_root: Path) -> tuple[dict[str, AgentPackage], dict[Path, str], list[Path]]:
     present, missing = read_agent_files(project_root)
     packages = parse_agent_tasks(present.get(Path("AGENT_TASKS.md"), ""))
+    plan_dependencies = parse_agent_plan_dependencies(present.get(Path("AGENT_PLAN.md"), ""))
     locks = parse_agent_locks(present.get(Path("AGENT_LOCKS.md"), ""))
+
+    for package_id, dependencies in plan_dependencies.items():
+        if package_id in packages:
+            packages[package_id].dependencies = unique_preserve_order(
+                packages[package_id].dependencies + dependencies
+            )
 
     for package_id, (allowed_files, locked_files) in locks.items():
         package = packages.setdefault(package_id, AgentPackage(id=package_id))
@@ -121,6 +226,125 @@ def load_packages(project_root: Path) -> tuple[dict[str, AgentPackage], dict[Pat
         package.locked_files = locked_files
 
     return packages, present, missing
+
+
+def normalized_status(package: AgentPackage) -> str:
+    return package.status.strip().lower()
+
+
+def is_blocked(package: AgentPackage) -> bool:
+    return normalized_status(package) in BLOCKED_STATUSES
+
+
+def is_complete(package: AgentPackage) -> bool:
+    return normalized_status(package) in COMPLETED_STATUSES
+
+
+def missing_dependency_errors(packages: dict[str, AgentPackage]) -> list[str]:
+    errors: list[str] = []
+    package_ids = set(packages)
+
+    for package in packages.values():
+        missing = [dependency for dependency in package.dependencies if dependency not in package_ids]
+        if missing:
+            errors.append(f"missing dependency for {package.id}: {', '.join(missing)}")
+
+    return errors
+
+
+def cycle_errors(packages: dict[str, AgentPackage]) -> list[str]:
+    errors: list[str] = []
+    state: dict[str, str] = {}
+    path: list[str] = []
+
+    def visit(package_id: str) -> None:
+        if state.get(package_id) == "done":
+            return
+        if state.get(package_id) == "visiting":
+            start = path.index(package_id)
+            errors.append("dependency cycle: " + " -> ".join(path[start:] + [package_id]))
+            return
+
+        state[package_id] = "visiting"
+        path.append(package_id)
+        for dependency in packages[package_id].dependencies:
+            if dependency in packages:
+                visit(dependency)
+        path.pop()
+        state[package_id] = "done"
+
+    for package_id in packages:
+        if state.get(package_id) is None:
+            visit(package_id)
+
+    return unique_preserve_order(errors)
+
+
+def dependency_validation_errors(packages: dict[str, AgentPackage]) -> list[str]:
+    return missing_dependency_errors(packages) + cycle_errors(packages)
+
+
+def completed_package_ids(packages: dict[str, AgentPackage]) -> set[str]:
+    return {package.id for package in packages.values() if is_complete(package)}
+
+
+def incomplete_prerequisites(package: AgentPackage, completed: set[str]) -> list[str]:
+    return [dependency for dependency in package.dependencies if dependency not in completed]
+
+
+def ready_packages(packages: dict[str, AgentPackage]) -> list[AgentPackage]:
+    completed = completed_package_ids(packages)
+    ready: list[AgentPackage] = []
+
+    for package in packages.values():
+        if is_complete(package) or is_blocked(package):
+            continue
+        if not incomplete_prerequisites(package, completed):
+            ready.append(package)
+
+    return ready
+
+
+def topological_layers(packages: dict[str, AgentPackage]) -> list[list[str]]:
+    satisfied = completed_package_ids(packages)
+    remaining = {
+        package.id
+        for package in packages.values()
+        if not is_complete(package) and not is_blocked(package)
+    }
+    layers: list[list[str]] = []
+
+    while remaining:
+        layer = [
+            package_id
+            for package_id in packages
+            if package_id in remaining and not incomplete_prerequisites(packages[package_id], satisfied)
+        ]
+        if not layer:
+            break
+        layers.append(layer)
+        remaining.difference_update(layer)
+        satisfied.update(layer)
+
+    return layers
+
+
+def dependency_exclusions(packages: dict[str, AgentPackage], ready_ids: set[str]) -> list[str]:
+    completed = completed_package_ids(packages)
+    exclusions: list[str] = []
+
+    for package in packages.values():
+        if package.id in ready_ids or is_complete(package):
+            continue
+        if is_blocked(package):
+            exclusions.append(f"{package.id}: excluded because status is {package.status or 'unknown'}")
+            continue
+
+        incomplete = incomplete_prerequisites(package, completed)
+        if incomplete:
+            exclusions.append(f"{package.id}: waiting for incomplete prerequisites: {', '.join(incomplete)}")
+
+    return exclusions
 
 
 def lock_conflicts(packages: dict[str, AgentPackage]) -> dict[str, list[str]]:
@@ -169,8 +393,17 @@ def command_validate(args: argparse.Namespace) -> int:
                 if value.strip().lower() in EMPTY_VALUES
             ]
             suffix = f" incomplete: {', '.join(incomplete)}" if incomplete else " complete enough for planning"
-            print(f"- {package.id}: {package.status or 'unknown'};{suffix}")
+            dependencies = ", ".join(package.dependencies) if package.dependencies else "none"
+            print(f"- {package.id}: {package.status or 'unknown'};{suffix}; dependencies=[{dependencies}]")
 
+    errors = dependency_validation_errors(packages)
+    if errors:
+        print("Dependency Validation: failed")
+        for error in errors:
+            print(f"- {error}")
+        return 1
+
+    print("Dependency Validation: passed")
     return 0
 
 
@@ -208,10 +441,6 @@ def command_list_parallel_groups(args: argparse.Namespace) -> int:
     print_boundary()
     print("Parallel Group Policy: informational only; not executable until Human Owner approval")
 
-    if len(packages) < 2:
-        print("Candidate Parallel Groups: none; fewer than two Agent Work Packages recognized")
-        return 0
-
     conflicts = lock_conflicts(packages)
     if conflicts:
         print("Candidate Parallel Groups: none; locked-file conflicts must be resolved first")
@@ -219,20 +448,55 @@ def command_list_parallel_groups(args: argparse.Namespace) -> int:
             print(f"- conflict {locked_file}: {', '.join(package_ids)}")
         return 0
 
-    ready = [
-        package.id
-        for package in packages.values()
-        if package.status.strip().lower() not in {"blocked", "rejected", "archived"}
-    ]
+    errors = dependency_validation_errors(packages)
+    if errors:
+        print("Dependency Validation: failed")
+        for error in errors:
+            print(f"- {error}")
+        return 1
+
+    if len(packages) < 2:
+        print("Candidate Parallel Groups: none; fewer than two Agent Work Packages recognized")
+        return 0
+
+    completed = completed_package_ids(packages)
+    ready = ready_packages(packages)
+    ready_ids = {package.id for package in ready}
+    ready_labels = [package.id for package in ready]
+
+    print("Dependency Validation: passed")
+    print("Completed/Satisfied Prerequisites:", ", ".join(sorted(completed)) if completed else "none")
+    print("Ready Dependency Layer:")
+    if ready_labels:
+        print(f"- ready_layer_1: {', '.join(ready_labels)}")
+        print("  reason: all listed packages are unblocked and all AWP prerequisites are complete/satisfied")
+    else:
+        print("- none")
+
+    layers = topological_layers(packages)
+    if layers:
+        print("Topological Dependency Layers:")
+        for index, layer in enumerate(layers, 1):
+            marker = "current_ready" if index == 1 else "future_after_prior_layers_complete"
+            print(f"- layer_{index}: {', '.join(layer)}")
+            print(f"  status: {marker}")
+
+    exclusions = dependency_exclusions(packages, ready_ids)
+    if exclusions:
+        print("Excluded Packages:")
+        for exclusion in exclusions:
+            print(f"- {exclusion}")
+
     if len(ready) < 2:
-        print("Candidate Parallel Groups: none; fewer than two non-blocked packages")
+        print("Candidate Parallel Groups: none; ready dependency layer has fewer than two packages")
         return 0
 
     print("Candidate Parallel Groups:")
-    print(f"- candidate_group_1: {', '.join(ready)}")
+    print(f"- candidate_group_1: {', '.join(ready_labels)}")
     print("  status: informational_only")
     print("  execution_authorized: no")
     print("  human_owner_approval_required: yes")
+    print("  validity: all listed packages are unblocked and have only complete/satisfied AWP prerequisites")
     return 0
 
 
@@ -327,4 +591,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

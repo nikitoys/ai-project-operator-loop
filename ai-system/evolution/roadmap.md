@@ -140,9 +140,15 @@ Exit criteria:
 - existing integrated repositories can update predictably;
 - update behavior is documented and testable.
 
-### P6 — SOP and Optional Multi-Agent Execution Layer
+### P6 — SOP and Optional Multi-Agent Control Plane
 
-Goal: increase implementation speed and quality through SOP-guided planning, optional task decomposition into Agent Work Packages and controlled parallel execution when safe.
+Goal: increase implementation speed and quality through SOP-guided planning, optional task decomposition into Agent Work Packages, dry-run plan validation and controlled manual orchestration when safe.
+
+Current position:
+
+AI_Development_System is currently a SOP-driven AI development control plane with dry-run planning support.
+
+It is not a real runtime. It does not provide agent execution orchestration, automatic Codex execution, automatic branch/worktree lifecycle, automatic merge or automatic acceptance.
 
 Items:
 
@@ -154,7 +160,17 @@ Items:
 6. Add AI_PROJECT agent planning templates.
 7. Add dry-run agent planner MVP.
 8. Extend the golden project with a multi-agent planning example.
-9. Run pilot validation and decide whether runtime integration is justified.
+9. Run pilot validation.
+10. Record runtime decision as deferred until readiness criteria are met.
+11. Improve dependency-aware dry-run planning.
+12. Add planning fixtures and validation tests.
+13. Define runtime maturity levels.
+14. Introduce manual multi-agent orchestration mode without automatic execution.
+15. Harden agent result schemas.
+16. Add CI checks for specs, templates and golden project validation.
+17. Expand pilot validation evidence.
+18. Prepare future runtime adapter contracts without enabling runtime.
+19. Consider assisted execution only after the deferred runtime criteria are satisfied.
 
 Exit criteria:
 
@@ -162,7 +178,20 @@ Exit criteria:
 - Agent Work Packages can be planned without automatic execution;
 - safe parallel groups can be identified only after approval and file-lock checks;
 - agent results can be intaken, reviewed, QA-checked and accepted or rejected by Human Owner;
-- runtime integration is decided from pilot evidence.
+- runtime integration is explicitly deferred until readiness criteria are met;
+- manual orchestration is repeatable before assisted or controlled runtime work is reconsidered.
+
+Immediate priorities:
+
+1. `EVOL-019` — completed; runtime decision recorded as `DEFERRED`.
+2. `EVOL-020` — completed; dependency graph parsing improved while keeping `scripts/agent-plan-mvp.py` dry-run/reporting only.
+3. `EVOL-021` — next proposed follow-up: add broader planning fixtures and validation tests.
+
+Runtime maturity target:
+
+Current level: `L2 — Dry-run planning`.
+
+Next target: `L3 — Manual multi-agent orchestration`.
 
 ### P7 — Research and Benchmarking
 

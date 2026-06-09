@@ -2,6 +2,58 @@
 
 Status: Draft
 
+## v0.35.0
+
+### Added
+
+- Added `examples/agent-plan-fixtures/` with dry-run planning fixtures for accepted prerequisites, missing dependencies, cycle detection and blocked package exclusion.
+
+### Updated
+
+- Improved `scripts/agent-plan-mvp.py list-parallel-groups` so candidate groups are dependency-aware.
+- Added parsing for explicit AWP dependencies from `AI_PROJECT/AGENT_TASKS.md` package detail fields and `AI_PROJECT/AGENT_PLAN.md` dependency tables.
+- Added missing dependency and dependency cycle validation.
+- Added ready dependency layer output and exclusion explanations for blocked packages or incomplete prerequisites.
+- Marked `EVOL-020 — Improve dry-run agent planner dependency parsing` as `Done`.
+- Updated roadmap P6 immediate priorities so `EVOL-020` is completed and `EVOL-021` is the next proposed follow-up.
+- Updated README version mirrors to `v0.35.0`.
+
+### Reason
+
+`EVOL-020` fixes over-broad candidate parallel group reporting while preserving dry-run safety boundaries. The helper still does not execute Codex, create branches or worktrees, merge changes, modify application code, accept results or change the deferred runtime decision.
+
+## v0.34.0
+
+### Updated
+
+- Marked `EVOL-019 — Runtime Decision Record` as `Done`.
+- Recorded the runtime decision as `DEFERRED` in `ai-system/evolution/evolution-backlog.md`.
+- Updated roadmap P6 immediate priorities so `EVOL-019` is completed and `EVOL-020` remains the next proposed technical improvement.
+- Updated README version mirrors to `v0.34.0`.
+
+### Reason
+
+`EVOL-019` formally closes the runtime decision step. Runtime execution remains deferred. Dry-run planning, Agent Work Package generation, agent plan validation, candidate parallel group listing, manual orchestration and Human Owner-controlled review remain allowed. Automatic Codex execution, automatic multi-agent execution, branch/worktree lifecycle automation, automatic merge, automatic acceptance, automatic QA/review closure and bypassing Human Owner approval remain forbidden. No runtime or automation behavior was implemented.
+
+## v0.33.0
+
+### Added
+
+- Added the post-`EVOL-018` development plan to `ai-system/evolution/evolution-backlog.md`.
+- Added proposed backlog items `EVOL-021` through `EVOL-028`.
+- Added explicit runtime maturity direction to the P6 roadmap: current level `L2 — Dry-run planning`, next target `L3 — Manual multi-agent orchestration`.
+
+### Updated
+
+- Expanded `EVOL-019` as the required Runtime Decision Record with decision `DEFERRED`, allowed dry-run/manual capabilities, forbidden runtime automation and revisit criteria.
+- Expanded `EVOL-020` with dependency graph parsing requirements, topological layering, cycle/missing dependency detection and the `AWP-REQ-001` / `AWP-BE-001` / `AWP-FE-001` / `AWP-QA-001` example.
+- Updated roadmap P6 from optional multi-agent execution language to a SOP and optional multi-agent control-plane plan.
+- Updated README version mirrors to `v0.33.0`.
+
+### Reason
+
+The next development plan after `EVOL-008` through `EVOL-018` must be explicit before runtime discussions continue. Runtime execution remains deferred. Immediate priorities are `EVOL-019` and `EVOL-020`; future work targets dependency-aware dry-run planning, manual orchestration, stronger schemas, validation CI and broader pilot evidence before any assisted or controlled runtime is reconsidered.
+
 ## v0.32.0
 
 ### Added
