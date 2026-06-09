@@ -2,6 +2,23 @@
 
 Status: Draft
 
+## v0.17.2
+
+### Added
+
+- Added `scripts/check-docs-integrity.py` for local documentation integrity validation.
+- Added `.github/workflows/docs-integrity.yml` to run documentation integrity checks on push and pull request.
+
+### Updated
+
+- Updated README version mirrors to `v0.17.2`.
+- Updated the owner evolution plan and evolution backlog to mark `EVOL-003` as completed and recommend `EVOL-004` as the next bounded phase.
+- Documented the documentation integrity check command in the root README files and AI system README.
+
+### Reason
+
+`EVOL-003` adds practical documentation integrity checks for Markdown links, unresolved placeholders, index completeness and status/version consistency without starting security/privacy policy work, golden example work or the machine-checkable specification layer.
+
 ## v0.17.1
 
 ### Updated

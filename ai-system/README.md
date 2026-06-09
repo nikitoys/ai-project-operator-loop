@@ -1,7 +1,7 @@
 # AI Development System
 
 Status: Draft  
-Version: v0.17.1
+Version: v0.17.2
 
 ## Purpose
 
@@ -20,6 +20,16 @@ AI roles do not work from inspiration. They work from approved documents, explic
 The current AI_Development_System version is the top version entry in `system-changelog.md`.
 
 Primary README files mirror that changelog version and must be updated whenever the top changelog version changes.
+
+## Documentation Integrity Checks
+
+Run the repository documentation integrity checks with:
+
+```bash
+python3 scripts/check-docs-integrity.py
+```
+
+The check covers internal Markdown links, unresolved placeholders outside reusable templates, index completeness for system documents and visible status/version consistency.
 
 ## System Layers
 
@@ -86,6 +96,7 @@ AI Development System
 - `document-templates.md` — templates for project documents.
 - `system-changelog.md` — history of changes to the AI Development System.
 - `improvement-log.md` — observations and problems in the system.
+- `../scripts/check-docs-integrity.py` — documentation integrity check for links, placeholders, indexes and version/status fields.
 
 ## Evolution Module
 

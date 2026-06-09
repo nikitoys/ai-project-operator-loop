@@ -157,7 +157,7 @@ Completed as a bounded documentation/status synchronization task. The authoritat
 
 ## EVOL-003 — Add documentation integrity checks
 
-Status: Proposed  
+Status: Done  
 Priority: P1  
 Source: Analytical report finding  
 Roadmap item: P1 — Consistency and Documentation Integrity  
@@ -182,6 +182,10 @@ Acceptance criteria:
 Conversion path:
 
 System change and automation task.
+
+Notes:
+
+Completed as a bounded verification task. Added a local documentation integrity checker and GitHub workflow for Markdown links, unresolved placeholder markers outside reusable templates, index completeness and visible status/version consistency. EVOL-004 remains the next recommended phase and was not started.
 
 ---
 

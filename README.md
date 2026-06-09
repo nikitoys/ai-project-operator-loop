@@ -3,13 +3,19 @@
 Languages: [English](README.md) | [Русский](README.ru.md)
 
 Status: Draft
-Version: v0.17.1
+Version: v0.17.2
 
 This repository contains an AI Development System: an operating model for developing projects through AI roles, documentation, lifecycle governance, prompt generation, Codex execution, review and controlled evolution.
 
 It is not a normal application repository. The primary source of truth is `/ai-system`.
 
 Version source: the current AI_Development_System version is the top entry in `/ai-system/system-changelog.md`. README files mirror that version and must not claim a newer or different version.
+
+Documentation integrity checks can be run with:
+
+```bash
+python3 scripts/check-docs-integrity.py
+```
 
 ## At a Glance
 

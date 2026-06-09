@@ -66,7 +66,7 @@ Date recorded: 2026-06-09
 Status: Partially Planned
 Related roadmap items: P1, P2, P3
 Related backlog items: EVOL-002, EVOL-003, EVOL-004, EVOL-005
-Next bounded task: EVOL-003 - Add documentation integrity checks
+Next bounded task: EVOL-004 - Add security, privacy and data-handling policy
 ```
 
 ## Owner Goals
@@ -120,7 +120,7 @@ Verification mode: CODE_ONLY_FAST
 Human Owner approval required: Human Owner reviews local result before commit/push
 ```
 
-## Next Bounded Task Candidate
+## Completed Bounded Task
 
 ```text
 Task title: Add documentation integrity checks
@@ -128,14 +128,32 @@ Source plan section: 2. Add docs CI.
 Roadmap item: P1 - Consistency and Documentation Integrity
 Backlog item: EVOL-003 - Add documentation integrity checks
 Active Role: AI System Maintainer + DevOps AI
+Active Stage: System Evolution Release
+Active Document: ai-system/evolution/evolution-backlog.md
+Expected Result: Documentation integrity checks added
+Allowed files: scripts/check-docs-integrity.py, .github/workflows/docs-integrity.yml, README.md, README.ru.md, ai-system/README.md, ai-system/evolution/evolution-backlog.md, ai-system/evolution/owner-evolution-plan.md, ai-system/system-changelog.md
+Out of scope: security/privacy policy, golden example project, product code
+Acceptance criteria: Markdown links checked; unresolved placeholders checked; index completeness checked; version/status consistency checked; changelog updated; EVOL-004 recommended next
+Verification mode: FAST_VALIDATION
+Human Owner approval required: Human Owner reviews local result before commit/push
+```
+
+## Next Bounded Task Candidate
+
+```text
+Task title: Add security, privacy and data-handling policy
+Source plan section: 3. Add security/privacy policy.
+Roadmap item: P2 - Security, Privacy and Data Handling
+Backlog item: EVOL-004 - Add security, privacy and data-handling policy
+Active Role: AI System Maintainer + Security Reviewer AI
 Active Stage: System Evolution Planning
 Active Document: ai-system/evolution/evolution-backlog.md
-Expected Result: Prepare one bounded documentation integrity check task
-Allowed files: To be defined in the bounded task package before execution
-Out of scope: security/privacy policy, golden example project, product code
-Acceptance criteria: To be defined in the bounded task package before execution
-Verification mode: CODE_ONLY_FAST unless automation requires stronger checks
-Human Owner approval required: Yes before adding CI or automation behavior
+Expected Result: Prepare AICP for security/privacy/data-handling policy
+Allowed files: To be defined in the AICP or bounded task package before execution
+Out of scope: golden example project, machine-checkable spec layer, product code
+Acceptance criteria: To be defined in the AICP before execution
+Verification mode: CODE_ONLY_FAST unless policy review requires stronger checks
+Human Owner approval required: Yes; AICP required before behavior-changing policy work
 ```
 
 ## Intake Notes
