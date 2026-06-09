@@ -191,7 +191,7 @@ Completed as a bounded verification task. Added a local documentation integrity 
 
 ## EVOL-004 — Add security, privacy and data-handling policy
 
-Status: Proposed  
+Status: Done  
 Priority: P1  
 Source: Analytical report finding  
 Roadmap item: P2 — Security, Privacy and Data Handling  
@@ -217,6 +217,10 @@ Acceptance criteria:
 Conversion path:
 
 AICP required.
+
+Notes:
+
+Completed with `ai-system/aicp-security-privacy-policy.md`, centralized security and privacy/data-handling policies, review/rules references and project-template inheritance links. EVOL-005 remains the next recommended phase and was not started.
 
 ---
 

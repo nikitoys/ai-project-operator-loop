@@ -2,6 +2,25 @@
 
 Status: Draft
 
+## v0.18.0
+
+### Added
+
+- Added `ai-system/aicp-security-privacy-policy.md` for the approved EVOL-004 system change.
+- Added `ai-system/security-policy.md` with secret-handling, automation, sandbox, sensitive-code and incident-handling rules.
+- Added `ai-system/privacy-data-handling-policy.md` with private-data, sensitive-data, external LLM sharing, data minimization and generated-artifact rules.
+
+### Updated
+
+- Updated README version mirrors to `v0.18.0`.
+- Updated `rules.md` and `review-process.md` to reference security and privacy policies.
+- Updated project templates so concrete projects inherit the AI_Development_System security and privacy baseline.
+- Updated the owner evolution plan and evolution backlog to mark `EVOL-004` as completed and recommend `EVOL-005` as the next bounded phase.
+
+### Reason
+
+`EVOL-004` centralizes the minimum security, privacy and data-handling baseline for AI-assisted development without starting golden example work or the machine-checkable specification layer.
+
 ## v0.17.2
 
 ### Added

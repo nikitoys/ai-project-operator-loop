@@ -1,7 +1,7 @@
 # AI Development System
 
 Status: Draft  
-Version: v0.17.2
+Version: v0.18.0
 
 ## Purpose
 
@@ -30,6 +30,13 @@ python3 scripts/check-docs-integrity.py
 ```
 
 The check covers internal Markdown links, unresolved placeholders outside reusable templates, index completeness for system documents and visible status/version consistency.
+
+## Security and Privacy Baseline
+
+AI-assisted work must follow:
+
+- `security-policy.md` for secrets, sandbox boundaries, sensitive code and security review;
+- `privacy-data-handling-policy.md` for private data, external LLM sharing and data minimization.
 
 ## System Layers
 
@@ -92,7 +99,10 @@ AI Development System
 - `project-bootstrap.md` — workflow for initializing new and existing project repositories.
 - `project-system-update.md` — workflow for updating already integrated project control layers.
 - `verification-modes.md` — explicit check modes and on-demand browser/visual QA rules.
+- `security-policy.md` — security baseline for secrets, sandbox boundaries, sensitive code and automation.
+- `privacy-data-handling-policy.md` — privacy and data-handling rules for private data, external LLMs and generated artifacts.
 - `aicp-language-policy.md` — approved change proposal for language and localization policy.
+- `aicp-security-privacy-policy.md` — approved change proposal for security, privacy and data-handling policy.
 - `document-templates.md` — templates for project documents.
 - `system-changelog.md` — history of changes to the AI Development System.
 - `improvement-log.md` — observations and problems in the system.

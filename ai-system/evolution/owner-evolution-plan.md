@@ -66,7 +66,7 @@ Date recorded: 2026-06-09
 Status: Partially Planned
 Related roadmap items: P1, P2, P3
 Related backlog items: EVOL-002, EVOL-003, EVOL-004, EVOL-005
-Next bounded task: EVOL-004 - Add security, privacy and data-handling policy
+Next bounded task: EVOL-005 - Create golden example project
 ```
 
 ## Owner Goals
@@ -138,7 +138,7 @@ Verification mode: FAST_VALIDATION
 Human Owner approval required: Human Owner reviews local result before commit/push
 ```
 
-## Next Bounded Task Candidate
+## Completed Bounded Task
 
 ```text
 Task title: Add security, privacy and data-handling policy
@@ -146,14 +146,32 @@ Source plan section: 3. Add security/privacy policy.
 Roadmap item: P2 - Security, Privacy and Data Handling
 Backlog item: EVOL-004 - Add security, privacy and data-handling policy
 Active Role: AI System Maintainer + Security Reviewer AI
+Active Stage: System Evolution Release
+Active Document: ai-system/evolution/evolution-backlog.md
+Expected Result: Security/privacy/data-handling policy added
+Allowed files: ai-system/aicp-security-privacy-policy.md, ai-system/security-policy.md, ai-system/privacy-data-handling-policy.md, ai-system/review-process.md, ai-system/rules.md, ai-system/README.md, ai-system/templates/project/AGENTS.md, ai-system/templates/foldered/AGENTS.root.md, ai-system/templates/foldered/AI_PROJECT/AGENTS.md, ai-system/templates/project/CODEX_WORKFLOW.md, ai-system/templates/foldered/AI_PROJECT/CODEX_WORKFLOW.md, ai-system/evolution/evolution-backlog.md, ai-system/evolution/owner-evolution-plan.md, ai-system/system-changelog.md, README.md, README.ru.md
+Out of scope: golden example project, machine-checkable spec layer, product code
+Acceptance criteria: Secret-handling rules exist; external LLM data-sharing rules exist; sandbox/execution boundaries exist; security review can reference policy; project templates inherit policy
+Verification mode: FAST_VALIDATION
+Human Owner approval required: Human Owner reviews local result before commit/push
+```
+
+## Next Bounded Task Candidate
+
+```text
+Task title: Create golden example project
+Source plan section: 4. Add golden example project.
+Roadmap item: P3 - Golden Example and Pilot Validation
+Backlog item: EVOL-005 - Create golden example project
+Active Role: AI System Maintainer + Technical Writer AI
 Active Stage: System Evolution Planning
 Active Document: ai-system/evolution/evolution-backlog.md
-Expected Result: Prepare AICP for security/privacy/data-handling policy
-Allowed files: To be defined in the AICP or bounded task package before execution
-Out of scope: golden example project, machine-checkable spec layer, product code
-Acceptance criteria: To be defined in the AICP before execution
-Verification mode: CODE_ONLY_FAST unless policy review requires stronger checks
-Human Owner approval required: Yes; AICP required before behavior-changing policy work
+Expected Result: Prepare one bounded golden example task
+Allowed files: To be defined in the bounded task package before execution
+Out of scope: machine-checkable spec layer, product code outside the example scope
+Acceptance criteria: To be defined before execution
+Verification mode: FAST_VALIDATION unless example validation requires stronger checks
+Human Owner approval required: Yes before creating or adopting the example scope
 ```
 
 ## Intake Notes

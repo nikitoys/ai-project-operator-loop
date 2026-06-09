@@ -10,6 +10,8 @@ Before repository-affecting work, read:
 AI_PROJECT/AGENTS.md
 AI_PROJECT/PROJECT_GOAL.md
 AI_PROJECT/docs/verification-policy.md
+AI_Development_System/ai-system/security-policy.md
+AI_Development_System/ai-system/privacy-data-handling-policy.md
 AI_Development_System/AGENTS.md
 AI_Development_System/ai-system/rules.md
 ```
@@ -56,3 +58,5 @@ Expected Result:
 Default Verification Mode: `{{DEFAULT_VERIFICATION_MODE}}`
 
 Browser automation, Playwright/MCP browser sessions, screenshots, browser console checks and manual visual QA are on-demand only.
+
+Security and privacy work inherits `AI_Development_System/ai-system/security-policy.md` and `AI_Development_System/ai-system/privacy-data-handling-policy.md`.

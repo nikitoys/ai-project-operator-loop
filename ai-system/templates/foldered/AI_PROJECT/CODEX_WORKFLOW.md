@@ -47,6 +47,15 @@ Do not run them unless the Human Owner explicitly requests them or acceptance cr
 
 Do not mark a task `PARTIAL` only because browser or visual checks were skipped unless those checks were explicitly required.
 
+## Security and Privacy Policy
+
+This project inherits:
+
+- `AI_Development_System/ai-system/security-policy.md`
+- `AI_Development_System/ai-system/privacy-data-handling-policy.md`
+
+Project-local rules may be stricter, but must not weaken the inherited baseline without explicit Human Owner approval.
+
 ## System Update Boundary
 
 `AI_Development_System/` may be updated only during explicit system update or evolution work.

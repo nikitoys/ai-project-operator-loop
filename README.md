@@ -3,7 +3,7 @@
 Languages: [English](README.md) | [Русский](README.ru.md)
 
 Status: Draft
-Version: v0.17.2
+Version: v0.18.0
 
 This repository contains an AI Development System: an operating model for developing projects through AI roles, documentation, lifecycle governance, prompt generation, Codex execution, review and controlled evolution.
 
@@ -16,6 +16,8 @@ Documentation integrity checks can be run with:
 ```bash
 python3 scripts/check-docs-integrity.py
 ```
+
+Security and privacy baselines are defined in `/ai-system/security-policy.md` and `/ai-system/privacy-data-handling-policy.md`.
 
 ## At a Glance
 
