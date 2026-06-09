@@ -2,6 +2,25 @@
 
 Status: Draft
 
+## v0.21.0
+
+### Added
+
+- Added `scripts/foldered-control-mvp.py` as a minimal Foldered Control Mode bootstrap/update helper.
+- Added dry-run bootstrap planning for root `AGENTS.md` and `AI_PROJECT/` control files.
+- Added dry-run update reporting for required control files, unresolved placeholders and `AI_PROJECT/AI_DEV_SYSTEM_VERSION.md` tracking.
+
+### Updated
+
+- Updated README version mirrors to `v0.21.0`.
+- Updated bootstrap, project-system-update and foldered-integration docs to reference the helper and its dry-run-first boundary.
+- Updated `ai-system/README.md` and `ai-system/evolution/README.md` indexes.
+- Added and completed `EVOL-007` in `evolution-backlog.md`.
+
+### Reason
+
+`EVOL-007` starts P5 bootstrap/update tooling with a small script-level MVP for dry-run planning, placeholder detection and version tracking while avoiding a large CLI, package, release automation, upstream git management or product-code changes.
+
 ## v0.20.0
 
 ### Added

@@ -3,7 +3,7 @@
 Languages: [English](README.md) | [Русский](README.ru.md)
 
 Status: Draft
-Version: v0.20.0
+Version: v0.21.0
 
 This repository contains an AI Development System: an operating model for developing projects through AI roles, documentation, lifecycle governance, prompt generation, Codex execution, review and controlled evolution.
 
@@ -20,6 +20,8 @@ python3 scripts/check-docs-integrity.py
 Security and privacy baselines are defined in `/ai-system/security-policy.md` and `/ai-system/privacy-data-handling-policy.md`.
 
 Machine-checkable specs for stable system entities are stored in `/spec`.
+
+Minimal foldered bootstrap/update dry-runs can be run with `scripts/foldered-control-mvp.py`.
 
 ## At a Glance
 
@@ -112,6 +114,18 @@ AI_PROJECT/docs/verification-policy.md
 For onboarding, a concrete Task Tracker example is available at:
 
 - `examples/golden-project/` — a fully filled foldered control-layer example without product code.
+
+Minimal dry-run bootstrap helper:
+
+```bash
+python3 scripts/foldered-control-mvp.py bootstrap --project-root /path/to/project
+```
+
+Minimal dry-run update helper:
+
+```bash
+python3 scripts/foldered-control-mvp.py update --project-root /path/to/project
+```
 
 For an existing repository, bootstrap must create or adapt control files only. It must not rewrite, refactor or move application code unless the Human Owner explicitly approves a separate implementation task.
 

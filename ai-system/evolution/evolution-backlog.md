@@ -292,3 +292,41 @@ Notes:
 - Added `spec/` as a minimal JSON-based machine-checkable layer for roles, interaction modes, verification modes and common lifecycle states.
 - Added a shared minimal JSON Schema and validation guidance in `spec/README.md`.
 - Markdown remains the operational source of truth; EVOL-006 does not regenerate Markdown, add CI schema lint, delete existing docs or start bootstrap/release/research work.
+
+---
+
+## EVOL-007 — Add minimal foldered bootstrap/update tooling MVP
+
+Status: Done  
+Priority: P2  
+Source: Human Owner request after EVOL-006  
+Roadmap item: P5 — Bootstrap and Update Tooling  
+Owner: AI System Maintainer / DevOps Engineer AI / Technical Writer AI  
+Type: Automation
+
+Problem:
+
+Foldered integration is documented and templated, but there is no minimal local helper for dry-run bootstrap/update planning, placeholder detection or `AI_DEV_SYSTEM_VERSION.md` tracking.
+
+Expected outcome:
+
+Add a small script-level MVP that can inspect or prepare foldered control-layer setup without creating a large CLI, package or release automation system.
+
+Acceptance criteria:
+
+- dry-run is the default mode;
+- explicit apply mode exists for bounded file creation/update;
+- unresolved placeholders are reported;
+- `AI_PROJECT/AI_DEV_SYSTEM_VERSION.md` can be created or refreshed;
+- docs explain that application code is not modified;
+- changelog records the change.
+
+Conversion path:
+
+System change and automation task.
+
+Notes:
+
+- Added `scripts/foldered-control-mvp.py` with `bootstrap` and `update` commands, dry-run by default and explicit `--apply` for writes.
+- The MVP creates missing foldered control files from templates during bootstrap and refreshes `AI_PROJECT/AI_DEV_SYSTEM_VERSION.md` during update.
+- Large CLI/package/release automation, upstream clone/subtree management and product-code changes remain out of scope.

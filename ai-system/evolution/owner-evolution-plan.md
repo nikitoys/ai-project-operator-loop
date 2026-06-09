@@ -66,7 +66,7 @@ Date recorded: 2026-06-09
 Status: Partially Planned
 Related roadmap items: P1, P2, P3, P4
 Related backlog items: EVOL-002, EVOL-003, EVOL-004, EVOL-005, EVOL-006
-Next bounded task: No active OWNER-EVOL-001 task remains; future P5 bootstrap/update tooling requires a separate bounded backlog item and approval.
+Next bounded task: No active OWNER-EVOL-001 task remains; EVOL-007 was added as a post-plan bounded Human Owner request. Future work requires a separate bounded backlog item and approval.
 ```
 
 ## Owner Goals
@@ -188,6 +188,24 @@ Expected Result: Minimal machine-checkable `spec/` layer exists for roles, inter
 Allowed files: spec/README.md, spec/roles.json, spec/interaction-modes.json, spec/verification-modes.json, spec/lifecycle-states.json, spec/schemas/system-spec.schema.json, README.md, README.ru.md, ai-system/README.md, ai-system/evolution/evolution-backlog.md, ai-system/evolution/owner-evolution-plan.md, ai-system/system-changelog.md
 Out of scope: Markdown regeneration, deleting existing docs, CI schema lint, bootstrap tooling, release packaging, research work
 Acceptance criteria: First spec area selected; schema defined; validation process documented; generated/derived documentation policy defined
+Verification mode: FAST_VALIDATION
+Human Owner approval required: Human Owner reviews local result before commit/push
+```
+
+## Completed Post-Plan Bounded Task
+
+```text
+Task title: Add minimal foldered bootstrap/update tooling MVP
+Source plan section: Post-OWNER-EVOL-001 Human Owner request.
+Roadmap item: P5 - Bootstrap and Update Tooling
+Backlog item: EVOL-007 - Add minimal foldered bootstrap/update tooling MVP
+Active Role: AI System Maintainer + DevOps Engineer AI + Technical Writer AI
+Active Stage: System Evolution Release
+Active Document: ai-system/evolution/evolution-backlog.md
+Expected Result: Minimal dry-run foldered bootstrap/update helper exists
+Allowed files: scripts/foldered-control-mvp.py, README.md, README.ru.md, ai-system/README.md, ai-system/project-bootstrap.md, ai-system/project-system-update.md, ai-system/foldered-integration.md, ai-system/evolution/README.md, ai-system/evolution/evolution-backlog.md, ai-system/evolution/owner-evolution-plan.md, ai-system/system-changelog.md
+Out of scope: large CLI, package automation, release automation, upstream git clone/subtree management, product code
+Acceptance criteria: dry-run default; explicit apply mode; unresolved placeholders reported; AI_DEV_SYSTEM_VERSION tracking supported; docs and changelog updated
 Verification mode: FAST_VALIDATION
 Human Owner approval required: Human Owner reviews local result before commit/push
 ```

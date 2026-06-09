@@ -1,7 +1,7 @@
 # AI Development System
 
 Status: Draft  
-Version: v0.20.0
+Version: v0.21.0
 
 ## Purpose
 
@@ -30,6 +30,17 @@ python3 scripts/check-docs-integrity.py
 ```
 
 The check covers internal Markdown links, unresolved placeholders outside reusable templates, index completeness for system documents and visible status/version consistency.
+
+## Foldered Bootstrap/Update Helper
+
+Run minimal dry-run planning for Foldered Control Mode with:
+
+```bash
+python3 scripts/foldered-control-mvp.py bootstrap --project-root /path/to/project
+python3 scripts/foldered-control-mvp.py update --project-root /path/to/project
+```
+
+The helper reports planned control-layer changes, unresolved placeholders and `AI_PROJECT/AI_DEV_SYSTEM_VERSION.md` tracking. Writes require explicit `--apply`.
 
 ## Machine-Checkable Specs
 
@@ -121,6 +132,7 @@ AI Development System
 - `system-changelog.md` — history of changes to the AI Development System.
 - `improvement-log.md` — observations and problems in the system.
 - `../scripts/check-docs-integrity.py` — documentation integrity check for links, placeholders, indexes and version/status fields.
+- `../scripts/foldered-control-mvp.py` — minimal dry-run bootstrap/update helper for Foldered Control Mode.
 - `../spec/README.md` — machine-checkable spec layer policy and validation guidance.
 
 ## Evolution Module
