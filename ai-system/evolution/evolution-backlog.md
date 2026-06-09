@@ -443,7 +443,7 @@ Agent Work Packages do not imply parallel execution and do not authorize automat
 
 ## EVOL-011 — Add Multi-Agent Planning workflow
 
-Status: Proposed  
+Status: Done  
 Priority: P1  
 Source: `sop-multi-agent-implementation-plan.md`  
 Roadmap item: P6 — SOP and Optional Multi-Agent Execution Layer  
@@ -468,6 +468,12 @@ Acceptance criteria:
 Conversion path:
 
 System change.
+
+Notes:
+
+Completed with `ai-system/multi-agent-planning.md`. The workflow defines managed multi-agent plans, planning inputs and outputs, status values, decomposition rules, dependency identification, file-scope and locked-file planning, Human Owner approval points and the path from plan to one next bounded executable work item.
+
+Candidate parallel groups are informational planning output only. Multi-Agent Planning does not authorize execution, parallel execution, automatic execution or automatic acceptance. EVOL-012 remains the next bounded phase and was not started.
 
 ---
 

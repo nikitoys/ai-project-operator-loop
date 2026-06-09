@@ -2,6 +2,23 @@
 
 Status: Draft
 
+## v0.25.0
+
+### Added
+
+- Added `ai-system/multi-agent-planning.md` to define planning-only decomposition of parent tasks into Agent Work Packages.
+- Added Multi-Agent Planning states, inputs, outputs, decomposition rules, dependency rules, file-scope rules and locked-file planning guidance.
+
+### Updated
+
+- Updated README version mirrors to `v0.25.0`.
+- Updated `ai-system/README.md` and `ai-system/operating-model.md` to index the Multi-Agent Planning workflow.
+- Updated `evolution-backlog.md` to mark `EVOL-011` as completed.
+
+### Reason
+
+`EVOL-011` defines Multi-Agent Planning as planning-only workflow. Candidate parallel groups are informational only until a future Parallel Execution Policy exists and Human Owner approves them. This change avoids runtime automation, parallel execution enablement, specs, scripts, templates, automatic execution and automatic acceptance.
+
 ## v0.24.0
 
 ### Added

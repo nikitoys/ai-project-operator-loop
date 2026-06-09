@@ -1,7 +1,7 @@
 # AI Development System
 
 Status: Draft  
-Version: v0.24.0
+Version: v0.25.0
 
 ## Purpose
 
@@ -68,6 +68,12 @@ Sequential execution remains the default. SOPs do not authorize automatic execut
 
 Agent Work Packages do not imply parallel execution and do not authorize automatic execution or automatic acceptance.
 
+## Multi-Agent Planning
+
+`multi-agent-planning.md` defines planning-only decomposition into Agent Work Packages.
+
+Candidate parallel groups are informational only until a future Parallel Execution Policy exists and Human Owner approves them.
+
 ## Security and Privacy Baseline
 
 AI-assisted work must follow:
@@ -113,6 +119,7 @@ AI Development System
 - `workflow.md` — development stages and gates.
 - `sop-model.md` — SOP model for governance-first repeatable procedures.
 - `agent-work-package.md` — standard for bounded Agent Work Packages used in future SOP-guided planning.
+- `multi-agent-planning.md` — planning-only workflow for decomposing parent tasks into Agent Work Packages.
 - `rules.md` — global rules and restrictions.
 - `system-schemes.md` — compact text schemes for roles, documents and process flow.
 - `task-format.md` — standard task format for Codex and AI roles.

@@ -303,6 +303,37 @@ Needs improvement:
 - add Parallel Execution Policy only after approval;
 - add machine-checkable Agent Work Package specs after the Markdown source documents exist.
 
+## 2.7 Multi-Agent Planning Workflow
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/ai-system/multi-agent-planning.md
+/ai-system/agent-work-package.md
+/ai-system/sop-model.md
+/ai-system/evolution/sop-multi-agent-implementation-plan.md
+```
+
+Covers:
+
+- managed multi-agent plan definition;
+- planning inputs and outputs;
+- planning states/status values;
+- decomposition rules for parent tasks into Agent Work Packages;
+- dependency, file-scope and locked-file planning rules;
+- candidate parallel groups as informational planning output only;
+- Human Owner approval points;
+- path from plan to one next bounded executable work item through existing task, prompt and Codex lifecycles;
+- boundary rule that planning does not authorize execution, parallel execution, automatic execution or automatic acceptance.
+
+Needs improvement:
+
+- add Parallel Execution Policy in a separate bounded evolution task;
+- add Agent Result Intake and Integration Review after planning and execution boundaries are approved;
+- add machine-checkable planning specs after Markdown source documents exist.
+
 ---
 
 # 3. Entity Lifecycle Layer
