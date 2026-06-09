@@ -3,7 +3,7 @@
 Languages: [English](README.md) | [Русский](README.ru.md)
 
 Status: Draft
-Version: v0.18.0
+Version: v0.19.0
 
 This repository contains an AI Development System: an operating model for developing projects through AI roles, documentation, lifecycle governance, prompt generation, Codex execution, review and controlled evolution.
 
@@ -106,6 +106,10 @@ AI_PROJECT/PROMPTS.md
 AI_PROJECT/AI_DEV_SYSTEM_VERSION.md
 AI_PROJECT/docs/verification-policy.md
 ```
+
+For onboarding, a concrete Task Tracker example is available at:
+
+- `examples/golden-project/` — a fully filled foldered control-layer example without product code.
 
 For an existing repository, bootstrap must create or adapt control files only. It must not rewrite, refactor or move application code unless the Human Owner explicitly approves a separate implementation task.
 

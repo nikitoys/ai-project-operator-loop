@@ -2,6 +2,23 @@
 
 Status: Draft
 
+## v0.19.0
+
+### Added
+
+- Added `examples/golden-project/` as a fully filled foldered example for Task Tracker with an explicit Task Tracker mission, owner plan, control file set and verification policy.
+
+### Updated
+
+- Updated `README.md` and `README.ru.md` version to `v0.19.0`.
+- Updated `ai-system/README.md` to index the golden example.
+- Updated `evolution-backlog.md` to mark `EVOL-005` as completed.
+- Updated `owner-evolution-plan.md` with the EVOL-005 completion record and next bounded task recommendation.
+
+### Reason
+
+`EVOL-005` adds one complete, minimal example of foldered integration for onboarding, with no real product code and explicit focus on control-layer files.
+
 ## v0.18.0
 
 ### Added

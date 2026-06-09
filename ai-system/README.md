@@ -1,7 +1,7 @@
 # AI Development System
 
 Status: Draft  
-Version: v0.18.0
+Version: v0.19.0
 
 ## Purpose
 
@@ -124,6 +124,7 @@ The `evolution/` directory defines roadmap-driven self-evolution of AI_Developme
 - `evolution/templates/system-change-proposal.md` — AI System Change Proposal template.
 - `evolution/templates/evolution-task.md` — bounded system evolution task template.
 - `evolution/templates/owner-evolution-plan.md` — reusable owner plan intake template.
+- `examples/golden-project/` — filled foldered Task Tracker example for onboarding foldered integration.
 
 ## Templates
 

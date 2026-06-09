@@ -226,7 +226,7 @@ Completed with `ai-system/aicp-security-privacy-policy.md`, centralized security
 
 ## EVOL-005 — Create golden example project
 
-Status: Proposed  
+Status: Done  
 Priority: P2  
 Source: Analytical report finding  
 Roadmap item: P3 — Golden Example and Pilot Validation  
@@ -251,6 +251,11 @@ Acceptance criteria:
 Conversion path:
 
 Experiment or system change depending on repository structure.
+
+Notes:
+
+- Added `examples/golden-project/` as a filled Task Tracker foldered reference with a complete control layer and no application code.
+- The example focuses on `AI_PROJECT` control files and foldered bootstrap behavior for onboarding.
 
 ---
 

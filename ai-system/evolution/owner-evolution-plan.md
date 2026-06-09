@@ -66,7 +66,7 @@ Date recorded: 2026-06-09
 Status: Partially Planned
 Related roadmap items: P1, P2, P3
 Related backlog items: EVOL-002, EVOL-003, EVOL-004, EVOL-005
-Next bounded task: EVOL-005 - Create golden example project
+Next bounded task: EVOL-006 - Introduce machine-checkable specification layer
 ```
 
 ## Owner Goals
@@ -156,7 +156,7 @@ Verification mode: FAST_VALIDATION
 Human Owner approval required: Human Owner reviews local result before commit/push
 ```
 
-## Next Bounded Task Candidate
+## Completed Bounded Task
 
 ```text
 Task title: Create golden example project
@@ -164,14 +164,32 @@ Source plan section: 4. Add golden example project.
 Roadmap item: P3 - Golden Example and Pilot Validation
 Backlog item: EVOL-005 - Create golden example project
 Active Role: AI System Maintainer + Technical Writer AI
+Active Stage: System Evolution Release
+Active Document: ai-system/evolution/evolution-backlog.md
+Expected Result: A fully filled Task Tracker foldered example exists in `examples/golden-project/`
+Allowed files: examples/golden-project/AGENTS.md, examples/golden-project/AI_PROJECT/AGENTS.md, examples/golden-project/AI_PROJECT/PROJECT_GOAL.md, examples/golden-project/AI_PROJECT/OWNER_PLAN.md, examples/golden-project/AI_PROJECT/CODEX_COMMANDS.md, examples/golden-project/AI_PROJECT/CODEX_WORKFLOW.md, examples/golden-project/AI_PROJECT/CODEX_PLAN.md, examples/golden-project/AI_PROJECT/CODEX_CURRENT.md, examples/golden-project/AI_PROJECT/CODEX_TASKS.md, examples/golden-project/AI_PROJECT/CODEX_SESSION_LOG.md, examples/golden-project/AI_PROJECT/PROMPTS.md, examples/golden-project/AI_PROJECT/AI_DEV_SYSTEM_VERSION.md, examples/golden-project/AI_PROJECT/docs/verification-policy.md, ai-system/README.md, ai-system/evolution/evolution-backlog.md, ai-system/evolution/owner-evolution-plan.md, ai-system/system-changelog.md
+Out of scope: machine-checkable spec layer, bootstrap tooling, security/privacy policy, product code
+Acceptance criteria: Golden example includes root AGENTS and filled AI_PROJECT control files; explicit verification policy; zero product implementation files in example
+Verification mode: FAST_VALIDATION
+Human Owner approval required: Human Owner reviews local result before commit/push
+```
+
+## Next Bounded Task Candidate
+
+```text
+Task title: Introduce machine-checkable specification layer
+Source plan section: P3 completion evidence and next planning need from EVOL-006.
+Roadmap item: P4 - Machine-Checkable Specification Layer
+Backlog item: EVOL-006 - Introduce machine-checkable specification layer
+Active Role: AI System Maintainer + Technical Writer AI
 Active Stage: System Evolution Planning
 Active Document: ai-system/evolution/evolution-backlog.md
-Expected Result: Prepare one bounded golden example task
+Expected Result: Prepare and plan first machine-checkable specification layer task
 Allowed files: To be defined in the bounded task package before execution
-Out of scope: machine-checkable spec layer, product code outside the example scope
+Out of scope: golden example expansion, bootstrap tooling, EVOL-005 rework, existing product implementation
 Acceptance criteria: To be defined before execution
-Verification mode: FAST_VALIDATION unless example validation requires stronger checks
-Human Owner approval required: Yes before creating or adopting the example scope
+Verification mode: CODE_ONLY_FAST unless spec validation requires stronger checks
+Human Owner approval required: Yes before changing governance or lifecycle structures
 ```
 
 ## Intake Notes
