@@ -428,6 +428,35 @@ Needs improvement:
 - add project-local templates after approved specs and planning documents stabilize;
 - validate specs through controlled pilot work before runtime decisions.
 
+## 2.11 AI_PROJECT Agent Planning Templates
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/ai-system/templates/foldered/AI_PROJECT/AGENT_PLAN.md
+/ai-system/templates/foldered/AI_PROJECT/AGENT_TASKS.md
+/ai-system/templates/foldered/AI_PROJECT/AGENT_LOCKS.md
+/ai-system/templates/foldered/AI_PROJECT/AGENT_RESULTS.md
+/ai-system/templates/foldered/AI_PROJECT/AGENT_METRICS.md
+```
+
+Covers:
+
+- project-local SOP and agent planning snapshot;
+- Agent Work Package registry;
+- file-scope and locked-file planning registry;
+- Agent Result intake and integration review references;
+- planning, execution, review and QA metrics for pilot validation;
+- safety boundaries that preserve sequential execution as the default and forbid automatic execution, merge or acceptance.
+
+Needs improvement:
+
+- extend the golden project with a non-runtime multi-agent example;
+- add dry-run planner validation tooling only in a separate bounded evolution task;
+- validate template usefulness through controlled pilot work.
+
 ---
 
 # 3. Entity Lifecycle Layer

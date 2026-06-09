@@ -2,6 +2,24 @@
 
 Status: Draft
 
+## v0.29.0
+
+### Added
+
+- Added foldered `AI_PROJECT` agent planning templates: `AGENT_PLAN.md`, `AGENT_TASKS.md`, `AGENT_LOCKS.md`, `AGENT_RESULTS.md` and `AGENT_METRICS.md`.
+
+### Updated
+
+- Updated README version mirrors to `v0.29.0`.
+- Updated project control, foldered integration, project integration and bootstrap documentation to reference the new agent planning files.
+- Updated `scripts/foldered-control-mvp.py` so bootstrap/update planning includes the new templates.
+- Updated `ai-system/README.md` and `ai-system/operating-model.md` to index the new templates.
+- Updated `evolution-backlog.md` to mark `EVOL-015` as completed.
+
+### Reason
+
+`EVOL-015` adds project-local planning templates for SOP-guided and optional multi-agent workflows. The templates are planning and review records only; they preserve sequential execution as the default and do not authorize runtime behavior, automatic execution, automatic merge or automatic acceptance.
+
 ## v0.28.0
 
 ### Added

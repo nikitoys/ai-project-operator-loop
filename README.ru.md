@@ -3,7 +3,7 @@
 Языки: [English](README.md) | [Русский](README.ru.md)
 
 Статус: Draft
-Версия: v0.28.0
+Версия: v0.29.0
 
 Этот репозиторий содержит AI Development System: операционную модель для разработки проектов через AI-роли, документацию, lifecycle governance, генерацию промптов, выполнение задач через Codex, review и контролируемую эволюцию системы.
 
@@ -36,6 +36,8 @@ Multi-Agent Planning workflow описан в `/ai-system/multi-agent-planning.m
 Parallel Execution Policy описан в `/ai-system/parallel-execution-policy.md`. Parallel execution является opt-in, требует Human Owner approval и не разрешает automatic execution, merge или acceptance.
 
 Agent Result Intake и Integration Review описаны в `/ai-system/agent-result-intake.md` и `/ai-system/integration-review.md`. Они проверяют results перед review, QA и Human Owner acceptance, но не разрешают automatic execution, merge или acceptance.
+
+Foldered `AI_PROJECT` templates теперь включают agent planning files для plans, packages, locks, results и metrics. Это planning records only, они не разрешают execution, parallel execution, merge или acceptance.
 
 ## Кратко
 

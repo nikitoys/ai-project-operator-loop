@@ -33,6 +33,11 @@ TEMPLATE_FILES = [
     Path("CODEX_TASKS.md"),
     Path("CODEX_SESSION_LOG.md"),
     Path("PROMPTS.md"),
+    Path("AGENT_PLAN.md"),
+    Path("AGENT_TASKS.md"),
+    Path("AGENT_LOCKS.md"),
+    Path("AGENT_RESULTS.md"),
+    Path("AGENT_METRICS.md"),
     Path("AI_DEV_SYSTEM_VERSION.md"),
     Path("docs/verification-policy.md"),
 ]

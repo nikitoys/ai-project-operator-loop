@@ -588,7 +588,7 @@ The specs are minimal machine-checkable inventory/contract files derived from Ma
 
 ## EVOL-015 — Add AI_PROJECT agent planning templates
 
-Status: Proposed  
+Status: Done  
 Priority: P2  
 Source: `sop-multi-agent-implementation-plan.md`  
 Roadmap item: P6 — SOP and Optional Multi-Agent Execution Layer  
@@ -612,6 +612,12 @@ Acceptance criteria:
 Conversion path:
 
 System change and template task.
+
+Notes:
+
+Completed with foldered `AI_PROJECT` templates for `AGENT_PLAN.md`, `AGENT_TASKS.md`, `AGENT_LOCKS.md`, `AGENT_RESULTS.md` and `AGENT_METRICS.md`.
+
+Updated project control and foldered integration documentation, and added the templates to the minimal foldered bootstrap/update helper planning list. The templates preserve sequential execution as the default, keep candidate parallel groups informational until approved and do not authorize execution, parallel execution, automatic execution, automatic merge or automatic acceptance. EVOL-016 remains the next bounded phase and was not started.
 
 ---
 

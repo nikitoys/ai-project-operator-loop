@@ -1,7 +1,7 @@
 # AI Development System
 
 Status: Draft  
-Version: v0.28.0
+Version: v0.29.0
 
 ## Purpose
 
@@ -91,6 +91,12 @@ Sequential execution remains the default. Parallel execution is opt-in, Human Ow
 `integration-review.md` defines how combined agent result sets are checked before QA handoff and Human Owner acceptance.
 
 Intake and integration review do not authorize automatic execution, automatic merge or automatic acceptance.
+
+## AI_PROJECT Agent Planning Templates
+
+Foldered project templates include `AGENT_PLAN.md`, `AGENT_TASKS.md`, `AGENT_LOCKS.md`, `AGENT_RESULTS.md` and `AGENT_METRICS.md`.
+
+These files are planning and review records only. They preserve sequential execution as the default and do not authorize execution, parallel execution, automatic merge or automatic acceptance.
 
 ## Security and Privacy Baseline
 
