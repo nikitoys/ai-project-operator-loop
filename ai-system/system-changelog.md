@@ -2,6 +2,23 @@
 
 Status: Draft
 
+## v0.23.0
+
+### Added
+
+- Added `ai-system/sop-model.md` to define managed SOPs as governance-first planning procedures.
+- Added three initial SOPs: `SOP-FEATURE-001`, `SOP-BUGFIX-001` and `SOP-SYSTEM-001`.
+
+### Updated
+
+- Updated README version mirrors to `v0.23.0`.
+- Updated `ai-system/README.md` and `ai-system/operating-model.md` to index the SOP Model.
+- Updated `evolution-backlog.md` to mark `EVOL-009` as completed.
+
+### Reason
+
+`EVOL-009` defines the SOP Model from the SOP / optional multi-agent master plan while preserving sequential execution as the default and avoiding Agent Work Package standards, scripts, specs, templates, runtime automation, automatic execution or automatic acceptance.
+
 ## v0.22.0
 
 ### Added

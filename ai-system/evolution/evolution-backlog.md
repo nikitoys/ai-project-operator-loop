@@ -371,7 +371,7 @@ Recorded in `ai-system/evolution/sop-multi-agent-implementation-plan.md`. No run
 
 ## EVOL-009 — Add SOP Model document
 
-Status: Proposed  
+Status: Done  
 Priority: P1  
 Source: `sop-multi-agent-implementation-plan.md`  
 Roadmap item: P6 — SOP and Optional Multi-Agent Execution Layer  
@@ -396,6 +396,12 @@ Acceptance criteria:
 Conversion path:
 
 System change or documentation task depending on behavior impact.
+
+Notes:
+
+Completed with `ai-system/sop-model.md`. The SOP Model defines managed SOPs, required fields, relationships to workflow, roles, task lifecycle, prompt lifecycle, Codex lifecycle, review and QA, and three initial SOPs: `SOP-FEATURE-001`, `SOP-BUGFIX-001` and `SOP-SYSTEM-001`.
+
+Sequential execution remains the default. SOPs do not authorize automatic execution, automatic acceptance, Agent Work Package generation or parallel execution. EVOL-010 remains the next bounded phase and was not started.
 
 ---
 

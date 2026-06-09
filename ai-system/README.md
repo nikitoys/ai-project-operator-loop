@@ -1,7 +1,7 @@
 # AI Development System
 
 Status: Draft  
-Version: v0.22.0
+Version: v0.23.0
 
 ## Purpose
 
@@ -56,6 +56,12 @@ Current spec files:
 
 Markdown remains the operational source of truth. Specs are derived inventory and contract files unless a later approved evolution task changes the source-of-truth relationship.
 
+## SOP Model
+
+`sop-model.md` defines managed SOPs as governance-first planning procedures for repeated classes of work.
+
+Sequential execution remains the default. SOPs do not authorize automatic execution, automatic acceptance or parallel execution.
+
 ## Security and Privacy Baseline
 
 AI-assisted work must follow:
@@ -99,6 +105,7 @@ AI Development System
 - `human-interaction.md` — how the human works with ChatGPT and Codex.
 - `language-policy.md` — language and localization rules for responses, prompts and documentation.
 - `workflow.md` — development stages and gates.
+- `sop-model.md` — SOP model for governance-first repeatable procedures.
 - `rules.md` — global rules and restrictions.
 - `system-schemes.md` — compact text schemes for roles, documents and process flow.
 - `task-format.md` — standard task format for Codex and AI roles.

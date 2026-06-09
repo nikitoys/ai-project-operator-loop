@@ -247,6 +247,33 @@ Needs improvement:
 - add health-check reports during pilot validation;
 - add examples of completed evolution cycles after first real use.
 
+## 2.5 SOP Model
+
+Status: Implemented
+
+Existing documents:
+
+```text
+/ai-system/sop-model.md
+/ai-system/evolution/sop-multi-agent-implementation-plan.md
+```
+
+Covers:
+
+- managed SOP definition;
+- required SOP fields;
+- SOP selection and relationship to the existing workflow;
+- role, task, prompt, Codex, review and QA lifecycle relationships;
+- sequential execution as the default rule;
+- boundary rule that SOPs do not authorize automatic execution or automatic acceptance;
+- initial Feature Delivery, Bugfix / Rework and AI System Evolution SOPs.
+
+Needs improvement:
+
+- add Agent Work Package standard in a separate bounded evolution task;
+- add multi-agent planning and parallel execution policy only after approval;
+- add machine-checkable SOP specs after the Markdown source documents exist.
+
 ---
 
 # 3. Entity Lifecycle Layer
