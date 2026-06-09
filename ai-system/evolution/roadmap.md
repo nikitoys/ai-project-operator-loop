@@ -189,13 +189,15 @@ Immediate priorities:
 4. `EVOL-022` — completed; runtime maturity levels documented.
 5. `EVOL-023` — completed; manual multi-agent orchestration mode documented.
 6. `EVOL-024` — completed; Agent Result Schema hardened.
-7. `EVOL-025` — next proposed follow-up: add CI for specs, templates and golden project.
+7. `EVOL-025` — completed; CI and local validation added for specs, templates, planning fixtures and golden project.
+8. `EVOL-026` — completed; pilot validation evidence expanded across documentation-only, small tooling/code and multi-agent parallel planning cases.
+9. `EVOL-027` — future/deferred: prepare runtime adapter contracts without enabling runtime.
 
 Runtime maturity target:
 
-Current level: `L2 — Dry-run planning`.
+Current level: `L3 — Manual multi-agent orchestration`.
 
-Next target: `L3 — Manual multi-agent orchestration`.
+Next possible target: `L4 — Assisted execution`, future/not approved.
 
 ### P7 — Research and Benchmarking
 

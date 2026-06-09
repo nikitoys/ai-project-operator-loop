@@ -3,7 +3,7 @@
 Languages: [English](README.md) | [Русский](README.ru.md)
 
 Status: Draft
-Version: v0.39.0
+Version: v0.42.0
 
 This repository contains an AI Development System: an operating model for developing projects through AI roles, documentation, lifecycle governance, prompt generation, Codex execution, review and controlled evolution.
 
@@ -15,6 +15,12 @@ Documentation integrity checks can be run with:
 
 ```bash
 python3 scripts/check-docs-integrity.py
+```
+
+Full read-only system validation can be run locally with:
+
+```bash
+python3 scripts/validate-system.py
 ```
 
 Security and privacy baselines are defined in `/ai-system/security-policy.md` and `/ai-system/privacy-data-handling-policy.md`.
@@ -45,7 +51,9 @@ The golden project includes a filled non-runtime multi-agent planning example fo
 
 The SOP / optional multi-agent pilot validation record is stored in `/ai-system/evolution/sop-multi-agent-pilot-validation.md`.
 
-Runtime maturity levels are defined in `/ai-system/runtime-maturity-levels.md`. Current level is `L2 — Dry-run planning`; next target is `L3 — Manual multi-agent orchestration`; runtime remains `DEFERRED`.
+Expanded pilot validation evidence covers documentation-only, small tooling/code and multi-agent parallel planning scenarios while preserving dry-run boundaries.
+
+Runtime maturity levels are defined in `/ai-system/runtime-maturity-levels.md`. Current level is `L3 — Manual multi-agent orchestration`; runtime remains `DEFERRED`; `L4+` remains future/not approved.
 
 Manual Multi-Agent Orchestration Mode is defined in `/ai-system/manual-orchestration.md`. L3 is manual-only and does not authorize automatic execution, merge or acceptance.
 

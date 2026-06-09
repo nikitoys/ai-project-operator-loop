@@ -16,13 +16,13 @@ Runtime maturity levels do not authorize runtime behavior by themselves.
 Current project level:
 
 ```text
-L2 — Dry-run planning
+L3 — Manual multi-agent orchestration
 ```
 
-Next safe target:
+Next possible target:
 
 ```text
-L3 — Manual multi-agent orchestration
+L4 — Assisted execution
 ```
 
 Runtime decision:
@@ -31,11 +31,11 @@ Runtime decision:
 DEFERRED
 ```
 
-L4 and higher are future/not approved. Moving beyond L2 requires explicit Human Owner approval and a bounded evolution task.
+L4 and higher are future/not approved. Moving beyond L3 requires explicit Human Owner approval and a bounded evolution task.
 
 ## Global Rules
 
-- Human Owner approval is required for progression beyond planning.
+- Human Owner approval is required for progression beyond approved manual orchestration.
 - Runtime automation remains forbidden until a later explicit decision changes it.
 - Automatic Codex execution is forbidden.
 - Automatic multi-agent execution is forbidden.
@@ -52,8 +52,8 @@ L4 and higher are future/not approved. Moving beyond L2 requires explicit Human 
 | --- | --- | --- |
 | L0 | Documentation only | Historical baseline |
 | L1 | Machine-checkable specs | Implemented |
-| L2 | Dry-run planning | Current |
-| L3 | Manual multi-agent orchestration | Next target |
+| L2 | Dry-run planning | Implemented |
+| L3 | Manual multi-agent orchestration | Current |
 | L4 | Assisted execution | Future / Not approved |
 | L5 | Controlled runtime | Future / Not approved |
 | L6 | Autonomous runtime | Future / Not approved |
@@ -373,16 +373,16 @@ Exit/readiness criteria:
 
 ## Current Decision
 
-AI_Development_System remains at:
-
-```text
-L2 — Dry-run planning
-```
-
-The next safe target is:
+AI_Development_System current maturity level is:
 
 ```text
 L3 — Manual multi-agent orchestration
+```
+
+L3 readiness decision:
+
+```text
+APPROVED FOR MANUAL-ONLY MATURITY
 ```
 
 Runtime execution remains:
@@ -391,4 +391,52 @@ Runtime execution remains:
 DEFERRED
 ```
 
+L3 does not enable automatic execution. It only recognizes that the system has enough documented process, validation, result intake, integration review and pilot evidence to coordinate Agent Work Packages manually under Human Owner control.
+
 L4, L5 and L6 are not approved and must not be implemented without future explicit Human Owner approval.
+
+## L3 Readiness Assessment
+
+Decision:
+
+```text
+L3 — Manual multi-agent orchestration is ready to declare as the current maturity level.
+```
+
+Criteria reviewed:
+
+| Criterion | Assessment |
+| --- | --- |
+| `EVOL-019` through `EVOL-026` are Done | Met |
+| Runtime is deferred | Met |
+| Dependency-aware planning exists | Met |
+| Planning fixtures and validation tests exist | Met |
+| CI and local validation exist | Met |
+| Manual orchestration mode is documented | Met |
+| Hardened Agent Result schema exists | Met |
+| Integration Review handoff exists | Met |
+| Pilot validation includes documentation-only, small code/tooling and multi-agent parallel planning cases | Met |
+| Pilot records distinguish dry-run validation, manual simulation and future runtime | Met |
+| Human Owner approval remains required | Met |
+
+Evidence:
+
+- `scripts/agent-plan-mvp.py` supports dependency-aware dry-run validation and candidate group reporting.
+- `scripts/validate-agent-plan-fixtures.py` covers dependency graph behavior, missing dependencies, cycles, blocked packages and accepted-prerequisite unlocking.
+- `scripts/validate-system.py` runs read-only validation for docs, specs, templates, fixtures and the golden project.
+- `manual-orchestration.md` defines L3 manual-only flow, artifacts, allowed operations, forbidden automation and Human Owner gates.
+- `agent-result-intake.md` defines the hardened Agent Result schema for manual intake.
+- `integration-review.md` defines manual integration review handoff and blocking conditions.
+- `evolution/sop-multi-agent-pilot-validation.md` records expanded pilot evidence across three scenario types.
+
+Restrictions after declaring L3:
+
+- automatic Codex execution remains forbidden;
+- automatic multi-agent execution remains forbidden;
+- branch/worktree lifecycle automation remains forbidden;
+- automatic file modification by orchestration tooling remains forbidden;
+- automatic merge remains forbidden;
+- automatic acceptance remains forbidden;
+- automatic QA/review closure remains forbidden;
+- candidate parallel groups remain informational until Human Owner approval;
+- L4+ remains future/not approved.

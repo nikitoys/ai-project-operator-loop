@@ -504,8 +504,8 @@ Existing documents:
 Covers:
 
 - maturity levels `L0` through `L6`;
-- current level `L2 — Dry-run planning`;
-- next target `L3 — Manual multi-agent orchestration`;
+- current level `L3 — Manual multi-agent orchestration`;
+- next possible target `L4 — Assisted execution`, future/not approved;
 - L4+ as future/not approved;
 - allowed and forbidden capabilities at each level;
 - required safety gates, evidence and readiness criteria;
@@ -513,8 +513,8 @@ Covers:
 
 Needs improvement:
 
-- define Manual Multi-Agent Orchestration Mode in `EVOL-023`;
-- keep runtime execution deferred until explicit future approval.
+- keep runtime execution deferred until explicit future approval;
+- do not propose L4 assisted execution without a separate Human Owner-approved evolution task.
 
 ## 2.14 Manual Multi-Agent Orchestration Mode
 
@@ -542,8 +542,8 @@ Covers:
 
 Needs improvement:
 
-- validate manual orchestration through at least one pilot scenario;
-- use hardened Agent Result records during pilot orchestration.
+- continue collecting repeatable L3 manual orchestration evidence;
+- use hardened Agent Result records during future manual orchestration pilots.
 
 ---
 

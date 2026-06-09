@@ -67,6 +67,7 @@ Minimum validation checks:
 Recommended manual validation commands:
 
 ```bash
+python3 scripts/validate-system.py
 python3 -m json.tool spec/roles.json >/dev/null
 python3 -m json.tool spec/interaction-modes.json >/dev/null
 python3 -m json.tool spec/verification-modes.json >/dev/null
@@ -77,4 +78,6 @@ python3 -m json.tool spec/agent-result.schema.json >/dev/null
 python3 -m json.tool spec/parallel-policy.json >/dev/null
 ```
 
-Schema lint may be added in a later bounded task. EVOL-006 and EVOL-014 do not add CI, generated Markdown, runtime behavior or bootstrap tooling.
+`scripts/validate-system.py` is the preferred local entrypoint for EVOL-025 and includes JSON parse validation for all `spec/**/*.json` files, documentation integrity checks, template checks, dependency-aware planning fixture validation and golden project dry-run validation.
+
+Schema lint may be added in a later bounded task. EVOL-006 and EVOL-014 do not add generated Markdown, runtime behavior or bootstrap tooling.

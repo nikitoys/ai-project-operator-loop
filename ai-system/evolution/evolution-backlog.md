@@ -964,19 +964,19 @@ Define runtime maturity levels:
 - `L5` — Controlled runtime
 - `L6` — Autonomous runtime
 
-Current project level:
+Current project level at EVOL-022 completion:
 
 `L2 — Dry-run planning`.
 
-Next target:
+Next target at EVOL-022 completion:
 
 `L3 — Manual multi-agent orchestration`.
 
 Acceptance criteria:
 
 - maturity levels are documented;
-- current level is recorded as `L2`;
-- next target is recorded as `L3`;
+- EVOL-022 current level is recorded as `L2`;
+- EVOL-022 next target is recorded as `L3`;
 - levels do not authorize runtime execution by themselves;
 - Human Owner approval remains required for movement between levels.
 
@@ -990,7 +990,7 @@ Completed by adding `ai-system/runtime-maturity-levels.md` and indexing it from 
 
 The documented levels are `L0 — Documentation only`, `L1 — Machine-checkable specs`, `L2 — Dry-run planning`, `L3 — Manual multi-agent orchestration`, `L4 — Assisted execution`, `L5 — Controlled runtime` and `L6 — Autonomous runtime`.
 
-Current project level is `L2 — Dry-run planning`. Next safe target is `L3 — Manual multi-agent orchestration`. Runtime execution remains `DEFERRED`, and `L4+` remains future/not approved.
+At EVOL-022 completion, current project level was `L2 — Dry-run planning` and next safe target was `L3 — Manual multi-agent orchestration`. After the post-EVOL-026 readiness assessment, current project level is `L3 — Manual multi-agent orchestration`. Runtime execution remains `DEFERRED`, and `L4+` remains future/not approved.
 
 ---
 
@@ -1099,7 +1099,7 @@ Runtime remains `DEFERRED`. This change does not implement runtime behavior, aut
 
 ## EVOL-025 — CI for Specs, Templates and Golden Project
 
-Status: Proposed  
+Status: Done  
 Priority: P3  
 Source: Runtime readiness criteria / roadmap P4 and P6  
 Roadmap item: P4 — Machine-Checkable Specification Layer / P6 — SOP and Optional Multi-Agent Control Plane  
@@ -1113,6 +1113,13 @@ The repository increasingly behaves like a process/specification repository, but
 Expected outcome:
 
 Add CI checks that validate specs, templates and the golden project without enabling runtime behavior.
+
+Implementation:
+
+- Added `.github/workflows/validate-ai-system.yml` with read-only jobs for docs/specs, planning fixtures and golden project validation.
+- Added `scripts/validate-system.py` as the local read-only validation entrypoint.
+- CI and local validation run documentation integrity checks, JSON spec parse checks, required agent template checks, dependency-aware planning fixture checks and golden project dry-run planning commands.
+- The checks do not execute Codex, execute agents, create branches or worktrees, merge changes, accept results or modify files.
 
 Recommended checks:
 
@@ -1133,13 +1140,13 @@ Acceptance criteria:
 
 Conversion path:
 
-Bounded CI validation task after relevant fixtures exist.
+Closed by EVOL-025 after adding CI and local validation coverage. Future validation hardening can be tracked as narrower follow-up tasks.
 
 ---
 
 ## EVOL-026 — Pilot Validation Expansion
 
-Status: Proposed  
+Status: Done  
 Priority: P3  
 Source: `EVOL-019` revisit criteria  
 Roadmap item: P3 — Golden Example and Pilot Validation / P6 — SOP and Optional Multi-Agent Control Plane  
@@ -1153,6 +1160,13 @@ Current pilot evidence is useful but still too narrow to justify runtime executi
 Expected outcome:
 
 Expand pilot evidence beyond one golden example.
+
+Implementation:
+
+- Expanded `ai-system/evolution/sop-multi-agent-pilot-validation.md` with EVOL-026 pilot evidence.
+- Recorded three pilot scenarios: documentation-only change, small tooling/code change and multi-agent parallel planning case.
+- Distinguished validated dry-run behavior, manually simulated orchestration behavior and future/not-yet-validated runtime behavior.
+- Preserved runtime decision `DEFERRED` and kept candidate parallel groups informational only.
 
 Required pilot types:
 
@@ -1169,7 +1183,26 @@ Acceptance criteria:
 
 Conversion path:
 
-Pilot validation task after planning reliability improves.
+Closed by EVOL-026 after expanded pilot evidence was recorded. Future pilot work should focus on repeatable L3 manual orchestration evidence before any assisted execution discussion.
+
+Post-EVOL-026 maturity assessment:
+
+`L3 — Manual multi-agent orchestration` is now the current maturity level.
+
+Assessment basis:
+
+- `EVOL-019` through `EVOL-026` are done;
+- runtime execution remains `DEFERRED`;
+- dependency-aware planning, planning fixtures and CI/local validation exist;
+- Manual Multi-Agent Orchestration Mode is documented;
+- hardened Agent Result Intake and Integration Review handoff exist;
+- pilot validation covers documentation-only, small code/tooling and multi-agent parallel planning cases;
+- pilot records distinguish validated dry-run behavior, manually simulated orchestration behavior and future/not-yet-validated runtime behavior;
+- Human Owner approval remains required.
+
+Restrictions:
+
+L3 is manual-only. It does not approve automatic Codex execution, automatic multi-agent execution, branch/worktree automation, automatic file modification by orchestration tooling, automatic merge, automatic acceptance or automatic QA/review closure. `L4+` remains future/not approved.
 
 ---
 

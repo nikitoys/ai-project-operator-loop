@@ -1,7 +1,7 @@
 # AI Development System
 
 Status: Draft  
-Version: v0.39.0
+Version: v0.42.0
 
 ## Purpose
 
@@ -30,6 +30,14 @@ python3 scripts/check-docs-integrity.py
 ```
 
 The check covers internal Markdown links, unresolved placeholders outside reusable templates, index completeness for system documents and visible status/version consistency.
+
+Run the full read-only system validation with:
+
+```bash
+python3 scripts/validate-system.py
+```
+
+The full validation entrypoint compiles planning scripts, checks documentation integrity, parses JSON specs, validates required agent planning templates, runs dependency-aware planning fixtures and validates the golden project dry-run plan.
 
 ## Foldered Bootstrap/Update Helper
 
@@ -109,7 +117,7 @@ Agent Result Intake defines the hardened Agent Result schema for manual orchestr
 
 `runtime-maturity-levels.md` defines runtime maturity levels from `L0 — Documentation only` through `L6 — Autonomous runtime`.
 
-The current level is `L2 — Dry-run planning`. The next safe target is `L3 — Manual multi-agent orchestration`. Runtime execution remains `DEFERRED`; `L4+` is future/not approved.
+The current level is `L3 — Manual multi-agent orchestration`. Runtime execution remains `DEFERRED`; `L4+` is future/not approved.
 
 ## Manual Multi-Agent Orchestration
 
@@ -211,6 +219,7 @@ AI Development System
 - `system-changelog.md` — history of changes to the AI Development System.
 - `improvement-log.md` — observations and problems in the system.
 - `../scripts/check-docs-integrity.py` — documentation integrity check for links, placeholders, indexes and version/status fields.
+- `../scripts/validate-system.py` — read-only validation entrypoint for docs, specs, templates, planning fixtures and the golden project.
 - `../scripts/foldered-control-mvp.py` — minimal dry-run bootstrap/update helper for Foldered Control Mode.
 - `../scripts/agent-plan-mvp.py` — minimal dry-run helper for AI_PROJECT agent planning validation, lock checks, candidate parallel group reporting and prompt drafts.
 - `../spec/README.md` — machine-checkable spec layer policy and validation guidance.

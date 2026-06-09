@@ -7,7 +7,7 @@ Version: v0.1.0
 
 This document defines Manual Multi-Agent Orchestration Mode for AI_Development_System.
 
-Manual orchestration is the L3 target in the runtime maturity model. It coordinates multiple logical agents and Agent Work Packages manually while preserving Human Owner control and keeping execution external to orchestration tooling.
+Manual orchestration is the current L3 mode in the runtime maturity model. It coordinates multiple logical agents and Agent Work Packages manually while preserving Human Owner control and keeping execution external to orchestration tooling.
 
 This document does not implement runtime behavior.
 
@@ -18,13 +18,13 @@ It does not authorize automatic execution, automatic merge, automatic acceptance
 Current level:
 
 ```text
-L2 — Dry-run planning
+L3 — Manual multi-agent orchestration
 ```
 
-Next safe target:
+Next possible target:
 
 ```text
-L3 — Manual multi-agent orchestration
+L4 — Assisted execution
 ```
 
 Runtime decision:
@@ -33,7 +33,7 @@ Runtime decision:
 DEFERRED
 ```
 
-L3 is manual-only. L4 and higher remain future/not approved.
+L3 is manual-only and current. L4 and higher remain future/not approved.
 
 ## Source-of-Truth Documents
 
@@ -157,13 +157,19 @@ Human Owner approval is required before:
 
 L3 readiness requires:
 
-- `EVOL-019` through `EVOL-022` are done;
+- `EVOL-019` through `EVOL-026` are done;
 - runtime execution remains `DEFERRED`;
 - dependency-aware planning validation passes;
 - hardened manual result intake format exists;
 - integration review process exists;
 - safety boundaries are documented;
-- at least one pilot scenario demonstrates manual orchestration.
+- pilot evidence covers documentation-only, small code/tooling and multi-agent parallel planning scenarios;
+- pilot records distinguish validated dry-run behavior, manually simulated orchestration behavior and future/not-yet-validated runtime behavior;
+- Human Owner approval remains required.
+
+Current assessment:
+
+These readiness criteria are met. L3 is the current maturity level, but it remains manual-only and does not authorize runtime execution.
 
 ## L3 Exit Criteria / L4 Readiness
 

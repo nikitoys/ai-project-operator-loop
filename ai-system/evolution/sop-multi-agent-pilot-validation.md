@@ -1,7 +1,7 @@
 # SOP / Multi-Agent Pilot Validation
 
 Status: Draft  
-Version: v0.1.0
+Version: v0.2.0
 
 ## Purpose
 
@@ -53,6 +53,8 @@ Out of scope:
 - `examples/golden-project/`
 - `scripts/agent-plan-mvp.py`
 - `scripts/check-docs-integrity.py`
+- `scripts/validate-agent-plan-fixtures.py`
+- `scripts/validate-system.py`
 
 ## Pilot Scenarios
 
@@ -115,11 +117,131 @@ The current SOP / optional multi-agent layer preserves these boundaries:
 - candidate parallel groups are informational until approved under the Parallel Execution Policy;
 - sequential execution remains the default.
 
-### 5. Tool Limitation Review
+### 5. Historical Tool Limitation Review
 
-`scripts/agent-plan-mvp.py` currently performs useful Markdown-oriented dry-run reporting but does not deeply parse dependency graphs from the planning files.
+At the time of EVOL-018, `scripts/agent-plan-mvp.py` performed useful Markdown-oriented dry-run reporting but did not deeply parse dependency graphs from the planning files.
 
-As a result, `list-parallel-groups` may list all non-blocked packages as one informational candidate group. In the golden example, the intended candidate group is narrower: `CPG-001` is `AWP-BE-001 + AWP-FE-001` only after `AWP-REQ-001` has been accepted.
+As a result, `list-parallel-groups` could list all non-blocked packages as one informational candidate group. In the golden example, the intended candidate group was narrower: `CPG-001` is `AWP-BE-001 + AWP-FE-001` only after `AWP-REQ-001` has been accepted.
+
+This limitation was routed to `EVOL-020` and later closed by dependency-aware dry-run planning. EVOL-026 evidence below reflects the current dependency-aware behavior.
+
+## EVOL-026 Expanded Pilot Evidence
+
+This section expands pilot evidence beyond the original golden example.
+
+Validation categories:
+
+- Validated dry-run behavior: behavior confirmed by repository files and read-only validation commands.
+- Manually simulated orchestration behavior: lifecycle and review behavior represented as documented manual process, not automated execution.
+- Future runtime behavior: not validated and not approved.
+
+### PILOT-DOC-001: Documentation-Only Evolution Change
+
+- Pilot id: `PILOT-DOC-001`
+- Pilot type: Documentation-only change
+- Purpose: Validate that a bounded AI Development System documentation change can be planned, recorded, checked and routed without runtime execution.
+- Input/task summary: Close a documentation evolution item by updating source-of-truth Markdown, roadmap, backlog, changelog and README version mirrors.
+- SOP/workflow used: Controlled system evolution flow from `change-process.md`, documentation review rules from `review-process.md`, and Human Owner decision boundaries from `human-interaction.md`.
+- AWP created or expected: Expected single documentation AWP such as `AWP-DOC-001` for source document updates and `AWP-REVIEW-001` for review/verification if represented in Agent Work Package form.
+- Dependency graph shape: Linear; `AWP-DOC-001 -> AWP-REVIEW-001`.
+- Candidate parallel groups: None. Documentation update and review are sequential because review depends on completed documentation changes.
+- Agent Result Intake usage: Manually simulated. A hardened Agent Result record would capture `awp_id`, changed documents, claims, verification, risks, followups, scope compliance and safety boundary compliance.
+- Integration Review usage: Manually simulated. Integration Review checks changelog/version consistency, roadmap/backlog consistency, README mirrors and absence of runtime authorization.
+- Human Owner approval point: Human Owner approval remains required before accepting the documentation change as done.
+- Verification commands:
+
+```bash
+python3 scripts/check-docs-integrity.py
+python3 scripts/validate-system.py
+```
+
+- Observed result: Read-only validation can verify documentation integrity and broader system checks without modifying files.
+- Limitations: This pilot validates documentation governance and repository consistency only; it does not validate product code execution or real agent runtime.
+- Follow-up improvements: Continue using the hardened Agent Result schema for documentation tasks when L3 manual orchestration pilots are recorded.
+
+### PILOT-CODE-001: Small Tooling Change
+
+- Pilot id: `PILOT-CODE-001`
+- Pilot type: Small code/tooling change
+- Purpose: Validate that a small bounded repository script change can be planned and verified while preserving dry-run boundaries.
+- Input/task summary: Improve or validate a local planning helper without enabling execution, branch/worktree automation, merge automation or acceptance automation.
+- SOP/workflow used: Agent planning and dry-run validation workflow from `multi-agent-planning.md`, safety boundaries from `parallel-execution-policy.md`, result handoff from `agent-result-intake.md`, and integration checks from `integration-review.md`.
+- AWP created or expected: Expected `AWP-TOOL-001` for the script change and `AWP-QA-001` for validation/review.
+- Dependency graph shape: Linear; `AWP-TOOL-001 -> AWP-QA-001`.
+- Candidate parallel groups: None. QA/review remains blocked until the script change is complete.
+- Agent Result Intake usage: Manually simulated. A result record must list changed script files, claims about dry-run behavior, commands run, limitations, risks and followups.
+- Integration Review usage: Manually simulated. Integration Review must inspect whether the change stayed within tooling scope and preserved forbidden automation boundaries.
+- Human Owner approval point: Human Owner approval remains required before accepting the tooling change.
+- Verification commands:
+
+```bash
+python3 -m py_compile scripts/agent-plan-mvp.py scripts/validate-agent-plan-fixtures.py scripts/validate-system.py
+python3 scripts/validate-agent-plan-fixtures.py
+python3 scripts/validate-system.py
+```
+
+- Observed result: Current validation covers Python compile checks, dependency-aware planning fixtures and the full read-only system validation path.
+- Limitations: This pilot validates local tooling behavior only. It does not execute Codex, launch agents, create worktrees, merge branches or accept work.
+- Follow-up improvements: Add narrower fixture cases when new planning edge cases are discovered.
+
+### PILOT-MA-001: Multi-Agent Parallel Planning Case
+
+- Pilot id: `PILOT-MA-001`
+- Pilot type: Multi-agent parallel planning case
+- Purpose: Validate dependency-aware dry-run planning for a requirements-first, backend/frontend-parallel, QA-after-integration pattern.
+- Input/task summary: Plan a Task Tracker due-date filter enhancement using requirements, backend, frontend and QA/integration Agent Work Packages.
+- SOP/workflow used: `SOP-FEATURE-001`, Multi-Agent Planning workflow, Parallel Execution Policy, Agent Result Intake and Integration Review.
+- AWP created or expected:
+  - `AWP-REQ-001` for requirements clarification.
+  - `AWP-BE-001` for backend changes after requirements are complete.
+  - `AWP-FE-001` for frontend changes after requirements are complete.
+  - `AWP-QA-001` for QA/integration after backend and frontend are complete.
+- Dependency graph shape: Diamond; `AWP-REQ-001 -> AWP-BE-001 + AWP-FE-001 -> AWP-QA-001`.
+- Candidate parallel groups:
+  - In `examples/golden-project`, with no completed prerequisites, ready layer is `AWP-REQ-001` and there is no candidate parallel group.
+  - In `examples/agent-plan-fixtures/accepted-prerequisite`, after `AWP-REQ-001` is accepted, the valid candidate group is `AWP-BE-001, AWP-FE-001`.
+  - `AWP-QA-001` is excluded until both `AWP-BE-001` and `AWP-FE-001` are complete.
+- Agent Result Intake usage: Manually simulated. Each logical agent result must use the hardened Agent Result schema and record changed files, claims, verification, risks, blockers, followups, scope compliance and safety boundary compliance.
+- Integration Review usage: Manually simulated. Integration Review must inspect backend/frontend compatibility, unresolved risks, QA readiness, result claims, verification evidence and Human Owner approval requirements.
+- Human Owner approval point: Human Owner must approve any parallel execution decision, result acceptance and final closure. Candidate groups are informational only.
+- Verification commands:
+
+```bash
+python3 scripts/agent-plan-mvp.py list-parallel-groups --project-root examples/golden-project
+python3 scripts/agent-plan-mvp.py list-parallel-groups --project-root examples/agent-plan-fixtures/accepted-prerequisite
+python3 scripts/validate-agent-plan-fixtures.py
+python3 scripts/validate-system.py
+```
+
+- Observed result: Dependency-aware dry-run planning reports `AWP-REQ-001` as the first ready layer in the golden project. After an accepted prerequisite fixture, it reports `AWP-BE-001, AWP-FE-001` as the valid informational candidate group and excludes `AWP-QA-001` until backend and frontend prerequisites are complete.
+- Limitations: This is validated dry-run planning and manually simulated orchestration only. It does not validate automatic execution, runtime scheduling, branch/worktree lifecycle, automatic merge or automatic acceptance.
+- Follow-up improvements: Record at least one full L3 manual orchestration pilot before reconsidering assisted execution.
+
+### EVOL-026 Safety Boundary Review
+
+No pilot scenario approves runtime execution.
+
+Validated dry-run behavior:
+
+- documentation integrity and system validation commands run locally;
+- dependency-aware planning fixtures pass;
+- golden project dry-run validation passes;
+- candidate parallel groups remain informational.
+
+Manually simulated orchestration behavior:
+
+- Agent Result Intake is represented as a required manual record;
+- Integration Review is represented as a required manual review step;
+- Human Owner approval remains the decision gate.
+
+Future/not-yet-validated runtime behavior:
+
+- automatic Codex execution;
+- automatic multi-agent execution;
+- branch/worktree lifecycle automation;
+- automatic merge;
+- automatic acceptance;
+- automatic QA/review closure.
 
 ## Findings
 
@@ -153,15 +275,15 @@ As a result, `list-parallel-groups` may list all non-blocked packages as one inf
 - Recommended follow-up: Continue using `AGENT_LOCKS.md` as the explicit lock registry for pilot examples.
 - Suggested target EVOL or future backlog item: No new backlog item required.
 
-### FINDING-004: Candidate Parallel Group Reporting Is Over-Broad
+### FINDING-004: Candidate Parallel Group Reporting Was Over-Broad
 
 - Finding ID: `FINDING-004`
-- Type: Limitation
+- Type: Historical Limitation
 - Severity: Major
 - Evidence: `list-parallel-groups` reported `candidate_group_1: AWP-REQ-001, AWP-BE-001, AWP-FE-001, AWP-QA-001`, while the golden example records intended `CPG-001` as `AWP-BE-001 + AWP-FE-001` only after `AWP-REQ-001`.
 - Impact: The dry-run helper is useful for visibility, but it should not be treated as a reliable dependency-aware parallel planner yet.
-- Recommended follow-up: Add a future bounded script improvement to parse dependencies from standard planning files and exclude packages with unresolved prerequisites from candidate parallel groups.
-- Suggested target EVOL or future backlog item: Add `EVOL-020 — Improve dry-run agent planner dependency parsing`; record as `IMP-002`.
+- Recommended follow-up: Completed by `EVOL-020`; continue validating dependency-aware behavior through fixtures and CI.
+- Suggested target EVOL or future backlog item: Closed by `EVOL-020`; original observation recorded as `IMP-002`.
 
 ### FINDING-005: Prompt Draft Generation Preserves Execution Boundaries
 
@@ -200,7 +322,7 @@ As a result, `list-parallel-groups` may list all non-blocked packages as one inf
 | `FINDING-001` | No new item | Success covered by `EVOL-017`. |
 | `FINDING-002` | No new item | Current examples are parseable enough for simple discovery. |
 | `FINDING-003` | No new item | Lock checks work with available data. |
-| `FINDING-004` | Backlog item + improvement-log entry + script improvement | Track as `EVOL-020` and `IMP-002`. No fix in EVOL-018. |
+| `FINDING-004` | Closed follow-up | Routed to `EVOL-020` and `IMP-002`; dependency-aware dry-run planning is now implemented. |
 | `FINDING-005` | No new item | Prompt drafts remain dry-run only. |
 | `FINDING-006` | No new item | Re-run after documentation updates. |
 | `FINDING-007` | EVOL-019 decision input | Recommendation is to defer runtime integration. |

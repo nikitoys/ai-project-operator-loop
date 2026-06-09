@@ -2,6 +2,50 @@
 
 Status: Draft
 
+## v0.42.0
+
+### Updated
+
+- Added an L3 readiness assessment to `ai-system/runtime-maturity-levels.md`.
+- Updated the current maturity level to `L3 — Manual multi-agent orchestration`.
+- Updated `ai-system/manual-orchestration.md`, `ai-system/operating-model.md`, `ai-system/evolution/roadmap.md`, `ai-system/evolution/evolution-backlog.md` and README version mirrors to reflect the L3 maturity decision.
+
+### Reason
+
+After `EVOL-019` through `EVOL-026`, the system has the documented process, dependency-aware dry-run planning, fixtures, read-only CI/local validation, hardened Agent Result Intake, Integration Review handoff and expanded pilot evidence required for `L3 — Manual multi-agent orchestration`. Runtime execution remains `DEFERRED`; L3 is manual-only and does not add automatic Codex execution, automatic multi-agent execution, branch/worktree automation, automatic file modification by orchestration tooling, automatic merge, automatic acceptance or automatic QA/review closure. `L4+` remains future/not approved.
+
+## v0.41.0
+
+### Updated
+
+- Expanded `ai-system/evolution/sop-multi-agent-pilot-validation.md` with EVOL-026 pilot evidence.
+- Recorded pilot scenarios for a documentation-only change, a small tooling/code change and a multi-agent parallel planning case.
+- Marked `EVOL-026 — Pilot Validation Expansion` as `Done`.
+- Updated roadmap P6 immediate priorities so `EVOL-026` is completed and `EVOL-027` remains future/deferred.
+- Updated README version mirrors to `v0.41.0`.
+
+### Reason
+
+`EVOL-026` expands pilot evidence beyond the original golden example while keeping the system at `L2 — Dry-run planning`. The pilot record distinguishes validated dry-run behavior, manually simulated orchestration behavior and future/not-yet-validated runtime behavior. Runtime execution remains `DEFERRED`; this change does not add automatic Codex execution, automatic multi-agent execution, branch/worktree automation, automatic file modification by orchestration tooling, automatic merge, automatic acceptance or automatic QA/review closure.
+
+## v0.40.0
+
+### Added
+
+- Added `.github/workflows/validate-ai-system.yml` to run read-only validation for docs/specs, dependency-aware planning fixtures and the golden project.
+- Added `scripts/validate-system.py` as the local validation entrypoint for documentation integrity, JSON specs, agent planning templates, fixtures and golden project dry-run checks.
+
+### Updated
+
+- Updated `spec/README.md`, `README.md`, `README.ru.md` and `ai-system/README.md` with the local full validation command.
+- Marked `EVOL-025 — CI for Specs, Templates and Golden Project` as `Done`.
+- Updated roadmap P6 immediate priorities so `EVOL-025` is completed and `EVOL-026` is the next proposed follow-up.
+- Updated README version mirrors to `v0.40.0`.
+
+### Reason
+
+`EVOL-025` makes repository validation repeatable in CI and locally for specs, templates, planning fixtures and the golden project. The checks are read-only and do not add runtime execution, automatic Codex execution, automatic multi-agent execution, branch/worktree automation, automatic merge, automatic acceptance or automatic QA/review closure.
+
 ## v0.39.0
 
 ### Updated
