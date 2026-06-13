@@ -96,7 +96,7 @@ Every managed Agent Work Package should include these fields:
 - `forbidden_actions` - actions the role or executor must not perform.
 - `dependencies` - package IDs, tasks, decisions, artifacts or approvals that must exist first.
 - `acceptance_criteria` - observable criteria for package completion.
-- `verification_mode` - required verification mode, such as `CODE_ONLY_FAST`, `FAST_VALIDATION`, `BROWSER_SMOKE` or `VISUAL_QA`.
+- `verification_mode` - required verification mode, such as `NONE`, `SMOKE`, `FAST`, `STANDARD`, `FULL`, `RELEASE` or `MANUAL`.
 - `expected_output` - required result report structure.
 - `review_instructions` - how the package result should be reviewed.
 - `risks` - known risks, uncertainty or safety concerns.
@@ -350,7 +350,7 @@ dependencies:
 acceptance_criteria:
   - due_date filter returns matching tasks
   - existing task listing still works
-verification_mode: FAST_VALIDATION
+verification_mode: STANDARD
 expected_output:
   - Changed files
   - Summary
@@ -401,7 +401,7 @@ dependencies:
 acceptance_criteria:
   - user can filter tasks by due date
   - empty and loading states remain usable
-verification_mode: BROWSER_SMOKE
+verification_mode: MANUAL
 expected_output:
   - Changed files
   - Summary
@@ -453,7 +453,7 @@ dependencies:
   - implementation result submitted
 acceptance_criteria:
   - QA report covers positive, negative and regression checks
-verification_mode: FAST_VALIDATION
+verification_mode: STANDARD
 expected_output:
   - Summary
   - Checks performed
@@ -506,7 +506,7 @@ dependencies:
 acceptance_criteria:
   - docs explain the update flow clearly
   - version mirrors are updated if changelog version changes
-verification_mode: CODE_ONLY_FAST
+verification_mode: FAST
 expected_output:
   - Changed files
   - Summary

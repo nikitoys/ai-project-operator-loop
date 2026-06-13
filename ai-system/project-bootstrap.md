@@ -160,7 +160,7 @@ python3 scripts/foldered-control-mvp.py bootstrap \
   --project-name "My Project" \
   --target-app-directory app \
   --owner-language English \
-  --verification-mode CODE_ONLY_FAST \
+  --verification-mode FAST \
   --apply
 ```
 
@@ -193,12 +193,12 @@ cp AI_Development_System/ai-system/templates/foldered/AGENTS.root.md AGENTS.md
 Default verification mode should normally be:
 
 ```text
-CODE_ONLY_FAST
+FAST
 ```
 
 A stronger default may be selected only when the Human Owner explicitly asks for it or the project context requires it.
 
-Bootstrap must not silently select `BROWSER_SMOKE` or `VISUAL_QA` as the default.
+Bootstrap must not silently select `STANDARD`, `FULL`, `RELEASE`, browser QA or visual QA as the default.
 
 ## Approval Stop Points
 
@@ -208,7 +208,7 @@ Bootstrap must stop for Human Owner approval when:
 - target app directory is ambiguous;
 - existing local instructions conflict with global system rules;
 - bootstrap would modify application files;
-- verification mode stronger than `CODE_ONLY_FAST` is proposed by the AI;
+- verification mode stronger than `FAST` is proposed by the AI;
 - existing control files would be replaced rather than minimally updated;
 - update method for `AI_Development_System/` is unclear.
 

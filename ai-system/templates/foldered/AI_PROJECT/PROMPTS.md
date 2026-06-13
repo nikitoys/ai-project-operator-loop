@@ -33,5 +33,5 @@ Active Stage: Project System Update
 Active Document: AI_PROJECT and AI_Development_System
 Expected Result: control-layer migration only
 
-Verification Mode: CODE_ONLY_FAST
+Verification Mode: FAST
 ```

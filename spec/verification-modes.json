@@ -1,57 +1,111 @@
 {
   "spec_id": "ai-system.verification-modes",
-  "spec_version": "v0.1.0",
+  "spec_version": "v0.2.0",
   "status": "Draft",
   "markdown_sources": [
     "ai-system/verification-modes.md"
   ],
   "items": [
     {
-      "id": "code-only-fast",
-      "name": "CODE_ONLY_FAST",
-      "description": "Default for small code-only changes, documentation changes and fast bugfixes.",
-      "allowed_check_types": [
-        "diff_check",
-        "status_check",
-        "typecheck_when_practical"
+      "id": "none",
+      "name": "NONE",
+      "description": "No command execution; explain verification risk.",
+      "default_budget_sec": 0,
+      "allowed_speed_classes": [],
+      "slow_checks_allowed": false,
+      "requires_explicit_request": false
+    },
+    {
+      "id": "smoke",
+      "name": "SMOKE",
+      "description": "Run only instant critical checks.",
+      "default_budget_sec": 30,
+      "allowed_speed_classes": [
+        "instant"
       ],
-      "forbidden_without_explicit_request": [
-        "dev_server",
-        "preview_server",
-        "browser_tabs",
-        "playwright",
-        "mcp_browser_sessions",
-        "screenshots",
-        "manual_visual_qa",
-        "browser_console_inspection",
-        "full_build",
-        "full_test_suite"
-      ]
+      "slow_checks_allowed": false,
+      "requires_explicit_request": false
     },
     {
-      "id": "fast-validation",
-      "name": "FAST_VALIDATION",
-      "description": "Standard validation without browser, screenshots, console inspection or manual visual QA unless explicitly requested.",
-      "typical_commands": [
-        "npm run typecheck",
-        "npm run test:run",
-        "npm run build"
+      "id": "fast",
+      "name": "FAST",
+      "description": "Run instant and fast checks relevant to changed files.",
+      "default_budget_sec": 120,
+      "allowed_speed_classes": [
+        "instant",
+        "fast"
       ],
-      "browser_or_visual_allowed": false
+      "slow_checks_allowed": false,
+      "requires_explicit_request": false
     },
     {
-      "id": "browser-smoke",
-      "name": "BROWSER_SMOKE",
-      "description": "Narrow browser/runtime check only by explicit Human Owner request or task acceptance criteria.",
-      "browser_or_visual_allowed": true,
-      "visual_qa_allowed": false
+      "id": "standard",
+      "name": "STANDARD",
+      "description": "Run FAST plus selected standard checks if they fit the budget.",
+      "default_budget_sec": 300,
+      "allowed_speed_classes": [
+        "instant",
+        "fast",
+        "standard"
+      ],
+      "slow_checks_allowed": false,
+      "requires_explicit_request": false
     },
     {
-      "id": "visual-qa",
-      "name": "VISUAL_QA",
-      "description": "Screenshots and visual inspection only by explicit Human Owner request or acceptance criteria.",
-      "browser_or_visual_allowed": true,
-      "visual_qa_allowed": true
+      "id": "full",
+      "name": "FULL",
+      "description": "Explicit full verification mode that may run slow checks when slow checks are allowed and budgeted.",
+      "default_budget_sec": null,
+      "allowed_speed_classes": [
+        "instant",
+        "fast",
+        "standard",
+        "slow",
+        "expensive"
+      ],
+      "slow_checks_allowed": "requires_explicit_permission",
+      "requires_explicit_request": true
+    },
+    {
+      "id": "release",
+      "name": "RELEASE",
+      "description": "Explicit release-critical verification, including slow/golden checks when available and budgeted.",
+      "default_budget_sec": null,
+      "allowed_speed_classes": [
+        "instant",
+        "fast",
+        "standard",
+        "slow",
+        "expensive"
+      ],
+      "slow_checks_allowed": true,
+      "requires_explicit_request": true
+    },
+    {
+      "id": "manual",
+      "name": "MANUAL",
+      "description": "Human Owner explicitly chooses checks, budget and slow-check permission.",
+      "default_budget_sec": null,
+      "allowed_speed_classes": [
+        "instant",
+        "fast",
+        "standard",
+        "slow",
+        "expensive"
+      ],
+      "slow_checks_allowed": "human_selected",
+      "requires_explicit_request": true
     }
+  ],
+  "legacy_aliases": {
+    "CODE_ONLY_FAST": "FAST",
+    "FAST_VALIDATION": "STANDARD",
+    "BROWSER_SMOKE": "on-demand browser QA overlay",
+    "VISUAL_QA": "on-demand visual QA overlay"
+  },
+  "rules": [
+    "Codex Executor must not silently upgrade verification mode.",
+    "Slow, full, release, browser, visual and golden-scenario checks are not default.",
+    "A check without measured runtime must not be reported as fully verified."
   ]
 }

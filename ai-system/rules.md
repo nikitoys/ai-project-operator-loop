@@ -60,11 +60,13 @@ Status: Draft
 
 ## Verification Rules
 
-1. For ordinary code-only implementation and bugfix tasks, use `CODE_ONLY_FAST` by default.
+1. For ordinary code-only implementation, documentation changes and fast bugfix tasks, use `FAST` by default.
 2. Browser automation, Playwright/MCP browser sessions, screenshots, manual visual inspections and browser console checks are on-demand QA only.
 3. Do not run browser or visual checks unless the Human Owner explicitly requests them or the current task explicitly lists them in acceptance criteria.
 4. Do not mark a task `PARTIAL` only because browser checks, screenshots, visual inspection or console checks were skipped, unless those checks were explicitly required for that task.
 5. Codex must not silently upgrade verification mode.
+6. Slow, full, release and golden-scenario checks must not run unless explicitly requested or required by the selected verification mode.
+7. Every executed check should report measured runtime; every skipped check should report `reason_for_skip`.
 
 ## Codex Rules
 
@@ -80,6 +82,7 @@ Every Codex prompt should include:
 - acceptance criteria;
 - result format;
 - verification mode.
+- verification budget.
 
 Codex must report:
 

@@ -742,6 +742,36 @@ Needs improvement:
 - add examples for product-specific QA flows when product projects exist;
 - add QA state transition diagram if QA tracking becomes difficult.
 
+## 4.4 Verification Cost and Runtime Tracking
+
+Status: Implemented
+
+Existing documents and artifacts:
+
+```text
+/ai-system/verification-modes.md
+/ai-system/verification-cost-model.md
+/ai-system/test-runtime-tracking.md
+/ai-system/spec/verification-checks.json
+/scripts/verification/run_checks.py
+```
+
+Covers:
+
+- explicit verification budgets for `NONE`, `SMOKE`, `FAST`, `STANDARD`, `FULL`, `RELEASE` and `MANUAL`;
+- speed classes, value classes, result types and blocking/advisory impact;
+- rule that Codex Executor must not silently upgrade verification mode;
+- rule that slow/full/release checks are not default;
+- runtime history fields for executed and skipped checks;
+- local-only runtime history boundaries;
+- dry-run-capable lightweight check selection and JSONL recording.
+
+Needs improvement:
+
+- implement standalone commands for registry checks only after bounded follow-up tasks;
+- add aggregate runtime warning reports after real local history exists;
+- keep slow/golden checks opt-in until release workflows justify them.
+
 ---
 
 # 5. Learning Layer
@@ -860,6 +890,7 @@ Task Lifecycle
 Codex Execution Lifecycle
 Review Lifecycle
 QA Lifecycle
+Verification Cost and Runtime Tracking
 Knowledge Lifecycle
 Experiment Lifecycle
 Improvement Lifecycle

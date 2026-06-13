@@ -65,6 +65,13 @@
     "verification_mode": {
       "type": "string",
       "enum": [
+        "NONE",
+        "SMOKE",
+        "FAST",
+        "STANDARD",
+        "FULL",
+        "RELEASE",
+        "MANUAL",
         "CODE_ONLY_FAST",
         "FAST_VALIDATION",
         "BROWSER_SMOKE",

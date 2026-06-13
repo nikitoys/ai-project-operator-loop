@@ -123,7 +123,7 @@ For a new or existing project:
 3. Copy AI_Development_System/ai-system/templates/foldered/AGENTS.root.md to /AGENTS.md.
 4. Fill placeholders.
 5. Record target app directory.
-6. Set default verification mode, usually CODE_ONLY_FAST.
+6. Set default verification mode, usually FAST.
 7. Stop for Human Owner approval.
 ```
 

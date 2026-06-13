@@ -3,7 +3,7 @@
 Languages: [English](README.md) | [Русский](README.ru.md)
 
 Status: Draft
-Version: v0.44.0
+Version: v0.45.0
 
 This repository contains an AI Development System: an operating model for developing projects through AI roles, documentation, lifecycle governance, prompt generation, Codex execution, review and controlled evolution.
 
@@ -32,6 +32,8 @@ SOP and agent planning specs are derived machine-checkable inventory/contract fi
 Minimal foldered bootstrap/update dry-runs can be run with `scripts/foldered-control-mvp.py`.
 
 Dry-run agent planning checks can be run with `scripts/agent-plan-mvp.py`.
+
+Lightweight verification check selection can be run with `scripts/verification/run_checks.py`. The runner supports dry-run, explicit budgets, per-check timeouts and local JSONL runtime history.
 
 The SOP and optional multi-agent implementation plan is recorded in `/ai-system/evolution/sop-multi-agent-implementation-plan.md`.
 
@@ -227,19 +229,21 @@ Recommended operator loop:
 Default for ordinary code-only work:
 
 ```text
-CODE_ONLY_FAST
+FAST
 ```
 
 Operator shortcuts:
 
 ```text
-Код быстро          -> CODE_ONLY_FAST
-Проверка быстро     -> FAST_VALIDATION
-Браузер проверить   -> BROWSER_SMOKE
-Визуально проверить -> VISUAL_QA
+Код быстро          -> FAST
+Проверка быстро     -> STANDARD
+Браузер проверить   -> on-demand browser QA
+Визуально проверить -> on-demand visual QA
 ```
 
 Browser automation, Playwright/MCP browser sessions, screenshots, browser console checks and manual visual QA are on-demand only. Do not run them unless the Human Owner explicitly requests them or the current task acceptance criteria require them.
+
+Slow, full, release and golden-scenario checks are not default. Codex must not silently upgrade verification mode.
 
 ## How Work Moves
 
@@ -316,7 +320,9 @@ Documentation records decisions.
 - `/ai-system/project-control-files.md` - standard local control files for concrete projects.
 - `/ai-system/project-bootstrap.md` - how to initialize empty and existing project repositories.
 - `/ai-system/project-system-update.md` - how to update already integrated project repositories.
-- `/ai-system/verification-modes.md` - explicit verification modes and browser/visual QA boundaries.
+- `/ai-system/verification-modes.md` - explicit verification modes, budgets and browser/visual QA boundaries.
+- `/ai-system/verification-cost-model.md` - cost/value model for bounded verification check selection.
+- `/ai-system/test-runtime-tracking.md` - runtime history model for executed and skipped checks.
 - `/ai-system/language-policy.md` - language and localization rules.
 - `/ai-system/system-changelog.md` - system version history.
 - `/ai-system/improvement-log.md` - observed process problems and improvement ideas.

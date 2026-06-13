@@ -16,6 +16,7 @@ Checks:
 
 - task compliance;
 - architecture compliance;
+- declared verification mode, budget and runtime summary;
 - readability;
 - security;
 - performance risks;
@@ -48,6 +49,7 @@ Checks:
 - edge cases;
 - user-facing errors;
 - regression risks.
+- skipped checks and their stated reasons.
 
 ## Documentation Review
 

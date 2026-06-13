@@ -82,6 +82,10 @@ A prompt package should include:
 - allowed files;
 - forbidden actions;
 - acceptance criteria;
+- verification mode;
+- verification budget;
+- allowed slow checks;
+- runtime tracking setting;
 - expected output;
 - review instructions.
 
@@ -240,6 +244,10 @@ Every Codex execution prompt should define:
 - forbidden actions;
 - acceptance criteria;
 - checks or tests expected;
+- verification mode;
+- verification budget;
+- whether slow/full/release checks are allowed;
+- whether runtime tracking is enabled;
 - result format;
 - review instructions.
 
@@ -252,6 +260,10 @@ A Codex result is ready for review when it includes:
 - changed files or explicit statement that no files changed;
 - summary of work performed;
 - checks or tests performed, or reason they were not run;
+- verification mode and budget used;
+- measured runtime for executed checks;
+- skipped checks with reasons;
+- runtime warnings;
 - errors encountered;
 - questions or blockers;
 - diff or key changes.
@@ -265,13 +277,24 @@ Codex should report:
 ```text
 Changed files:
 Summary:
-Checks / tests:
+Verification Summary:
+  Mode:
+  Budget:
+  Used time:
+  Overall result:
+Checks:
+  - check_id: result, duration_sec, blocking/advisory
+Skipped:
+  - check_id: reason_for_skip
+Runtime Warnings:
 Errors:
 Questions:
 Diff or key changes:
 ```
 
 This extends the recommended result format from `/ai-system/human-interaction.md` without changing that document.
+
+Codex must not say "all tests passed" unless all relevant tests for the selected mode actually ran. Use mode-specific wording such as "FAST verification passed" or "STANDARD verification passed".
 
 ## Failure Handling
 

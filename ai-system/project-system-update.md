@@ -103,7 +103,7 @@ It should preserve root `AGENTS.md` as a thin router.
 8. Stop for Human Owner approval when conflicts or replacements are needed.
 9. Apply approved control-layer changes only.
 10. Update AI_PROJECT/AI_DEV_SYSTEM_VERSION.md.
-11. Run CODE_ONLY_FAST checks only.
+11. Run FAST checks only.
 ```
 
 ## Minimal Update Helper
@@ -191,7 +191,7 @@ Project system update must not:
 Default:
 
 ```text
-CODE_ONLY_FAST
+FAST
 ```
 
 Allowed checks for this process:

@@ -1,7 +1,7 @@
 # AI Development System
 
 Status: Draft  
-Version: v0.44.0
+Version: v0.45.0
 
 ## Purpose
 
@@ -38,6 +38,15 @@ python3 scripts/validate-system.py
 ```
 
 The full validation entrypoint compiles planning scripts, checks documentation integrity, parses JSON specs, validates required agent planning templates, runs dependency-aware planning fixtures and validates the golden project dry-run plan.
+
+Run lightweight verification check selection with:
+
+```bash
+python3 scripts/verification/run_checks.py --mode FAST --budget-sec 120 --dry-run
+python3 scripts/verification/run_checks.py --mode STANDARD --budget-sec 300 --dry-run
+```
+
+The lightweight runner records executed and skipped checks as local JSONL history. It does not treat unimplemented check commands as passed.
 
 ## Foldered Bootstrap/Update Helper
 
@@ -79,6 +88,12 @@ Current spec files:
 - `../spec/schemas/system-spec.schema.json` — shared minimal schema for spec files.
 
 Markdown remains the operational source of truth. Specs are derived inventory and contract files unless a later approved evolution task changes the source-of-truth relationship. Specs do not authorize runtime behavior, automatic execution, automatic merge or automatic acceptance.
+
+## Verification Check Registry
+
+`spec/verification-checks.json` under this `/ai-system` folder defines machine-readable check metadata for the lightweight verification runner.
+
+It records check IDs, value classes, speed classes, expected durations, timeouts, default modes, tags and command availability. Markdown policy remains the source of truth.
 
 ## SOP Model
 
@@ -146,6 +161,14 @@ AI-assisted work must follow:
 
 - `security-policy.md` for secrets, sandbox boundaries, sensitive code and security review;
 - `privacy-data-handling-policy.md` for private data, external LLM sharing and data minimization.
+
+## Verification Cost and Runtime Tracking
+
+`verification-cost-model.md` defines speed classes, value classes, check results, blocking/advisory impact and budget-based check selection.
+
+`test-runtime-tracking.md` defines JSONL runtime history fields, local-only history boundaries and runtime degradation warnings.
+
+Slow, full, release, browser, visual and golden-scenario checks remain opt-in unless the selected verification mode explicitly allows them.
 
 ## System Layers
 
@@ -217,7 +240,9 @@ AI Development System
 - `project-control-files.md` — standard project-level control files for concrete repositories.
 - `project-bootstrap.md` — workflow for initializing new and existing project repositories.
 - `project-system-update.md` — workflow for updating already integrated project control layers.
-- `verification-modes.md` — explicit check modes and on-demand browser/visual QA rules.
+- `verification-modes.md` — explicit check modes, budgets and on-demand browser/visual QA rules.
+- `verification-cost-model.md` — cost/value model for bounded verification check selection.
+- `test-runtime-tracking.md` — JSONL runtime tracking model for executed and skipped checks.
 - `security-policy.md` — security baseline for secrets, sandbox boundaries, sensitive code and automation.
 - `privacy-data-handling-policy.md` — privacy and data-handling rules for private data, external LLMs and generated artifacts.
 - `aicp-language-policy.md` — approved change proposal for language and localization policy.
@@ -227,6 +252,7 @@ AI Development System
 - `improvement-log.md` — observations and problems in the system.
 - `../scripts/check-docs-integrity.py` — documentation integrity check for links, placeholders, indexes and version/status fields.
 - `../scripts/validate-system.py` — read-only validation entrypoint for docs, specs, templates, planning fixtures and the golden project.
+- `../scripts/verification/run_checks.py` — lightweight verification runner with dry-run, budgets, timeouts and JSONL history.
 - `../scripts/foldered-control-mvp.py` — minimal dry-run bootstrap/update helper for Foldered Control Mode.
 - `../scripts/agent-plan-mvp.py` — minimal dry-run helper for AI_PROJECT agent planning validation, lock checks, candidate parallel group reporting and prompt drafts.
 - `../spec/README.md` — machine-checkable spec layer policy and validation guidance.

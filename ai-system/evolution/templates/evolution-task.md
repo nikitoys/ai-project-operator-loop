@@ -69,14 +69,20 @@ No files outside this list may be changed unless the Human Owner explicitly appr
 
 ```text
 Verification Mode:
+Verification Budget:
+Allowed Slow Checks:
+Runtime Tracking:
 ```
 
 Allowed examples:
 
-- `CODE_ONLY_FAST`
-- `FAST_VALIDATION`
-- `BROWSER_SMOKE`
-- `VISUAL_QA`
+- `NONE`
+- `SMOKE`
+- `FAST`
+- `STANDARD`
+- `FULL`
+- `RELEASE`
+- `MANUAL`
 - documentation-only manual verification when no executable checks exist
 
 ## Verification Steps

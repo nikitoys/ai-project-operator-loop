@@ -60,7 +60,12 @@ def validate_json_specs() -> list[str]:
     print("RUN: JSON spec parse validation")
     errors: list[str] = []
 
-    for spec_file in sorted((ROOT / "spec").rglob("*.json")):
+    spec_roots = [
+        ROOT / "spec",
+        ROOT / "ai-system/spec",
+    ]
+
+    for spec_file in sorted(path for spec_root in spec_roots for path in spec_root.rglob("*.json")):
         try:
             with spec_file.open("r", encoding="utf-8") as handle:
                 json.load(handle)
@@ -110,6 +115,7 @@ def main() -> int:
                 "scripts/agent-plan-mvp.py",
                 "scripts/validate-agent-plan-fixtures.py",
                 "scripts/validate-system.py",
+                "scripts/verification/run_checks.py",
             ],
         ),
         run_command("Documentation integrity", [sys.executable, "scripts/check-docs-integrity.py"]),

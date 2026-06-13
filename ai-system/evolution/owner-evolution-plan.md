@@ -116,7 +116,7 @@ Expected Result: Version/status synchronization completed locally
 Allowed files: README.md, README.ru.md, ai-system/README.md, ai-system/evolution/evolution-backlog.md, ai-system/evolution/owner-evolution-plan.md, ai-system/system-changelog.md
 Out of scope: Docs CI, security/privacy policy, golden example project, product code
 Acceptance criteria: Authoritative version source documented; README versions synchronized; changelog updated; EVOL-002 status updated
-Verification mode: CODE_ONLY_FAST
+Verification mode: FAST
 Human Owner approval required: Human Owner reviews local result before commit/push
 ```
 
@@ -134,7 +134,7 @@ Expected Result: Documentation integrity checks added
 Allowed files: scripts/check-docs-integrity.py, .github/workflows/docs-integrity.yml, README.md, README.ru.md, ai-system/README.md, ai-system/evolution/evolution-backlog.md, ai-system/evolution/owner-evolution-plan.md, ai-system/system-changelog.md
 Out of scope: security/privacy policy, golden example project, product code
 Acceptance criteria: Markdown links checked; unresolved placeholders checked; index completeness checked; version/status consistency checked; changelog updated; EVOL-004 recommended next
-Verification mode: FAST_VALIDATION
+Verification mode: STANDARD
 Human Owner approval required: Human Owner reviews local result before commit/push
 ```
 
@@ -152,7 +152,7 @@ Expected Result: Security/privacy/data-handling policy added
 Allowed files: ai-system/aicp-security-privacy-policy.md, ai-system/security-policy.md, ai-system/privacy-data-handling-policy.md, ai-system/review-process.md, ai-system/rules.md, ai-system/README.md, ai-system/templates/project/AGENTS.md, ai-system/templates/foldered/AGENTS.root.md, ai-system/templates/foldered/AI_PROJECT/AGENTS.md, ai-system/templates/project/CODEX_WORKFLOW.md, ai-system/templates/foldered/AI_PROJECT/CODEX_WORKFLOW.md, ai-system/evolution/evolution-backlog.md, ai-system/evolution/owner-evolution-plan.md, ai-system/system-changelog.md, README.md, README.ru.md
 Out of scope: golden example project, machine-checkable spec layer, product code
 Acceptance criteria: Secret-handling rules exist; external LLM data-sharing rules exist; sandbox/execution boundaries exist; security review can reference policy; project templates inherit policy
-Verification mode: FAST_VALIDATION
+Verification mode: STANDARD
 Human Owner approval required: Human Owner reviews local result before commit/push
 ```
 
@@ -170,7 +170,7 @@ Expected Result: A fully filled Task Tracker foldered example exists in `example
 Allowed files: examples/golden-project/AGENTS.md, examples/golden-project/AI_PROJECT/AGENTS.md, examples/golden-project/AI_PROJECT/PROJECT_GOAL.md, examples/golden-project/AI_PROJECT/OWNER_PLAN.md, examples/golden-project/AI_PROJECT/CODEX_COMMANDS.md, examples/golden-project/AI_PROJECT/CODEX_WORKFLOW.md, examples/golden-project/AI_PROJECT/CODEX_PLAN.md, examples/golden-project/AI_PROJECT/CODEX_CURRENT.md, examples/golden-project/AI_PROJECT/CODEX_TASKS.md, examples/golden-project/AI_PROJECT/CODEX_SESSION_LOG.md, examples/golden-project/AI_PROJECT/PROMPTS.md, examples/golden-project/AI_PROJECT/AI_DEV_SYSTEM_VERSION.md, examples/golden-project/AI_PROJECT/docs/verification-policy.md, ai-system/README.md, ai-system/evolution/evolution-backlog.md, ai-system/evolution/owner-evolution-plan.md, ai-system/system-changelog.md
 Out of scope: machine-checkable spec layer, bootstrap tooling, security/privacy policy, product code
 Acceptance criteria: Golden example includes root AGENTS and filled AI_PROJECT control files; explicit verification policy; zero product implementation files in example
-Verification mode: FAST_VALIDATION
+Verification mode: STANDARD
 Human Owner approval required: Human Owner reviews local result before commit/push
 ```
 
@@ -188,7 +188,7 @@ Expected Result: Minimal machine-checkable `spec/` layer exists for roles, inter
 Allowed files: spec/README.md, spec/roles.json, spec/interaction-modes.json, spec/verification-modes.json, spec/lifecycle-states.json, spec/schemas/system-spec.schema.json, README.md, README.ru.md, ai-system/README.md, ai-system/evolution/evolution-backlog.md, ai-system/evolution/owner-evolution-plan.md, ai-system/system-changelog.md
 Out of scope: Markdown regeneration, deleting existing docs, CI schema lint, bootstrap tooling, release packaging, research work
 Acceptance criteria: First spec area selected; schema defined; validation process documented; generated/derived documentation policy defined
-Verification mode: FAST_VALIDATION
+Verification mode: STANDARD
 Human Owner approval required: Human Owner reviews local result before commit/push
 ```
 
@@ -206,7 +206,7 @@ Expected Result: Minimal dry-run foldered bootstrap/update helper exists
 Allowed files: scripts/foldered-control-mvp.py, README.md, README.ru.md, ai-system/README.md, ai-system/project-bootstrap.md, ai-system/project-system-update.md, ai-system/foldered-integration.md, ai-system/evolution/README.md, ai-system/evolution/evolution-backlog.md, ai-system/evolution/owner-evolution-plan.md, ai-system/system-changelog.md
 Out of scope: large CLI, package automation, release automation, upstream git clone/subtree management, product code
 Acceptance criteria: dry-run default; explicit apply mode; unresolved placeholders reported; AI_DEV_SYSTEM_VERSION tracking supported; docs and changelog updated
-Verification mode: FAST_VALIDATION
+Verification mode: STANDARD
 Human Owner approval required: Human Owner reviews local result before commit/push
 ```
 
@@ -224,7 +224,7 @@ Expected Result: Prepare one bounded next evolution item without starting implem
 Allowed files: To be defined in the bounded task package before execution
 Out of scope: unapproved bootstrap work, release packaging, research work, product implementation
 Acceptance criteria: To be defined before execution
-Verification mode: CODE_ONLY_FAST unless spec validation requires stronger checks
+Verification mode: FAST unless spec validation requires stronger checks
 Human Owner approval required: Yes before creating or executing the next backlog item
 ```
 

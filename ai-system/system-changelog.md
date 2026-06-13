@@ -2,6 +2,29 @@
 
 Status: Draft
 
+## v0.45.0
+
+### Added
+
+- Added `ai-system/verification-cost-model.md` to define verification speed classes, value classes, result types, blocking/advisory impact and budget-based check selection.
+- Added `ai-system/test-runtime-tracking.md` to define JSONL runtime history fields, local-only history boundaries, aggregate metrics and runtime degradation warnings.
+- Added `ai-system/spec/verification-checks.json` as the lightweight verification check registry.
+- Added `scripts/verification/run_checks.py` as a Python standard-library verification runner with dry-run, explicit budgets, per-check timeouts, slow-check gating and JSONL event recording.
+- Added `ai-system/templates/foldered/AI_PROJECT/verification-history.example.jsonl` as example runtime history.
+
+### Updated
+
+- Updated `ai-system/verification-modes.md` to define `NONE`, `SMOKE`, `FAST`, `STANDARD`, `FULL`, `RELEASE` and `MANUAL` with explicit budgets and no silent upgrade rule.
+- Updated `ai-system/codex-lifecycle.md` and `ai-system/task-format.md` so Codex tasks and final reports include verification budget, slow-check permission, runtime tracking, check durations, skipped checks and runtime warnings.
+- Updated `ai-system/operating-model.md`, `ai-system/README.md`, root README files and `spec/README.md` to index the new verification cost/runtime tracking model.
+- Updated `spec/verification-modes.json` to mirror the new verification mode set.
+- Updated `scripts/validate-system.py` to compile the new runner and parse JSON files under `ai-system/spec/`.
+- Updated `.gitignore` to keep local verification runtime history out of commits.
+
+### Reason
+
+Verification now follows an explicit cost/value model instead of encouraging broad test runs by default. Codex tasks can declare mode, budget, slow-check permission and runtime tracking, while final reports must distinguish executed checks from skipped checks and avoid claiming full verification without measured runtime. Slow, full, release, browser, visual and golden-scenario checks remain opt-in.
+
 ## v0.44.0
 
 ### Added
