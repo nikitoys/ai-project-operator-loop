@@ -24,10 +24,10 @@ Short operator commands must be interpreted through `AI_PROJECT/CODEX_WORKFLOW.m
 
 ## Verification Mode Commands
 
-- `Код быстро` — use `CODE_ONLY_FAST`.
-- `Проверка быстро` — use `FAST_VALIDATION`.
-- `Браузер проверить` — use `BROWSER_SMOKE`.
-- `Визуально проверить` — use `VISUAL_QA`.
+- `Код быстро` — use `FAST`.
+- `Проверка быстро` — use `STANDARD`.
+- `Браузер проверить` — request on-demand browser QA.
+- `Визуально проверить` — request on-demand visual QA.
 
 ## System Update Commands
 

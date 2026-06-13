@@ -171,7 +171,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--project-name", default="Example Project")
     parser.add_argument("--target-app-directory", default="app")
     parser.add_argument("--owner-language", default="English")
-    parser.add_argument("--verification-mode", default="CODE_ONLY_FAST")
+    parser.add_argument("--verification-mode", default="FAST")
     parser.add_argument("--update-method", default="vendor-copy")
     parser.add_argument("--source-branch", default="ai-development-system")
     parser.add_argument("--system-version", default=current_version())

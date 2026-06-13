@@ -40,6 +40,18 @@ What must not be done in this task.
 ## Expected Files
 Files that may be created or changed.
 
+## Verification Mode
+NONE / SMOKE / FAST / STANDARD / FULL / RELEASE / MANUAL
+
+## Verification Budget
+Maximum total verification time, such as `120 sec` or `5 min`.
+
+## Allowed Slow Checks
+true / false
+
+## Runtime Tracking
+enabled / disabled
+
 ## Acceptance Criteria
 - Criterion 1
 - Criterion 2
@@ -55,7 +67,19 @@ Known risks or unclear areas.
 ## Result Format
 - Changed files
 - Summary
-- Tests
+- Verification Summary:
+  - Mode
+  - Budget
+  - Used time
+  - Overall result
+- Checks:
+  - check_id: result, duration_sec, blocking/advisory
+- Skipped:
+  - check_id: reason_for_skip
+- Runtime Warnings:
+  - checks that exceeded expected time
+  - checks that should be reclassified
+  - slow checks not run
 - Errors
 - Questions
 - Diff
@@ -70,6 +94,10 @@ A task is ready when it has:
 - scope;
 - out of scope;
 - acceptance criteria;
+- verification mode;
+- verification budget;
+- allowed slow-check decision;
+- runtime tracking decision;
 - owner role;
 - no blocking ambiguity.
 
@@ -80,5 +108,8 @@ A task is done when:
 - acceptance criteria are satisfied;
 - review passed;
 - QA passed or test cases are documented;
+- verification summary reports mode, budget, used time, checks, skipped checks and runtime warnings;
 - documentation is updated if needed;
 - Human Owner approved the result.
+
+Do not say "all tests passed" unless all relevant tests for the selected mode actually ran.

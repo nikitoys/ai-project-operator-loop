@@ -6,4 +6,7 @@ dist/
 build/
 .venv/
 outputs/
+.verification-history.jsonl
+AI_PROJECT/verification-history.local.jsonl
+AI_PROJECT/**/verification-history.local.jsonl
 *.log

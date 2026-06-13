@@ -3,7 +3,7 @@
 Языки: [English](README.md) | [Русский](README.ru.md)
 
 Статус: Draft
-Версия: v0.44.0
+Версия: v0.45.0
 
 Этот репозиторий содержит AI Development System: операционную модель для разработки проектов через AI-роли, документацию, lifecycle governance, генерацию промптов, выполнение задач через Codex, review и контролируемую эволюцию системы.
 
@@ -32,6 +32,8 @@ SOP и agent planning specs являются derived machine-checkable inventory
 Минимальный dry-run helper для foldered bootstrap/update находится в `scripts/foldered-control-mvp.py`.
 
 Dry-run agent planning checks можно запускать через `scripts/agent-plan-mvp.py`.
+
+Lightweight verification selection можно запускать через `scripts/verification/run_checks.py`; runner поддерживает dry-run, explicit budgets, per-check timeouts и local JSONL runtime history.
 
 План SOP и optional multi-agent implementation зафиксирован в `/ai-system/evolution/sop-multi-agent-implementation-plan.md`.
 
@@ -127,6 +129,7 @@ Documentation records decisions.
 - Режимы взаимодействия: Free, System, Prompt, Codex, Review, Evolution и Dry Run.
 - Ролевая модель для product, design, management, implementation, quality, documentation и system evolution.
 - Формат Codex prompt package со scope, allowed files, forbidden actions и acceptance criteria.
+- Verification modes теперь требуют explicit budget, slow-check decision и runtime summary; slow/full/release checks не запускаются по умолчанию.
 - Review process с уровнями severity и decision keywords Human Owner.
 - Lifecycle governance для управляемых сущностей системы.
 - Language and localization policy для пользовательских ответов и generated prompts.
@@ -144,6 +147,9 @@ Documentation records decisions.
 - `/ai-system/prompt-lifecycle.md` - lifecycle создания, review и выполнения промптов.
 - `/ai-system/task-format.md` - стандартный формат задач.
 - `/ai-system/review-process.md` - процесс review и QA.
+- `/ai-system/verification-modes.md` - verification modes, budgets и browser/visual QA boundary.
+- `/ai-system/verification-cost-model.md` - cost/value model для bounded verification.
+- `/ai-system/test-runtime-tracking.md` - runtime history model для executed и skipped checks.
 - `/ai-system/change-process.md` - процесс контролируемой эволюции.
 - `/ai-system/lifecycle-governance.md` - общие lifecycle rules.
 - `/ai-system/language-policy.md` - правила языка и локализации.

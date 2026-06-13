@@ -200,15 +200,18 @@ Verification mode is authoritative for allowed checks.
 Default mode for ordinary code-only work and fast bugfixes:
 
 ```text
-CODE_ONLY_FAST
+FAST
 ```
 
 Modes:
 
-- `CODE_ONLY_FAST` — run only fast code/diff checks such as `git diff --check` and `git status --short`; optional `npm run typecheck` only when source files changed and practical.
-- `FAST_VALIDATION` — run standard validation such as `npm run typecheck`, `npm run test:run` and `npm run build`; no browser unless explicitly requested.
-- `BROWSER_SMOKE` — run limited browser/runtime checks only when explicitly requested.
-- `VISUAL_QA` — run screenshots, visual inspection or Playwright visual checks only when explicitly requested or required by acceptance criteria.
+- `NONE` — run no commands and explain verification risk.
+- `SMOKE` — run instant critical checks only, within 30 sec.
+- `FAST` — run instant and fast checks relevant to changed files, within 120 sec by default.
+- `STANDARD` — run `FAST` plus selected standard checks that fit a 300 sec default budget.
+- `FULL` — explicit full verification; may run slow checks only when allowed and budgeted.
+- `RELEASE` — explicit release verification; may include slow/golden checks when available and budgeted.
+- `MANUAL` — Human Owner chooses checks, budget and slow-check permission.
 
 Browser automation, Playwright/MCP browser sessions, screenshots, manual visual inspections and browser console checks are on-demand QA only. Do not run them unless the Human Owner explicitly requests them or the current task explicitly lists them in acceptance criteria.
 

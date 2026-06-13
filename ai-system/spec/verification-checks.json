@@ -1,0 +1,178 @@
+{
+  "spec_id": "ai-system.verification-checks",
+  "spec_version": "v0.1.0",
+  "status": "Draft",
+  "markdown_sources": [
+    "ai-system/verification-cost-model.md",
+    "ai-system/verification-modes.md",
+    "ai-system/test-runtime-tracking.md"
+  ],
+  "items": [
+    {
+      "id": "allowed-files-check",
+      "name": "Allowed Files Check",
+      "purpose": "Ensure task stayed inside declared scope and allowed files.",
+      "value_class": "critical",
+      "speed_class": "instant",
+      "expected_duration_sec": 5,
+      "timeout_sec": 10,
+      "blocking_by_default": true,
+      "default_modes": [
+        "SMOKE",
+        "FAST",
+        "STANDARD",
+        "FULL",
+        "RELEASE",
+        "MANUAL"
+      ],
+      "tags": [
+        "scope",
+        "safety",
+        "changed-files"
+      ],
+      "command": null,
+      "notes": "Not implemented yet. Requires task allowed-files input and changed-file discovery."
+    },
+    {
+      "id": "placeholder-check",
+      "name": "Placeholder Check",
+      "purpose": "Detect unresolved placeholders like {{PROJECT_NAME}} in production-ready templates.",
+      "value_class": "high",
+      "speed_class": "fast",
+      "expected_duration_sec": 20,
+      "timeout_sec": 60,
+      "blocking_by_default": true,
+      "default_modes": [
+        "FAST",
+        "STANDARD",
+        "FULL",
+        "RELEASE",
+        "MANUAL"
+      ],
+      "tags": [
+        "documentation",
+        "templates",
+        "placeholders"
+      ],
+      "command": null,
+      "notes": "Not implemented as a standalone check yet. Existing documentation integrity tooling includes placeholder checks with repository-specific allowlists."
+    },
+    {
+      "id": "changed-markdown-link-check",
+      "name": "Changed Markdown Link Check",
+      "purpose": "Check links only in changed Markdown files.",
+      "value_class": "high",
+      "speed_class": "fast",
+      "expected_duration_sec": 30,
+      "timeout_sec": 60,
+      "blocking_by_default": true,
+      "default_modes": [
+        "FAST",
+        "STANDARD",
+        "FULL",
+        "RELEASE",
+        "MANUAL"
+      ],
+      "tags": [
+        "documentation",
+        "links",
+        "changed-files"
+      ],
+      "command": null,
+      "notes": "Not implemented yet. Existing full documentation integrity check validates all Markdown links, but this registry entry is scoped to changed Markdown files."
+    },
+    {
+      "id": "status-version-check",
+      "name": "Status Version Check",
+      "purpose": "Validate version/status fields in system documents where applicable.",
+      "value_class": "high",
+      "speed_class": "fast",
+      "expected_duration_sec": 15,
+      "timeout_sec": 60,
+      "blocking_by_default": true,
+      "default_modes": [
+        "FAST",
+        "STANDARD",
+        "FULL",
+        "RELEASE",
+        "MANUAL"
+      ],
+      "tags": [
+        "documentation",
+        "versions",
+        "status"
+      ],
+      "command": null,
+      "notes": "Not implemented as a standalone check yet. Existing documentation integrity tooling validates visible README/changelog versions and selected status fields."
+    },
+    {
+      "id": "index-crosslink-check",
+      "name": "Index Crosslink Check",
+      "purpose": "Validate important indexes and cross-links.",
+      "value_class": "medium",
+      "speed_class": "standard",
+      "expected_duration_sec": 120,
+      "timeout_sec": 300,
+      "blocking_by_default": false,
+      "default_modes": [
+        "STANDARD",
+        "FULL",
+        "RELEASE",
+        "MANUAL"
+      ],
+      "tags": [
+        "documentation",
+        "indexes",
+        "crosslinks"
+      ],
+      "command": null,
+      "notes": "Not implemented as a standalone check yet. Existing documentation integrity tooling includes selected index checks."
+    },
+    {
+      "id": "full-repo-link-check",
+      "name": "Full Repository Link Check",
+      "purpose": "Check all repository links.",
+      "value_class": "high",
+      "speed_class": "slow",
+      "expected_duration_sec": 600,
+      "timeout_sec": 1200,
+      "blocking_by_default": false,
+      "default_modes": [
+        "FULL",
+        "RELEASE",
+        "NIGHTLY",
+        "MANUAL"
+      ],
+      "tags": [
+        "documentation",
+        "links",
+        "full-repository",
+        "slow"
+      ],
+      "command": null,
+      "notes": "Not implemented as a separate slow check. Do not run by default."
+    },
+    {
+      "id": "golden-bootstrap-scenario",
+      "name": "Golden Bootstrap Scenario",
+      "purpose": "Verify foldered integration/bootstrap scenario.",
+      "value_class": "high",
+      "speed_class": "slow",
+      "expected_duration_sec": 900,
+      "timeout_sec": 1200,
+      "blocking_by_default": false,
+      "default_modes": [
+        "RELEASE",
+        "MANUAL"
+      ],
+      "tags": [
+        "golden-project",
+        "bootstrap",
+        "release",
+        "slow"
+      ],
+      "command": null,
+      "notes": "Not implemented as an executable golden scenario in this registry. Use only for release/manual planning until a bounded scenario runner exists."
+    }
+  ]
+}
