@@ -43,6 +43,7 @@ Default files:
 
 ```text
 AI_PROJECT/AGENTS.md
+AI_PROJECT/PROJECT_CONTROL_INDEX.md
 AI_PROJECT/PROJECT_OPERATION_PROFILE.md
 AI_PROJECT/PROJECT_GOAL.md
 AI_PROJECT/OWNER_PLAN.md
@@ -65,6 +66,8 @@ AI_PROJECT/docs/verification-policy.md
 
 `AI_PROJECT` files are project-specific source of truth after bootstrap. They must not be blindly overwritten by upstream templates.
 
+`AI_PROJECT/PROJECT_CONTROL_INDEX.md` is the local read-order manifest. It makes project control files discoverable by importance and read policy without requiring every file to be loaded into context by default.
+
 Agent planning and assignment files are optional planning and manual coordination records for SOP-guided and multi-agent workflows. They do not authorize execution, parallel execution, automatic execution, automatic dispatch, merge or acceptance.
 
 ## Root `AGENTS.md`
@@ -75,6 +78,7 @@ It should point AI sessions to:
 
 ```text
 /AI_PROJECT/AGENTS.md
+/AI_PROJECT/PROJECT_CONTROL_INDEX.md
 /AI_PROJECT/PROJECT_OPERATION_PROFILE.md
 /AI_PROJECT/PROJECT_GOAL.md
 /AI_PROJECT/docs/verification-policy.md
@@ -115,6 +119,8 @@ For a concrete project in Foldered Control Mode:
 8. `AI_Development_System/ai-system/templates` templates.
 
 Templates are bootstrap inputs, not ongoing authority after local files are created.
+
+`AI_PROJECT/PROJECT_CONTROL_INDEX.md` controls discovery and read policy only. It does not override project-control authority or global safety rules.
 
 ## Installation Methods
 
@@ -173,6 +179,8 @@ In Root Control Mode, project control files live directly in the repository root
 
 ```text
 AGENTS.md
+PROJECT_CONTROL_INDEX.md
+PROJECT_OPERATION_PROFILE.md
 PROJECT_GOAL.md
 OWNER_PLAN.md
 CODEX_WORKFLOW.md

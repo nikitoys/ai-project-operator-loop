@@ -429,14 +429,16 @@ Needs improvement:
 - add project-local templates after approved specs and planning documents stabilize;
 - validate specs through controlled pilot work before runtime decisions.
 
-## 2.11 AI_PROJECT Agent Planning Templates
+## 2.11 AI_PROJECT Control and Agent Planning Templates
 
 Status: Implemented
 
 Existing documents:
 
 ```text
+/ai-system/project-control-connectivity.md
 /ai-system/project-operation-profile.md
+/ai-system/templates/foldered/AI_PROJECT/PROJECT_CONTROL_INDEX.md
 /ai-system/templates/foldered/AI_PROJECT/PROJECT_OPERATION_PROFILE.md
 /ai-system/templates/foldered/AI_PROJECT/AGENT_PLAN.md
 /ai-system/templates/foldered/AI_PROJECT/AGENT_TASKS.md
@@ -448,6 +450,8 @@ Existing documents:
 
 Covers:
 
+- compact project-control read order with importance levels and read policies;
+- drift reporting when root or local read order does not lead agents to standard control files;
 - Human Owner-editable surface-level operating defaults for language, answer style, verification, permissions, layout and review;
 - project-local SOP and agent planning snapshot;
 - Agent Work Package registry;
@@ -459,6 +463,7 @@ Covers:
 
 Needs improvement:
 
+- add machine-readable connectivity validation only after the Markdown index proves stable;
 - add machine-readable profile schema only after the Markdown profile proves stable;
 - extend the golden project with a non-runtime multi-agent example;
 - add dry-run planner validation tooling only in a separate bounded evolution task;

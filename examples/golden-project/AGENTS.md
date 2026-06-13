@@ -8,12 +8,14 @@ Before repository-affecting work, read:
 
 ```text
 AI_PROJECT/AGENTS.md
+AI_PROJECT/PROJECT_CONTROL_INDEX.md
+AI_PROJECT/PROJECT_OPERATION_PROFILE.md
 AI_PROJECT/PROJECT_GOAL.md
-AI_PROJECT/docs/verification-policy.md
-AI_Development_System/ai-system/security-policy.md
-AI_Development_System/ai-system/privacy-data-handling-policy.md
-AI_Development_System/AGENTS.md
-AI_Development_System/ai-system/rules.md
+AI_PROJECT/docs/verification-policy.md when checks, QA, browser or visual validation are relevant
+AI_Development_System/AGENTS.md when system-level rules are needed
+AI_Development_System/ai-system/rules.md when global rules or conflicts are involved
+AI_Development_System/ai-system/security-policy.md when secrets, sensitive code, sandbox or security work is involved
+AI_Development_System/ai-system/privacy-data-handling-policy.md when private data, personal data, external LLM or data-sharing work is involved
 ```
 
 ## Repository Boundaries

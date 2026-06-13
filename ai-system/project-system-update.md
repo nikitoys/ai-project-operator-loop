@@ -34,6 +34,7 @@ Default source documents:
 
 - `AI_Development_System/ai-system/foldered-integration.md`;
 - `AI_Development_System/ai-system/project-control-files.md`;
+- `AI_Development_System/ai-system/project-control-connectivity.md`;
 - `AI_Development_System/ai-system/project-bootstrap.md`;
 - `AI_Development_System/ai-system/verification-modes.md`;
 - `AI_Development_System/ai-system/templates/foldered/`;
@@ -95,16 +96,18 @@ It should preserve root `AGENTS.md` as a thin router.
 ```text
 1. Read root AGENTS.md.
 2. Read AI_PROJECT/AGENTS.md if present.
-3. Read AI_PROJECT/PROJECT_OPERATION_PROFILE.md if present.
-4. Read AI_PROJECT/PROJECT_GOAL.md and AI_PROJECT/docs/verification-policy.md.
-5. Read AI_Development_System/ai-system/foldered-integration.md.
-6. Read latest templates under AI_Development_System/ai-system/templates/foldered/.
-7. Compare existing local control files with templates.
-8. Prepare migration report.
-9. Stop for Human Owner approval when conflicts or replacements are needed.
-10. Apply approved control-layer changes only.
-11. Update AI_PROJECT/AI_DEV_SYSTEM_VERSION.md.
-12. Run FAST checks only.
+3. Read AI_PROJECT/PROJECT_CONTROL_INDEX.md if present.
+4. Read AI_PROJECT/PROJECT_OPERATION_PROFILE.md if present.
+5. Read AI_PROJECT/PROJECT_GOAL.md and AI_PROJECT/docs/verification-policy.md.
+6. Read AI_Development_System/ai-system/foldered-integration.md.
+7. Read latest templates under AI_Development_System/ai-system/templates/foldered/.
+8. Compare existing local control files with templates.
+9. Report missing control files and project-control connectivity drift.
+10. Prepare migration report.
+11. Stop for Human Owner approval when conflicts or replacements are needed.
+12. Apply approved control-layer changes only.
+13. Update AI_PROJECT/AI_DEV_SYSTEM_VERSION.md.
+14. Run FAST checks only.
 ```
 
 ## Minimal Update Helper
@@ -119,9 +122,10 @@ Dry-run is the default. The helper reports:
 
 - required foldered control files that exist or are missing;
 - unresolved template placeholders in existing control files;
+- project-control connectivity drift, including stale read orders that do not mention `PROJECT_CONTROL_INDEX.md`;
 - the pending `AI_PROJECT/AI_DEV_SYSTEM_VERSION.md` update.
 
-To refresh `AI_PROJECT/AI_DEV_SYSTEM_VERSION.md` explicitly:
+To create missing local control files and refresh `AI_PROJECT/AI_DEV_SYSTEM_VERSION.md` explicitly:
 
 ```bash
 python3 scripts/foldered-control-mvp.py update \
@@ -154,6 +158,7 @@ Add or update:
 
 - missing foldered architecture references;
 - `AI_DEV_SYSTEM_VERSION.md`;
+- `PROJECT_CONTROL_INDEX.md`;
 - missing `OWNER_PLAN.md`;
 - missing verification mode policy;
 - new operator commands;
@@ -166,6 +171,7 @@ Report a conflict when:
 
 - local rules allow browser or visual checks by default;
 - local rules conflict with global safety rules;
+- project control files exist but root or local read order does not lead to them;
 - target app directory is missing or ambiguous;
 - root control files and `AI_PROJECT/` files disagree;
 - existing project files would need replacement rather than merge;
@@ -185,7 +191,7 @@ Project system update must not:
 - inspect browser console;
 - run full builds or full test suites unless explicitly approved;
 - delete project-local decisions or history;
-- overwrite `PROJECT_OPERATION_PROFILE.md`, `OWNER_PLAN.md`, `PROJECT_GOAL.md`, `CODEX_TASKS.md` or `CODEX_SESSION_LOG.md` without explicit approval.
+- overwrite `PROJECT_CONTROL_INDEX.md`, `PROJECT_OPERATION_PROFILE.md`, `OWNER_PLAN.md`, `PROJECT_GOAL.md`, `CODEX_TASKS.md` or `CODEX_SESSION_LOG.md` without explicit approval.
 
 ## Verification Mode
 
@@ -215,6 +221,7 @@ Target Integration Mode:
 Target App Directory:
 Already Compatible:
 Missing Files:
+Connectivity Drift:
 Files to Update:
 Preserved Local Rules:
 Conflicts:

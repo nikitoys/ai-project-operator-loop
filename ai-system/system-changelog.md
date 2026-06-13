@@ -2,6 +2,26 @@
 
 Status: Draft
 
+## v0.47.0
+
+### Added
+
+- Added `ai-system/project-control-connectivity.md` to define Project Control Index, importance levels, read policies and project-control drift reporting.
+- Added `ai-system/templates/foldered/AI_PROJECT/PROJECT_CONTROL_INDEX.md` and `ai-system/templates/project/PROJECT_CONTROL_INDEX.md` as compact local read-order manifests.
+- Added `examples/golden-project/AI_PROJECT/PROJECT_CONTROL_INDEX.md` and `examples/golden-project/AI_PROJECT/PROJECT_OPERATION_PROFILE.md` so the golden project reflects the current control layer.
+
+### Updated
+
+- Updated foldered and root-mode `AGENTS.md` and `CODEX_WORKFLOW.md` templates so agents read `PROJECT_CONTROL_INDEX.md` before lower-level control files and report `Control Context`.
+- Updated project integration, foldered integration, project control, bootstrap and system update documents to include project-control connectivity and read-order drift handling.
+- Updated `scripts/foldered-control-mvp.py` so bootstrap/update include `AI_PROJECT/PROJECT_CONTROL_INDEX.md` and report connectivity drift without overwriting existing local files.
+- Updated system validation to require the control index and operation profile in templates and the golden project.
+- Updated README/index references and version mirrors to `v0.47.0`.
+
+### Reason
+
+Existing project agents can miss newer project-control files when stale `AGENTS.md` files do not mention them. The Project Control Index gives every project a shallow, discoverable map of local control files with importance and read policies, while the update helper makes stale read order visible as drift without automatically rewriting Human Owner-edited local files.
+
 ## v0.46.0
 
 ### Added

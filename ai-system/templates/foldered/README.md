@@ -28,3 +28,5 @@ Copy the `AI_PROJECT/` directory into the project root and fill placeholders:
 ```
 
 `AI_PROJECT/` is project-local source of truth after bootstrap. Do not overwrite it during upstream system updates.
+
+`AI_PROJECT/PROJECT_CONTROL_INDEX.md` is the compact read-order map for the local control layer. Keep it in sync when new project-control files are added.
