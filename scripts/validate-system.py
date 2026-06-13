@@ -17,6 +17,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_TEMPLATE_FILES = [
+    "ai-system/templates/foldered/AI_PROJECT/PROJECT_CONTROL_INDEX.md",
+    "ai-system/templates/foldered/AI_PROJECT/PROJECT_OPERATION_PROFILE.md",
     "ai-system/templates/foldered/AI_PROJECT/AGENT_PLAN.md",
     "ai-system/templates/foldered/AI_PROJECT/AGENT_TASKS.md",
     "ai-system/templates/foldered/AI_PROJECT/AGENT_ASSIGNMENTS.md",
@@ -26,6 +28,8 @@ REQUIRED_TEMPLATE_FILES = [
 ]
 
 REQUIRED_GOLDEN_PROJECT_FILES = [
+    "examples/golden-project/AI_PROJECT/PROJECT_CONTROL_INDEX.md",
+    "examples/golden-project/AI_PROJECT/PROJECT_OPERATION_PROFILE.md",
     "examples/golden-project/AI_PROJECT/AGENT_PLAN.md",
     "examples/golden-project/AI_PROJECT/AGENT_TASKS.md",
     "examples/golden-project/AI_PROJECT/AGENT_ASSIGNMENTS.md",
@@ -120,8 +124,8 @@ def main() -> int:
         ),
         run_command("Documentation integrity", [sys.executable, "scripts/check-docs-integrity.py"]),
         validate_json_specs(),
-        validate_required_files("AI_PROJECT agent template validation", REQUIRED_TEMPLATE_FILES),
-        validate_required_files("Golden project agent file validation", REQUIRED_GOLDEN_PROJECT_FILES),
+        validate_required_files("AI_PROJECT template validation", REQUIRED_TEMPLATE_FILES),
+        validate_required_files("Golden project control file validation", REQUIRED_GOLDEN_PROJECT_FILES),
         run_command("Agent planning fixture validation", [sys.executable, "scripts/validate-agent-plan-fixtures.py"]),
         run_command(
             "Golden project dry-run validation",

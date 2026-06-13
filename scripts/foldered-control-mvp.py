@@ -24,6 +24,7 @@ VERSION_RE = re.compile(r"^##\s+(v\d+\.\d+\.\d+)\s*$", re.MULTILINE)
 
 TEMPLATE_FILES = [
     Path("AGENTS.md"),
+    Path("PROJECT_CONTROL_INDEX.md"),
     Path("PROJECT_OPERATION_PROFILE.md"),
     Path("PROJECT_GOAL.md"),
     Path("OWNER_PLAN.md"),
@@ -43,6 +44,32 @@ TEMPLATE_FILES = [
     Path("AI_DEV_SYSTEM_VERSION.md"),
     Path("docs/verification-policy.md"),
 ]
+
+CONNECTIVITY_REFERENCES = {
+    Path("AGENTS.md"): [
+        "AI_PROJECT/AGENTS.md",
+        "AI_PROJECT/PROJECT_CONTROL_INDEX.md",
+        "AI_PROJECT/PROJECT_OPERATION_PROFILE.md",
+    ],
+    Path("AI_PROJECT/AGENTS.md"): [
+        "AI_PROJECT/PROJECT_CONTROL_INDEX.md",
+        "AI_PROJECT/PROJECT_OPERATION_PROFILE.md",
+    ],
+    Path("AI_PROJECT/CODEX_WORKFLOW.md"): [
+        "AI_PROJECT/PROJECT_CONTROL_INDEX.md",
+        "AI_PROJECT/PROJECT_OPERATION_PROFILE.md",
+        "Control Context",
+    ],
+    Path("AI_PROJECT/PROJECT_CONTROL_INDEX.md"): [
+        "AI_PROJECT/PROJECT_OPERATION_PROFILE.md",
+        "AI_PROJECT/PROJECT_GOAL.md",
+        "AI_PROJECT/CODEX_CURRENT.md",
+        "AI_PROJECT/CODEX_TASKS.md",
+        "AI_PROJECT/docs/verification-policy.md",
+        "AI_PROJECT/CODEX_WORKFLOW.md",
+        "Control Context",
+    ],
+}
 
 
 def current_version() -> str:
@@ -128,7 +155,44 @@ def render_project_file(relative: Path, values: dict[str, str]) -> str:
     return render(PROJECT_TEMPLATE_ROOT / relative, values)
 
 
-def bootstrap(args: argparse.Namespace) -> tuple[list[str], list[str]]:
+def connectivity_drift(project_root: Path) -> list[str]:
+    drift: list[str] = []
+
+    for relative, required_refs in CONNECTIVITY_REFERENCES.items():
+        path = project_root / relative
+        if not path.exists():
+            continue
+
+        text = path.read_text(encoding="utf-8")
+        for required_ref in required_refs:
+            if required_ref not in text:
+                drift.append(f"drift: {relative.as_posix()} missing {required_ref}")
+
+    return drift
+
+
+def rendered_connectivity_drift(values: dict[str, str]) -> list[str]:
+    rendered_files = {
+        Path("AGENTS.md"): render_root_agents(values),
+        **{
+            Path("AI_PROJECT") / relative: render_project_file(relative, values)
+            for relative in TEMPLATE_FILES
+        },
+    }
+    drift: list[str] = []
+
+    for relative, required_refs in CONNECTIVITY_REFERENCES.items():
+        text = rendered_files.get(relative)
+        if text is None:
+            continue
+        for required_ref in required_refs:
+            if required_ref not in text:
+                drift.append(f"drift: {relative.as_posix()} missing {required_ref}")
+
+    return drift
+
+
+def bootstrap(args: argparse.Namespace) -> tuple[list[str], list[str], list[str]]:
     project_root = args.project_root.resolve()
     values = replacements(args)
     actions: list[str] = []
@@ -145,10 +209,12 @@ def bootstrap(args: argparse.Namespace) -> tuple[list[str], list[str]]:
         status = write_if_apply(project_root / "AI_PROJECT" / relative, content, args.apply)
         actions.append(f"{status}: AI_PROJECT/{relative.as_posix()}")
 
-    return actions, placeholders
+    drift = connectivity_drift(project_root) if args.apply else rendered_connectivity_drift(values)
+
+    return actions, placeholders, drift
 
 
-def update(args: argparse.Namespace) -> tuple[list[str], list[str]]:
+def update(args: argparse.Namespace) -> tuple[list[str], list[str], list[str]]:
     project_root = args.project_root.resolve()
     values = replacements(args)
     actions: list[str] = []
@@ -195,7 +261,7 @@ def update(args: argparse.Namespace) -> tuple[list[str], list[str]]:
     else:
         actions.append("would_update: AI_PROJECT/AI_DEV_SYSTEM_VERSION.md")
 
-    return actions, placeholders
+    return actions, placeholders, connectivity_drift(project_root)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -242,7 +308,10 @@ def main() -> int:
     args = parser.parse_args()
     args.project_root = args.project_root.resolve()
 
-    actions, placeholders = bootstrap(args) if args.command == "bootstrap" else update(args)
+    if args.command == "bootstrap":
+        actions, placeholders, drift = bootstrap(args)
+    else:
+        actions, placeholders, drift = update(args)
 
     print(f"Mode: {'apply' if args.apply else 'dry-run'}")
     print(f"Command: {args.command}")
@@ -259,6 +328,12 @@ def main() -> int:
         return 2
 
     print("- no unresolved placeholders detected")
+    print("Connectivity Check:")
+    if drift:
+        for item in drift:
+            print(f"- {item}")
+    else:
+        print("- no project-control connectivity drift detected")
     print("Application Code Modified: no")
     return 0
 

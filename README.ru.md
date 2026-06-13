@@ -3,7 +3,7 @@
 Языки: [English](README.md) | [Русский](README.ru.md)
 
 Статус: Draft
-Версия: v0.46.0
+Версия: v0.47.0
 
 Этот репозиторий содержит AI Development System: операционную модель для разработки проектов через AI-роли, документацию, lifecycle governance, генерацию промптов, выполнение задач через Codex, review и контролируемую эволюцию системы.
 
@@ -36,6 +36,8 @@ Dry-run agent planning checks можно запускать через `scripts/
 Lightweight verification selection можно запускать через `scripts/verification/run_checks.py`; runner поддерживает dry-run, explicit budgets, per-check timeouts и local JSONL runtime history.
 
 `AI_PROJECT/PROJECT_OPERATION_PROFILE.md` хранит поверхностные настройки поведения AI Dev System для конкретного проекта: язык, стиль ответа, verification defaults, permissions, layout и review defaults.
+
+`AI_PROJECT/PROJECT_CONTROL_INDEX.md` хранит компактную карту read order, чтобы агенты видели project control files по важности и не загружали все документы по умолчанию.
 
 План SOP и optional multi-agent implementation зафиксирован в `/ai-system/evolution/sop-multi-agent-implementation-plan.md`.
 
@@ -130,6 +132,7 @@ Documentation records decisions.
 
 - Режимы взаимодействия: Free, System, Prompt, Codex, Review, Evolution и Dry Run.
 - Ролевая модель для product, design, management, implementation, quality, documentation и system evolution.
+- Project Control Index для discoverable read order, importance levels и drift reporting в concrete projects.
 - Project Operation Profile для поверхностных Human Owner-editable настроек поведения AI Dev System в проекте.
 - Формат Codex prompt package со scope, allowed files, forbidden actions и acceptance criteria.
 - Verification modes теперь требуют explicit budget, slow-check decision и runtime summary; slow/full/release checks не запускаются по умолчанию.
@@ -150,6 +153,7 @@ Documentation records decisions.
 - `/ai-system/prompt-lifecycle.md` - lifecycle создания, review и выполнения промптов.
 - `/ai-system/task-format.md` - стандартный формат задач.
 - `/ai-system/review-process.md` - процесс review и QA.
+- `/ai-system/project-control-connectivity.md` - project-control index, read policies и drift reporting.
 - `/ai-system/project-operation-profile.md` - поверхностный project behavior profile.
 - `/ai-system/verification-modes.md` - verification modes, budgets и browser/visual QA boundary.
 - `/ai-system/verification-cost-model.md` - cost/value model для bounded verification.

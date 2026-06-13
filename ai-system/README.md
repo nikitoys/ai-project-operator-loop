@@ -1,7 +1,7 @@
 # AI Development System
 
 Status: Draft  
-Version: v0.46.0
+Version: v0.47.0
 
 ## Purpose
 
@@ -57,9 +57,11 @@ python3 scripts/foldered-control-mvp.py bootstrap --project-root /path/to/projec
 python3 scripts/foldered-control-mvp.py update --project-root /path/to/project
 ```
 
-The helper reports planned control-layer changes, unresolved placeholders and `AI_PROJECT/AI_DEV_SYSTEM_VERSION.md` tracking. Writes require explicit `--apply`.
+The helper reports planned control-layer changes, unresolved placeholders, project-control connectivity drift and `AI_PROJECT/AI_DEV_SYSTEM_VERSION.md` tracking. Writes require explicit `--apply`.
 
 Foldered projects include `AI_PROJECT/PROJECT_OPERATION_PROFILE.md` as a Human Owner-editable surface profile for language, answer style, verification defaults, permissions, layout and review expectations.
+
+Foldered projects also include `AI_PROJECT/PROJECT_CONTROL_INDEX.md` as a compact read-order map with importance levels, read policies and project-control drift reporting.
 
 Run dry-run agent planning checks with:
 
@@ -147,9 +149,9 @@ Manual orchestration coordinates Agent Work Packages, result intake and integrat
 
 `l3-role-assigned-parallel-runbook.md` provides the practical Human Owner / ChatGPT Orchestrator procedure for manual role-assigned parallel orchestration.
 
-## AI_PROJECT Agent Planning Templates
+## AI_PROJECT Control and Agent Planning Templates
 
-Foldered project templates include `PROJECT_OPERATION_PROFILE.md`, `AGENT_PLAN.md`, `AGENT_TASKS.md`, `AGENT_ASSIGNMENTS.md`, `AGENT_LOCKS.md`, `AGENT_RESULTS.md` and `AGENT_METRICS.md`.
+Foldered project templates include `PROJECT_CONTROL_INDEX.md`, `PROJECT_OPERATION_PROFILE.md`, `AGENT_PLAN.md`, `AGENT_TASKS.md`, `AGENT_ASSIGNMENTS.md`, `AGENT_LOCKS.md`, `AGENT_RESULTS.md` and `AGENT_METRICS.md`.
 
 These files are planning and review records only. They preserve sequential execution as the default and do not authorize execution, parallel execution, automatic merge or automatic acceptance.
 
@@ -240,6 +242,7 @@ AI Development System
 - `project-integration-model.md` — foldered and root integration modes for concrete projects.
 - `foldered-integration.md` — recommended foldered architecture for embedding AI_Development_System into concrete projects.
 - `project-control-files.md` — standard project-level control files for concrete repositories.
+- `project-control-connectivity.md` — project control index, importance levels, read policies and drift reporting.
 - `project-operation-profile.md` — surface-level project behavior profile for AI Dev System defaults.
 - `project-bootstrap.md` — workflow for initializing new and existing project repositories.
 - `project-system-update.md` — workflow for updating already integrated project control layers.

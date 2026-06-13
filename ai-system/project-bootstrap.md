@@ -35,6 +35,7 @@ Default source-of-truth documents for bootstrap are:
 
 - `/ai-system/project-integration-model.md`;
 - `/ai-system/project-control-files.md`;
+- `/ai-system/project-control-connectivity.md`;
 - `/ai-system/project-operation-profile.md`;
 - `/ai-system/verification-modes.md`;
 - `/ai-system/templates/foldered/`;
@@ -80,14 +81,15 @@ For an empty or new repository in Foldered Control Mode:
 2. Create root `AGENTS.md` from `templates/foldered/AGENTS.root.md`.
 3. Create `AI_PROJECT/` from `templates/foldered/AI_PROJECT/`.
 4. Fill templates with project name, target app directory, language, operation profile defaults and default verification mode.
-5. Initialize `AI_PROJECT/PROJECT_OPERATION_PROFILE.md` with surface-level operating defaults.
-6. Record the first planning state in `AI_PROJECT/CODEX_PLAN.md`.
-7. Set `AI_PROJECT/CODEX_CURRENT.md` to `status: idle` unless a task is explicitly approved.
-8. Initialize `AI_PROJECT/OWNER_PLAN.md` as an owner-input roadmap placeholder unless the Human Owner opts out.
-9. Initialize `AI_PROJECT/CODEX_TASKS.md` with a small backlog or `No tasks approved yet`.
-10. Initialize `AI_PROJECT/CODEX_SESSION_LOG.md` with a bootstrap entry.
-11. Create `AI_PROJECT/AI_DEV_SYSTEM_VERSION.md` with source branch, version, commit when known and update method.
-12. Stop and ask the Human Owner to approve the initialized control layer.
+5. Initialize `AI_PROJECT/PROJECT_CONTROL_INDEX.md` with project-control importance and read policies.
+6. Initialize `AI_PROJECT/PROJECT_OPERATION_PROFILE.md` with surface-level operating defaults.
+7. Record the first planning state in `AI_PROJECT/CODEX_PLAN.md`.
+8. Set `AI_PROJECT/CODEX_CURRENT.md` to `status: idle` unless a task is explicitly approved.
+9. Initialize `AI_PROJECT/OWNER_PLAN.md` as an owner-input roadmap placeholder unless the Human Owner opts out.
+10. Initialize `AI_PROJECT/CODEX_TASKS.md` with a small backlog or `No tasks approved yet`.
+11. Initialize `AI_PROJECT/CODEX_SESSION_LOG.md` with a bootstrap entry.
+12. Create `AI_PROJECT/AI_DEV_SYSTEM_VERSION.md` with source branch, version, commit when known and update method.
+13. Stop and ask the Human Owner to approve the initialized control layer.
 
 ## Bootstrap for Existing Repositories
 
@@ -102,8 +104,9 @@ For an existing repository with application code:
 7. Preserve existing project-specific instructions unless they conflict with system safety rules.
 8. Record target app directory explicitly in `AI_PROJECT/PROJECT_GOAL.md`.
 9. Record default verification mode in `AI_PROJECT/docs/verification-policy.md`.
-10. Record surface-level operating defaults in `AI_PROJECT/PROJECT_OPERATION_PROFILE.md`.
-11. Stop before any app implementation work.
+10. Record project-control read policies in `AI_PROJECT/PROJECT_CONTROL_INDEX.md`.
+11. Record surface-level operating defaults in `AI_PROJECT/PROJECT_OPERATION_PROFILE.md`.
+12. Stop before any app implementation work.
 
 ## Files to Create
 
@@ -113,6 +116,7 @@ Default Foldered Control Mode bootstrap creates:
 AGENTS.md
 AI_Development_System/
 AI_PROJECT/AGENTS.md
+AI_PROJECT/PROJECT_CONTROL_INDEX.md
 AI_PROJECT/PROJECT_OPERATION_PROFILE.md
 AI_PROJECT/PROJECT_GOAL.md
 AI_PROJECT/OWNER_PLAN.md
@@ -155,7 +159,7 @@ AI_Development_System includes a small local helper for Foldered Control Mode:
 python3 scripts/foldered-control-mvp.py bootstrap --project-root /path/to/project
 ```
 
-The helper runs in dry-run mode by default. It reports which control files would be created and whether unresolved placeholders remain.
+The helper runs in dry-run mode by default. It reports which control files would be created, whether unresolved placeholders remain and whether project-control connectivity drift is detected.
 
 To apply the bootstrap control-layer files explicitly:
 
@@ -230,6 +234,7 @@ Updated Files:
 Target App Directory:
 Default Verification Mode:
 Project Operation Profile:
+Project Control Index:
 Application Code Modified: yes/no
 Open Questions:
 Next Required Human Owner Decision:

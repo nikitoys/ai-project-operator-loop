@@ -8,6 +8,8 @@ This example demonstrates Foldered Control Mode for a simple Task Tracker projec
 
 It contains project-local control files only. It does not contain product runtime code.
 
+It includes `AI_PROJECT/PROJECT_CONTROL_INDEX.md` and `AI_PROJECT/PROJECT_OPERATION_PROFILE.md` to demonstrate the current project-control connectivity and surface operation profile standard.
+
 ## Multi-Agent Planning Example
 
 The `AI_PROJECT/AGENT_*` files contain a filled non-runtime example for planning a Task Tracker due-date filter enhancement.

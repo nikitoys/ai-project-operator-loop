@@ -77,6 +77,8 @@ For a concrete project, authority is resolved in this order:
 
 The profile provides defaults. It does not authorize execution without an approved task or prompt package.
 
+`AI_PROJECT/PROJECT_CONTROL_INDEX.md` should be read before the profile to discover the local control layer and read policies. The index guides discovery only; it does not override profile authority.
+
 ## Safety Boundary
 
 The profile may restrict or specialize global defaults.

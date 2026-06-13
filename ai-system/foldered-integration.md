@@ -92,6 +92,7 @@ Default files:
 
 ```text
 AI_PROJECT/AGENTS.md
+AI_PROJECT/PROJECT_CONTROL_INDEX.md
 AI_PROJECT/PROJECT_OPERATION_PROFILE.md
 AI_PROJECT/PROJECT_GOAL.md
 AI_PROJECT/OWNER_PLAN.md
@@ -112,6 +113,8 @@ AI_PROJECT/AI_DEV_SYSTEM_VERSION.md
 AI_PROJECT/docs/verification-policy.md
 ```
 
+`AI_PROJECT/PROJECT_CONTROL_INDEX.md` is the compact read-order map. It lets agents know which control files exist, which are critical and which should be loaded only when relevant.
+
 Agent planning and assignment files are project-local planning, manual coordination and review records only. They preserve sequential execution as the default, keep candidate parallel groups informational until approved and do not authorize automatic execution, automatic dispatch, merge or acceptance.
 
 ## Installation Flow
@@ -124,9 +127,10 @@ For a new or existing project:
 3. Copy AI_Development_System/ai-system/templates/foldered/AGENTS.root.md to /AGENTS.md.
 4. Fill placeholders.
 5. Record target app directory.
-6. Set project operation defaults in `AI_PROJECT/PROJECT_OPERATION_PROFILE.md`.
-7. Set default verification mode, usually FAST.
-8. Stop for Human Owner approval.
+6. Create `AI_PROJECT/PROJECT_CONTROL_INDEX.md`.
+7. Set project operation defaults in `AI_PROJECT/PROJECT_OPERATION_PROFILE.md`.
+8. Set default verification mode, usually FAST.
+9. Stop for Human Owner approval.
 ```
 
 The minimal helper can prepare this as a dry-run:
@@ -147,14 +151,15 @@ Update flow:
 1. Update AI_Development_System/ from upstream.
 2. Compare AI_PROJECT/ with new templates and standards.
 3. Add missing local control files.
-4. Merge new rules into existing local files.
-5. Preserve local project decisions and constraints.
-6. Record conflicts.
-7. Update AI_PROJECT/AI_DEV_SYSTEM_VERSION.md.
-8. Stop for Human Owner approval.
+4. Report project-control connectivity drift, including stale read orders.
+5. Merge new rules into existing local files.
+6. Preserve local project decisions and constraints.
+7. Record conflicts.
+8. Update AI_PROJECT/AI_DEV_SYSTEM_VERSION.md.
+9. Stop for Human Owner approval.
 ```
 
-The minimal update helper can report missing files, unresolved placeholders and pending version tracking:
+The minimal update helper can report missing files, unresolved placeholders, project-control connectivity drift and pending version tracking:
 
 ```bash
 python3 scripts/foldered-control-mvp.py update --project-root /path/to/project
@@ -187,6 +192,8 @@ For a foldered project, authority is resolved in this order:
 8. Templates.
 
 Local project rules may restrict or specialize global defaults, but they must not weaken safety, approval or lifecycle governance rules.
+
+`AI_PROJECT/PROJECT_CONTROL_INDEX.md` guides discovery and read policy. It does not authorize execution and does not override the authority order.
 
 ## Boundary Rules
 

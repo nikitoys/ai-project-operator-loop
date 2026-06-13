@@ -3,7 +3,7 @@
 Languages: [English](README.md) | [Русский](README.ru.md)
 
 Status: Draft
-Version: v0.46.0
+Version: v0.47.0
 
 This repository contains an AI Development System: an operating model for developing projects through AI roles, documentation, lifecycle governance, prompt generation, Codex execution, review and controlled evolution.
 
@@ -36,6 +36,8 @@ Dry-run agent planning checks can be run with `scripts/agent-plan-mvp.py`.
 Lightweight verification check selection can be run with `scripts/verification/run_checks.py`. The runner supports dry-run, explicit budgets, per-check timeouts and local JSONL runtime history.
 
 `AI_PROJECT/PROJECT_OPERATION_PROFILE.md` provides surface-level project behavior defaults for language, answer style, verification, permissions, layout and review expectations.
+
+`AI_PROJECT/PROJECT_CONTROL_INDEX.md` provides a compact read-order map so agents can discover project control files by importance without loading every document by default.
 
 The SOP and optional multi-agent implementation plan is recorded in `/ai-system/evolution/sop-multi-agent-implementation-plan.md`.
 
@@ -143,6 +145,7 @@ A foldered project should have:
 AGENTS.md
 AI_Development_System/
 AI_PROJECT/AGENTS.md
+AI_PROJECT/PROJECT_CONTROL_INDEX.md
 AI_PROJECT/PROJECT_OPERATION_PROFILE.md
 AI_PROJECT/PROJECT_GOAL.md
 AI_PROJECT/OWNER_PLAN.md
@@ -275,6 +278,7 @@ Idea
 - `/ai-system/system-schemes.md` - compact text schemes for roles, documents and process flow.
 - `/ai-system/project-integration-model.md` - foldered and root integration modes for concrete projects.
 - `/ai-system/foldered-integration.md` - recommended foldered architecture.
+- `/ai-system/project-control-connectivity.md` - project-control index, read policies and drift reporting.
 - `/ai-system/project-operation-profile.md` - surface-level project behavior profile for AI Dev System defaults.
 - `/ai-system/project-system-update.md` - how to update already integrated projects.
 - `/spec/README.md` - machine-checkable spec layer for roles, modes, verification modes and lifecycle states.
@@ -299,6 +303,7 @@ Documentation records decisions.
 - Role model for product, design, management, implementation, quality, documentation and system evolution.
 - Foldered project integration model with separate `AI_Development_System/`, `AI_PROJECT/` and target app directories.
 - Project control file standard and bootstrap workflow for concrete repositories.
+- Project Control Index for discoverable read order, importance levels and drift reporting in concrete projects.
 - Project Operation Profile for shallow Human Owner-editable AI Dev System behavior defaults.
 - Project system update process for refreshing already integrated projects.
 - Owner plan intake through `AI_PROJECT/OWNER_PLAN.md` and `Разобрать план`.
